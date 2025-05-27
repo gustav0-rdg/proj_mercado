@@ -1,5 +1,5 @@
 from data.conexao import Connection
-
+from hashlib import sha256
 class Usuario:
     def cadastrar(nome, usuario, email, telefone, senha):
         # Validando o email e a senha
@@ -7,6 +7,7 @@ class Usuario:
             email = None;
         if telefone == '':
             telefone = None
+        senha = sha256(str(senha).encode()).hexdigest()
         conexao = Connection.create()
         cursor = conexao.cursor()
         try:    
