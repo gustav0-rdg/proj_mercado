@@ -1,7 +1,8 @@
+from data.conexao import Conexao
 from flask import Flask, request, render_template, redirect, session
 from hashlib import sha256
 from model.controller_usuario import Usuario
-from model.controller_filmes import Filmes
+from model.controller_filmes import Filme
 
 app = Flask(__name__)
 
@@ -29,5 +30,16 @@ def cadastrar_usuario():
 @app.route("/login")
 def pag_login():
     return render_template('login.html')
+
+@app.route("/catalogo")
+def pag_catalogo():
+    filmes = Filme.exibirTodos()
+    return render_template('catalogo.html', filmes = filmes)
+
+@app.route("/filme/<id>")
+def pag_filme(id):
+    filme = Filme.exibir(id)
+
+    return render_template('produto.html', filme = filme)
 
 app.run(debug=True)
