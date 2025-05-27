@@ -15,8 +15,10 @@ class Usuario:
             sql = "INSERT INTO tb_usuario(nome_usuario,usuario,email,telefone,senha) VALUES(%s,%s,%s,%s,%s)"
             cursor.execute(sql, (nome,usuario,email,telefone,senha))
             conexao.commit()
+            return True
         except Exception as e:
             print(e)
+            return False
         finally:
             conexao.close()
 
