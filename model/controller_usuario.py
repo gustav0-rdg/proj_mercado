@@ -38,3 +38,6 @@ class Usuario:
             print(e)
         finally:
             conexao.close()
+
+    def logoff():
+        session.clear()
