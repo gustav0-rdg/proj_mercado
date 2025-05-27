@@ -1,8 +1,8 @@
-from data.conexao import Conexao
 from flask import Flask, request, render_template, redirect, session
 from hashlib import sha256
 from model.controller_usuario import Usuario
 from model.controller_filmes import Filme
+from model.controller_carrinho import Carrinho
 
 app = Flask(__name__)
 
@@ -39,7 +39,11 @@ def pag_catalogo():
 @app.route("/filme/<id>")
 def pag_filme(id):
     filme = Filme.exibir(id)
-
     return render_template('produto.html', filme = filme)
+
+@app.route("/add/carrinho/<id>")
+def add_carrinho(id):
+    Carrinho.add(id, session[id])
+    return redirect("/catalogo")
 
 app.run(debug=True)
