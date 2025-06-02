@@ -44,13 +44,12 @@ def pag_filme(id):
 
 @app.route("/add/carrinho/<id>")
 def add_carrinho(id):
-    # Carrinho.add(id, session[id])
-    Carrinho.add(id, 1)
+    Carrinho.add(id, session['id_usuario'])
     return redirect("/catalogo")
 
 @app.route("/remove/carrinho/<id>")
 def remove_carrinho(id):
-    Carrinho.remove(id, 1)
+    Carrinho.remove(id, session['id_usuario'])
     return redirect("/catalogo")
 
 @app.route("/filmes/exibir/<id>")

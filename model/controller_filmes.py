@@ -68,9 +68,12 @@ class Filme():
             cursor.close()
             conexao.close()
             return filme
+        
     def categorias():
+
         conexao = Connection.create()
         cursor = conexao.cursor(dictionary=True)
+
         try:
             comando_sql = """SELECT
                     c.id_categoria,
@@ -79,16 +82,20 @@ class Filme():
             """
             cursor.execute(comando_sql)
             categorias = cursor.fetchall()
+
         except:
             return []
+        
         finally:
             cursor.close()
             conexao.close()
             return categorias
 
     def exibirCategoria(categoria):
+
         conexao = Connection.create()
         cursor = conexao.cursor(dictionary=True)
+
         try:
             comando_sql = """SELECT
                 f.id_filme,
@@ -104,8 +111,10 @@ class Filme():
             WHERE c.id_categoria = %s; """
             cursor.execute(comando_sql, (categoria,))
             filmes = cursor.fetchall()
+
         except:
             return []
+        
         finally:
             conexao.close()
             cursor.close()
