@@ -1,5 +1,6 @@
 body {
     background: var(--gradient-catalogoLight);
+    min-height: 100vh;
     height: auto;
     margin: 0;
     font-family: Arial, sans-serif;
@@ -22,7 +23,7 @@ nav{
 .catalogo {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    margin: 0 100px;
     padding: 20px;
     gap: 20px;
 }
