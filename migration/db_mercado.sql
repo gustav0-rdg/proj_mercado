@@ -151,3 +151,71 @@ INSERT INTO tb_fotos (id_filme, img_1, img_2, img_banner) VALUES
 (25, 'https://wp.ufpel.edu.br/empauta/files/2016/04/BatmanVsSuperman2.jpg', 'https://wp.ufpel.edu.br/empauta/files/2016/04/BatmanVsSuperman2.jpg', 'https://wp.ufpel.edu.br/empauta/files/2016/04/BatmanVsSuperman2.jpg'),
 (26, 'https://br.web.img2.acsta.net/pictures/17/10/23/19/55/0260439.jpg', 'https://br.web.img2.acsta.net/pictures/17/10/23/19/55/0260439.jpg', 'https://br.web.img2.acsta.net/pictures/17/10/23/19/55/0260439.jpg'),
 (27, 'https://br.web.img2.acsta.net/img/61/b3/61b35aa40057cba4f7df23c689d6979e.PNG', 'https://br.web.img2.acsta.net/img/61/b3/61b35aa40057cba4f7df23c689d6979e.PNG', 'https://br.web.img2.acsta.net/img/61/b3/61b35aa40057cba4f7df23c689d6979e.PNG');
+	
+INSERT INTO tb_usuario(nome_usuario, usuario, senha)VALUES("alicia pavao","alicia123","ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f");
+INSERT INTO tb_usuario(nome_usuario, usuario, senha)VALUES("gustavo rodrigues","gustav0rdg","ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f");
+INSERT INTO tb_usuario(nome_usuario, usuario, senha)VALUES("ivo neto","icneto","ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f");
+
+INSERT INTO tb_comentarios (id_filme, id_usuario, avaliacao, comentario)
+VALUES
+  -- Filme id=1, usuário id=1
+  (1, 1, 5, 'Excelente do início ao fim!'),
+  -- Filme id=2, usuário id=2
+  (2, 2, 5, 'Roteiro envolvente e atuações incríveis.'),
+  -- Filme id=3, usuário id=3
+  (3, 3, 5, 'Visualmente deslumbrante!'),
+  -- Filme id=4, usuário id=1
+  (4, 1, 5, 'Superou todas as expectativas.'),
+  -- Filme id=5, usuário id=2
+  (5, 2, 5, 'Final emocionante e bem construído.'),
+  -- Filme id=6, usuário id=3
+  (6, 3, 5, 'Trilha sonora perfeita para a história.'),
+  -- Filme id=7, usuário id=1
+  (7, 1, 5, 'Personagens bem desenvolvidos.'),
+  -- Filme id=8, usuário id=2
+  (8, 2, 5, 'Uma experiência imperdível.'),
+  -- Filme id=9, usuário id=3
+  (9, 3, 5, 'Direção impecável e criativa.'),
+  -- Filme id=10, usuário id=1
+  (10, 1, 5, 'Simplesmente sensacional!'),
+  -- Filme id=11, usuário id=2
+  (11, 2, 5, 'Bom, mas poderia ser mais profundo.'),
+  -- Filme id=12, usuário id=3
+  (12, 3, 5, 'Teve ótimos momentos, mas também foi arrastado.'),
+  -- Filme id=13, usuário id=1
+  (13, 1, 5, 'Elenco forte, mas roteiro previsível.'),
+  -- Filme id=14, usuário id=2
+  (14, 2, 5, 'Vale assistir, mas não é memorável.'),
+  -- Filme id=15, usuário id=3
+  (15, 3, 5, 'Algumas partes empolgam, outras nem tanto.'),
+  -- Filme id=16, usuário id=1
+  (16, 1, 5, 'Final inesperado, porém confuso.'),
+  -- Filme id=17, usuário id=2
+  (17, 2, 5, 'Visual incrível, história fraca.'),
+  -- Filme id=18, usuário id=3
+  (18, 3, 5, 'Interessante, mas faltou emoção.'),
+  -- Filme id=19, usuário id=1
+  (19, 1, 5, 'Promissor, mas mal aproveitado.'),
+  -- Filme id=20, usuário id=2
+  (20, 2, 5, 'Ok para passar o tempo.'),
+  -- Filme id=21, usuário id=3
+  (21, 3, 5, 'Muito abaixo do esperado.'),
+  -- Filme id=22, usuário id=1
+  (22, 1, 5, 'História sem graça e mal contada.'),
+  -- Filme id=23, usuário id=2
+  (23, 2, 5, 'Ritmo lento e cansativo.'),
+  -- Filme id=24, usuário id=3
+  (24, 3, 5, 'Diálogos fracos e atuações forçadas.'),
+  -- Filme id=25, usuário id=1
+  (25, 1, 5, 'Personagens sem profundidade.'),
+  -- Filme id=26, usuário id=2
+  (26, 2, 5, 'Final decepcionante.'),
+  -- Filme id=27, usuário id=3
+  (27, 3, 5, 'Pouco original e repetitivo.'),
+  -- Voltando ao início da lista de filmes:
+  -- Filme id=1, usuário id=1
+  (1, 1, 5, 'Não prende a atenção.'),
+  -- Filme id=2, usuário id=2
+  (2, 2, 5, 'Trilha sonora genérica.'),
+  -- Filme id=3, usuário id=3
+  (3, 3, 5, 'Faltou emoção do começo ao fim.');
