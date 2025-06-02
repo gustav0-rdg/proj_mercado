@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS db_mercado;
 USE db_mercado;
 
-CREATE TABLE tb_usuario(
+CREATE TABLE tb_usuarios(
 	id_usuario int auto_increment primary key,
     nome_usuario varchar(30) not null,
     usuario varchar(30) not null,
@@ -44,7 +44,7 @@ CREATE TABLE tb_comentarios(
     comentario text not null,
     data DATETIME default now(),
     FOREIGN KEY (id_filme) REFERENCES tb_filmes(id_filme),
-    FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
+    FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id_usuario)
 );
 
 CREATE TABLE tb_filmes_avaliacao(
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS tb_carrinho(
     status_pedido varchar(50) not null,
     criado_em DATETIME DEFAULT now(),
     atualizado_em DATETIME,
-    FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
+    FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id_usuario)
     );
     
 CREATE TABLE IF NOT EXISTS tb_carrinho_itens(
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS tb_pedido(
     estado ENUM("PAGO", "PENDENTE", "CANCELADO", "ENTREGUE") not null,
     total DECIMAL(10,2) not null,
     FOREIGN KEY (id_carrinho) REFERENCES tb_carrinho(id_carrinho),
-	FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
+	FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id_usuario)
 );
 
 INSERT INTO tb_categorias(categoria)VALUES('Ação'),('Drama'),('Comédia'),('Terror'),('Suspense'),('Romance'),('Ficção Cíentifica'),('Fantasia'),('Infantil'),('Aventura'),
