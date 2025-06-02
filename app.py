@@ -40,8 +40,10 @@ def pag_catalogo():
 
 @app.route("/filme/<id>")
 def pag_filme(id):
+    comentarios = Comentarios.exibir(id)
+    print(comentarios)
     filme = Filme.exibir(id)
-    return render_template('produto.html', filme = filme)
+    return render_template('produto.html', filme = filme, comentarios = comentarios)
 
 @app.route("/add/carrinho/<id>")
 def add_carrinho(id):
