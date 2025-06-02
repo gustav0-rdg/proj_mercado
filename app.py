@@ -47,4 +47,11 @@ def add_carrinho(id):
     Carrinho.add(id, session[id])
     return redirect("/catalogo")
 
+@app.route("/filmes/exibir/<id>")
+def exibir_filmesCat(id):
+    filmes = Filme.exibirCategoria(id)
+    if filmes == []:
+        return redirect("/catalogo")
+    return render_template('catalogo.html', filmes = filmes)
+
 app.run(debug=True)

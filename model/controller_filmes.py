@@ -101,7 +101,7 @@ class Filme():
             INNER JOIN tb_categorias c ON f.id_categoria = c.id_categoria
             INNER JOIN tb_categorias subc ON f.id_subgenero = subc.id_categoria
             INNER JOIN tb_fotos img ON f.id_filme = img.id_filme
-            WHERE c.categoria = %s; """
+            WHERE c.id_categoria = %s; """
             cursor.execute(comando_sql, (categoria,))
             filmes = cursor.fetchall()
         except:
