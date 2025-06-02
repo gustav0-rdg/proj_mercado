@@ -38,10 +38,26 @@ def pag_catalogo():
     filmes = Filme.exibirTodos()
     return render_template('catalogo.html', filmes = filmes, categorias = categorias)
 
-@app.route("/filme/<id>")
+@app.route("/filme/<id>", methods=["GET", "POST"])
 def pag_filme(id):
     filme = Filme.exibir(id)
-    return render_template('produto.html', filme = filme)
+    comentarios = Comentarios.exibir()
+
+    if request.method == "POST":
+        avaliacao = request.form.get('placeholder')
+        comentario = request.form.get('placeholder')
+
+        resultado = Comentarios.add(id, session['id_usuario'],avaliacao, comentario)
+
+        if resultado == True:
+            return redirect(f"/filme/{id}")
+        else:
+            print(f"Erro ao adicionar o comentário no filme de ID: {id}")
+            return redirect(f"/filme/{id}")
+
+    return render_template('produto.html', filme = filme, comentarios = comentarios)
+    
+
 
 @app.route("/add/carrinho/<id>")
 def add_carrinho(id):
