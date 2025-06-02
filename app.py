@@ -3,6 +3,7 @@ from hashlib import sha256
 from model.controller_usuario import Usuario
 from model.controller_filmes import Filme
 from model.controller_carrinho import Carrinho
+from model.controller_comentarios import Comentarios
 
 app = Flask(__name__)
 
