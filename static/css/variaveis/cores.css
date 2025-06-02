@@ -24,12 +24,16 @@
 
 
     /* Gradient pag principal */
-    --gradient-inicialLight: linear-gradient(var( --rosa-secundario) 10%, var(--rosa-secundario-claro) 75%);
+    --gradient-inicialLight: linear-gradient(var( --rosa-secundario) 20%, var(--rosa-secundario-claro) 70%);
     --gradient-inicialDark: linear-gradient(var( --rosa-primario-escuro) 10%, var(--preto) 80%);
 
     /* Gradient pag catalogo */
-    --gradient-catalogoLight: linear-gradient(var( --rosa-primario) 0%, var(--branco) 80%);
+    --gradient-catalogoLight: linear-gradient(var( --rosa-primario) 0%, var(--rosa-secundario-claro) 60%);
     --gradient-catalogoDark: linear-gradient(var( --rosa-primario-medio) 15%, var(--preto) 80%);
+
+    /* Gradient pag produto */
+    --gradient-catalogoLight: linear-gradient(var( --rosa-primario) 10%, var(--rosa-secundario-claro) 100%);
+    --gradient-catalogoDark: linear-gradient(var( --rosa-primario-escuro) 20%, var(--preto) 100%);
 
     /* Gradient pag login e cadastro */
     --gradient-loginLight: linear-gradient(var( --rosa-primario-claro) 0%, var(--branco) 40%, var(--branco) 60%, var(--rosa-primario-claro) 100%);
