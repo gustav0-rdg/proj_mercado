@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for comentario in comentarios %}
+    <div class="comentario">
+        <strong>{{ comentario.nome_usuario }}</strong> - Avaliação: {{ comentario.avaliacao }}<br>
+        <p>{{ comentario.comentario }}</p>
+        <small>{{ comentario.data.strftime('%d/%m/%Y %H:%M') }}</small>
+    </div>
+    {% else %}
+        <p>Não há comentários para este filme.</p>
+    {% endfor %}
+</body>
+</html>
