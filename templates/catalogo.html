@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cátalogo - Disco Mágico</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/global.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/paginas/pagCatalogo.css')}}">
+</head>
+<body>
+    <header>
+        
+    </header>
+    <main class="catalogo">
+        {% for filme in filmes %}
+        <div class="catalogo__filmes">
+            <figure>
+                <img src="{{filme.img_1}}" alt="" class="catalogo__filmes-img">
+                <caption>
+                    <div class="catalogo__filmes-acoes">
+                        <div class="filme-infos">
+                            <p class="filme-titulo">{{filme.nome_filme}}</p>
+                        </div>
+                        <div class="filme-ver-mais">
+                            <p>Preço: R${{filme.preco}}</p>
+                            <button class="catalogo__filmes-btn"><a href="/filme/{{filme.id_filme}}">Ver mais</a></button>
+                        </div>
+                    </div>
+                    
+                </caption>
+                
+            </figure>
+        </div>
+        {% endfor %}
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>
