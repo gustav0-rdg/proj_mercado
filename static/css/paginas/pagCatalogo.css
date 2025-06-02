@@ -6,10 +6,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-nav{
-    display: flex;
-    justify-content: space-between;
-}
+
 .header__search-category-btn{
     padding: 8px 12px;
     background-color: var(--rosa-secundario-escuro);
@@ -21,9 +18,8 @@ nav{
     margin-top: 5px;
 }
 .catalogo {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 100px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     padding: 20px;
     gap: 20px;
 }
@@ -60,6 +56,7 @@ nav{
 .filme-titulo {
     font-weight: bold;
     color: var(--rosa-principal);
+    height: 50px;
 }
 
 a{
@@ -76,8 +73,59 @@ a{
     cursor: pointer;
     transition: background 0.3s;
     margin-top: 5px;
+    width: 100%;
 }
 
 .catalogo__filmes-btn:hover{
     background-color: var(--rosa-primario-escuro);
+}
+
+.menu {
+    display: none;
+    flex-direction: column;
+    background-color: var(--rosa-primario-escuro);
+    border-radius: 10px;
+    padding: 10px;
+    
+    position: absolute; /* ou 'fixed' se quiser que ele fique preso na tela */
+    top: 60px; /* ajusta conforme o tamanho do seu header */
+    left: 10px;
+    z-index: 1000; /* garante que fique acima dos filmes */
+    width: 200px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+    
+.menu.show {
+    display: flex;
+}
+    
+/* Estilo do botão de menu */
+.menu-toggle{
+    display: block;
+}
+
+.menu-toggle {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+@media(max-width:1400px){
+    .catalogo{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media(max-width:1000px){
+    .catalogo{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media(max-width:600px){
+    .catalogo{
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
