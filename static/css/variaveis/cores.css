@@ -35,6 +35,7 @@
     --gradient-catalogoLight: linear-gradient(var( --rosa-primario) 10%, var(--rosa-secundario-claro) 100%);
     --gradient-catalogoDark: linear-gradient(var( --rosa-primario-escuro) 20%, var(--preto) 100%);
 
+
     /* Gradient pag login e cadastro */
     --gradient-loginLight: linear-gradient(var( --rosa-primario-claro) 0%, var(--branco) 40%, var(--branco) 60%, var(--rosa-primario-claro) 100%);
     --gradient-loginDark: linear-gradient(var( --rosa-primario-escuro) 0%, var(--rosa-secundario-medio) 40%, var(--rosa-secundario-medio) 60%, var(--rosa-primario-escuro) 100%);
