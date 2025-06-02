@@ -10,14 +10,17 @@
 <!-- Links do Font Awesome -->
 <script src="https://kit.fontawesome.com/121b8fc5c0.js" crossorigin="anonymous" defer></script>
 
+<!-- Link do Css interno -->
+<link rel="stylesheet" href="../static/css/componentes.css">
+
 <!-- #endregion -->
 
 <div class="position-relative" style="height: 130vh; width: 100%;">
     <!-- #region header -->
 
-    <header class="header__container position-fixed top-0 w-100">
+    <header class="header__container   position-fixed top-0 w-100">
 
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
 
                 <!-- Logo -->
@@ -39,19 +42,20 @@
                     <ul class="navbar-nav d-flex justify-content-between w-100">
 
                         <!-- menu toggle -->
-                        <li class="header__menu-toggle nav-item dropdown me-auto">
+                        <li class="header__menu-toggle header__item   nav-item dropdown me-auto">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                <i class="fa-solid fa-bars fa-xl" style="color: #631cab;"></i>
+                                <i class="header__icon   fa-solid fa-bars fa-2xl"></i>
                             </a>
                             <!-- opções do menu -->
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Página Inicial</a></li>
-                                <li><a class="dropdown-item" href="#">Página Catálogo</a></li>
+                                <li><a class="dropdown-item text-white" href="#">Página Inicial</a></li>
+                                <li><a class="dropdown-item text-white" href="#">Catálogo</a></li>
+                                <li><a class="dropdown-item text-white " href="#">Meu Carrinho</a></li>
                                 <li>
-                                    <hr class="dropdown-divider">
+                                    <hr class="dropdown-divider text-white">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Tema</a></li>
+                                <li><a class="dropdown-item text-white" href="#">Configurações</a></li>
                             </ul>
                         </li>
 
@@ -59,18 +63,18 @@
                         <!-- itens da direita -->
 
                         <!-- carrinho de compras -->
-                        <li class="header__sacola nav-item">
+                        <li class="header__sacola header__item   nav-item">
                             <a class="nav-link active" aria-current="page" href="#">
-                                <i class="fa-solid fa-bag-shopping fa-xl" style="color: #c71fa2;"></i>
-                                <span>|</span>
+                                <i class="header__icon   fa-solid fa-bag-shopping fa-2xl"></i>
+                                <span style="color: var(--rosa-secundario);">|</span>
                             </a>
                         </li>
 
                         <!-- usuario -->
-                        <li class="header__user nav-item">
+                        <li class="header__user header__item   nav-item">
                             <a class="nav-link" href="#">
-                                <span>nome usuario</span>
-                                <i class="fa-solid fa-circle-user fa-xl" style="color: #e31684;"></i>
+                                <span>{{ usuario.nome }}</span>
+                                <i class="header__icon   fa-solid fa-circle-user fa-2xl"></i>
                             </a>
                         </li>
                     </ul>
@@ -89,9 +93,13 @@
 
     <!-- #region footer -->
 
-    <footer class="bg-body-tertiary text-center text-lg-start position-absolute bottom-0" style="width: 100%;">
+    <footer class="footer__container   text-center text-lg-start position-absolute bottom-0 w-100">
         <div class="text-center p-3">
-            &copy; 2025 Copyright: Equipe Disco Mágico
+            <span>
+                &copy; 2025 Copyright: Equipe Disco Mágico
+            </span>
+        </div>
+
     </footer>
 
 
