@@ -4,6 +4,20 @@ body {
     font-family: Arial, sans-serif;
 }
 
+nav{
+    display: flex;
+    justify-content: space-between;
+}
+.header__search-category-btn{
+    padding: 8px 12px;
+    background-color: var(--rosa-secundario-escuro);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 5px;
+}
 .catalogo {
     display: flex;
     flex-wrap: wrap;

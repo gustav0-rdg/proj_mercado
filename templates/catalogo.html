@@ -9,9 +9,14 @@
 </head>
 <body>
     <header>
-        
+        <nav>
+            {% for categoria in categorias%}
+            <button class="header__search-category-btn">{{categoria.categoria}}</button>
+            {% endfor %}
+        </nav>
     </header>
     <main class="catalogo">
+        
         {% for filme in filmes %}
         <div class="catalogo__filmes">
             <figure>

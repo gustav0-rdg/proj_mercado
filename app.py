@@ -33,8 +33,9 @@ def pag_login():
 
 @app.route("/catalogo")
 def pag_catalogo():
+    categorias = Filme.categorias()
     filmes = Filme.exibirTodos()
-    return render_template('catalogo.html', filmes = filmes)
+    return render_template('catalogo.html', filmes = filmes, categorias = categorias)
 
 @app.route("/filme/<id>")
 def pag_filme(id):
