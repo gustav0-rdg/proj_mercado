@@ -24,7 +24,7 @@
 
 
     /* Gradient pag principal */
-    --gradient-inicialLight: linear-gradient(var( --rosa-secundario) 10%, var(--branco) 75%);
+    --gradient-inicialLight: linear-gradient(var( --rosa-secundario) 10%, var(--rosa-secundario-claro) 75%);
     --gradient-inicialDark: linear-gradient(var( --rosa-primario-escuro) 10%, var(--preto) 80%);
 
     /* Gradient pag catalogo */
