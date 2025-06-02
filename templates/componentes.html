@@ -12,58 +12,91 @@
 
 <!-- #endregion -->
 
+<div class="position-relative" style="height: 130vh; width: 100%;">
+    <!-- #region header -->
 
-<!-- #region header -->
-<header>
+<header class="position-fixed top-0" style="width: 100%;">
+
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <picture>
-                    <img src="imagem logo" alt="logo-disco-magico">
-                </picture>
-            </a>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav d-flex flex-row" style="width: 100%;">
 
-                    <li class="nav-item dropdown">
+            <!-- Logo -->
+            <a class="navbar-brand" href="#">
+                <figure>
+                    <img src="" alt="logo-disco-magico">
+                </figure>
+            </a>
+
+            <!-- toggle para midias baixas (telas pequena) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- elementos do header -->
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav d-flex justify-content-between" style="width: 100%;">
+
+                    <!-- menu toggle -->
+                    <li class="nav-item dropdown me-auto">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <i class="fa-solid fa-bars fa-xl" style="color: #631cab;"></i>
                         </a>
+                        <!-- opções do menu -->
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Página inicial</a></li>
-                            <li><a class="dropdown-item" href="#">Catálogo</a></li>
-                            <li><a class="dropdown-item" href="#">Meu carrinho</a></li>
-                            <li><a class="dropdown-item" href="#">Configurações</a></li>
-                            <li><a class="dropdown-item" href="#">Gerenciamento</a></li>
+                            <li><a class="dropdown-item" href="#">Página Inicial</a></li>
+                            <li><a class="dropdown-item" href="#">Página Catálogo</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Tema</a></li>
                         </ul>
                     </li>
 
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fa-solid fa-bag-shopping fa-xl" style="color: #c71fa2;"></i>
-                            <span>|</span>
+                    <!-- itens da direita -->
+                    
+                        <!-- carrinho de compras -->
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">
+                                <i class="fa-solid fa-bag-shopping fa-xl" style="color: #c71fa2;"></i>
+                                <span>|</span>
+                            </a>
+                        </li>
 
-                            <!-- <i class="fa-solid fa-cart-shopping fa-xl" style="color: #c3288a;"></i> -->
-                        </a>
-                    </li>
+                        <!-- usuario -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span>nome usuario</span>
+                                <i class="fa-solid fa-circle-user fa-xl" style="color: #e31684;"></i>
+                            </a>
+                        </li>
+                    
 
-                    <li class="nav-item justify-content-end">
-                        <a class="nav-link" href="#">
-                            <span>nome usuario</span>
-                            <i class="fa-solid fa-circle-user fa-xl" style="color: #e31684;"></i>
-                        </a>
-                    </li>
+
 
 
 
                 </ul>
             </div>
+
         </div>
     </nav>
+
 </header>
 
 
 
 <!-- #endregion -->
+
+
+
+<!-- #region footer -->
+
+<footer class="bg-body-tertiary text-center text-lg-start position-absolute bottom-0" style="width: 100%;">
+  <div class="text-center p-3">
+    &copy; 2025 Copyright: Equipe Disco Mágico
+</footer>
+
+
+<!-- #endregion -->
+</div>
