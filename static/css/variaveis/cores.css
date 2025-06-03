@@ -1,0 +1,41 @@
+:root {
+
+    /* Rosas primarios */
+    --rosa-primario-claro: #FFA7C7;
+    --rosa-primario: #FE5694;
+    --rosa-primario-medio: #A92B59;
+    --rosa-primario-escuro: #8A2248;
+
+    /* Rosas secundários */
+    --rosa-secundario-claro: #FFD5E4;
+    --rosa-secundario: #FE76A8;
+    --rosa-secundario-medio: #C75D84;
+    --rosa-secundario-escuro: #8F4A63;
+    
+    /* Verdes */
+    --verde-claro: #C0FFF1;
+    --verde: #5DE1C4;
+    --verde-medio: #42A18C;
+    --verde-escuro: #256456;
+
+    /* Bases */
+    --preto: #000000;
+    --branco: #FFFFFF; 
+    
+    /* Gradient pag principal */
+    --gradient-inicialLight: linear-gradient(var( --rosa-secundario) 20%, var(--rosa-secundario-claro) 70%);
+    --gradient-inicialDark: linear-gradient(var( --rosa-primario-escuro) 10%, var(--preto) 80%);
+
+    /* Gradient pag catalogo */
+    --gradient-catalogoLight: linear-gradient(var( --rosa-primario) 0%, var(--rosa-secundario-claro) 60%);
+    --gradient-catalogoDark: linear-gradient(var( --rosa-primario-medio) 15%, var(--preto) 85%);
+
+    /* Gradient pag produto */
+    --gradient-catalogoLight: linear-gradient(var( --rosa-primario) 10%, var(--rosa-secundario-claro) 100%);
+    --gradient-catalogoDark: linear-gradient(var( --rosa-primario-escuro) 20%, var(--preto) 100%);
+
+
+    /* Gradient pag login e cadastro */
+    --gradient-loginLight: linear-gradient(var( --rosa-primario-claro) 0%, var(--branco) 40%, var(--branco) 60%, var(--rosa-primario-claro) 100%);
+    --gradient-loginDark: linear-gradient(var( --rosa-primario-escuro) 0%, var(--rosa-secundario-medio) 40%, var(--rosa-secundario-medio) 60%, var(--rosa-primario-escuro) 100%);
+}

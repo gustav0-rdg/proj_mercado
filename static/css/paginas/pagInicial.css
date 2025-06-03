@@ -1,0 +1,184 @@
+/* Header */
+.header__container {
+ width: 100%;
+ height: 80px;
+ background-color: var(--rosa-secundario);
+}
+
+
+/* Corpo */
+body {
+    width: 100vw;
+    height: 100vh;
+    background: var(--gradient-inicialLight);
+
+    min-height: 100vh;
+}
+
+/* Main */
+.main__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+/* Main Destaque */
+.main__destaque {
+    margin-bottom: 30px;
+}
+
+.main__destaque-container {
+    width: 1340px;
+    height: 300px;
+    border-radius: 8px;
+    background-color: var(--rosa-secundario-medio);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+.main__destaque-banner {
+    width: 195px;
+    height: 260px;
+    border-radius: 8px;
+    background-color: var(--branco);
+}
+
+.main__destaque-bannerImg {
+
+}
+
+.main__destaque-ul {
+
+}
+
+.main__destaque-li {
+    width: 1000px;
+    height: 30px;
+    border-radius: 8px;
+    background-color: var(--branco);
+    list-style: none;
+
+    margin-bottom: 23px;
+}
+
+.main__destaque-avaliacao-star {
+
+}
+
+.main__destaque-avaliacao {
+    width: 250px;
+    height: 30px;
+    background-color: var(--branco);
+    list-style: none;
+    border-radius: 8px;
+}
+
+
+/* Main Ranking */
+.main__ranking {
+    
+}
+
+.main__destaque-containerRanking {
+    display: flex;
+}
+
+.main__ranking-titulos {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.main__ranking-titulo {
+    color: var(--branco);
+}
+
+.main__ranking-a {
+    list-style: none;
+    color: var(--branco);
+}
+
+.main__ranking-filmes-divConteiner {
+    display: flex;
+    gap: 91px;
+}
+
+.main__ranking-filmes-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.main__ranking-filmes {
+    width: 195px;
+    height: 260px;
+    border-radius: 8px;
+    border: 10px solid var(--rosa-primario);
+
+}
+
+.main__ranking-filme01 {
+
+}
+
+.main__ranking-filme02 {
+
+}
+
+.main__ranking-filme03 {
+
+}
+
+.main__ranking-filme04 {
+
+}
+
+.main__ranking-filme05 {
+
+}
+
+.main__ranking-filmes-avaliacao {
+    
+}
+
+.main__ranking-filmes-titulo {
+    list-style: none;
+    width: 170px;
+    height: 13px;
+    background-color: var(--branco);
+    margin-bottom: 12px;
+    margin-top: 12px;
+    border-radius: 8px;
+}
+
+.main__ranking-filmes-categoria {
+    list-style: none;
+    width: 140px;
+    height: 13px;
+    background-color: var(--branco);
+    margin-bottom: 12px;
+    border-radius: 8px;
+}
+
+.main__ranking-filmes-avaliacaoStar {
+    list-style: none;
+    width: 195px;
+    height: 13px;
+    background-color: var(--branco);
+    border-radius: 8px;
+}
+
+.main__ranking-filmes-avaliacao-ico {
+
+}
+
+
+/* Footer */
+.footer__container {
+
+}
