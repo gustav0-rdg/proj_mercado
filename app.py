@@ -1,9 +1,11 @@
+#region Importações
 from flask import Flask, request, render_template, redirect, session
 from hashlib import sha256
 from model.controller_usuario import Usuario
 from model.controller_filmes import Filme
 from model.controller_carrinho import Carrinho
 from model.controller_comentarios import Comentarios
+#endregion
 
 app = Flask(__name__)
 
@@ -11,6 +13,7 @@ app = Flask(__name__)
 def pag_inicial():
     return render_template('index.html')
 
+#region Página de cadastro e funcionalidades
 @app.route("/cadastro")
 def pag_cadastro():
     return render_template('cadastro.html')
@@ -27,7 +30,8 @@ def cadastrar_usuario():
         return redirect("/")
     else:
         return redirect("/cadastro")
-    
+#endregion  
+  
 @app.route("/login")
 def pag_login():
     return render_template('login.html')
@@ -57,6 +61,20 @@ def pag_filme(id):
 
     print(filme)
     return render_template('produto.html', filme = filme, comentarios = comentarios)
+
+@app.route("/carrinho/<id>")
+def pag_carrinho(id):
+    itens = Carrinho.exibirItens(id)
+
+    if not itens:
+
+        referer = request.headers.get("Referer")
+        if referer:
+            return redirect(referer) # Volta para a última página que estava
+        else:
+            return redirect('/') # Caso não seja possível, volta para o início
+
+    return render_template('carrinho.html', itens = itens)
 
 @app.route("/add/carrinho/<id>")
 def add_carrinho(id):

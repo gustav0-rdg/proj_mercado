@@ -73,4 +73,35 @@ class Carrinho:
 
         finally:
             cursor.close()
-            conexao.close()        
+            conexao.close()
+
+    def exibirItens(id_carrinho):
+
+        conexao = Connection.create()
+        cursor = conexao.cursor(dictionary=True)
+
+        try:
+
+            sql = """SELECT
+                ci.id_filme, ci.quantidade, ci.preco, f.nome_filme
+                FROM tb_carrinho_itens ci
+                JOIN tb_filmes f ON ci.id_filme = f.id_filme
+                where ci.id_carrinho = %s
+            """
+
+            cursor.execute(sql, (id_carrinho,))
+            filmes = cursor.fetchall()
+
+            if not filmes:
+                return []
+            return filmes
+        
+        except Exception as e:
+            print(f"Erro ao buscar itens no carrinho {id_carrinho}", e)
+            return []
+        
+        finally:
+            cursor.close()
+            conexao.close()
+
+
