@@ -21,8 +21,7 @@
     /* Bases */
     --preto: #000000;
     --branco: #FFFFFF; 
-
-
+    
     /* Gradient pag principal */
     --gradient-inicialLight: linear-gradient(var( --rosa-secundario) 20%, var(--rosa-secundario-claro) 70%);
     --gradient-inicialDark: linear-gradient(var( --rosa-primario-escuro) 10%, var(--preto) 80%);

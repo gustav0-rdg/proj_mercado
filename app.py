@@ -42,40 +42,23 @@ def pag_catalogo():
     filmes = Filme.exibirTodos()
     return render_template('catalogo.html', filmes = filmes, categorias = categorias)
 
-@app.route("/filme/<id>", methods=["GET", "POST"])
+@app.route("/filme/<id>", methods=["GET"])
 def pag_filme(id):
     comentarios = Comentarios.exibir(id)
-    filme = Filme.exibir(id)
-
-    if request.method == "POST":
-        avaliacao = request.form.get('placeholder')
-        comentario = request.form.get('placeholder')
-
-        resultado = Comentarios.add(id, session['id_usuario'],avaliacao, comentario)
-
-        if resultado == True:
-            return redirect(f"/filme/{id}")
-        else:
-            print(f"Erro ao adicionar o comentário no filme de ID: {id}")
-            return redirect(f"/filme/{id}")
-
-    print(filme)
+    filme = Filme.exibir(id)        
     return render_template('produto.html', filme = filme, comentarios = comentarios)
 
-@app.route("/carrinho/<id>")
-def pag_carrinho(id):
-    itens = Carrinho.exibirItens(id)
-
-    if not itens:
-
-        referer = request.headers.get("Referer")
-        if referer:
-            return redirect(referer) # Volta para a última página que estava
-        else:
-            return redirect('/') # Caso não seja possível, volta para o início
-
-    return render_template('carrinho.html', itens = itens)
-
+@app.route("/add/comentario/<id>", methods=["POST"])
+def add_comentario(id):
+    avaliacao = request.form.get('avaliacao')
+    comentario = request.form.get('comentario')
+    resultado = Comentarios.add(id, session['id_usuario'],avaliacao, comentario)
+    if resultado == True:
+        return redirect(f"/filme/{id}")
+    else:
+        print(f"Erro ao adicionar o comentário no filme de ID: {id}")
+        return redirect(f"/filme/{id}")
+    
 @app.route("/add/carrinho/<id>")
 def add_carrinho(id):
     Carrinho.add(id, session['id_usuario'])
