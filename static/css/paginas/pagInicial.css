@@ -1,18 +1,11 @@
-/* Header */
-.header__container {
- width: 100%;
- height: 80px;
- background-color: var(--rosa-secundario);
-}
-
-
 /* Corpo */
 body {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background: var(--gradient-inicialLight);
 
     min-height: 100vh;
+    padding-top: 120px;
 }
 
 /* Main */
@@ -174,11 +167,5 @@ body {
 }
 
 .main__ranking-filmes-avaliacao-ico {
-
-}
-
-
-/* Footer */
-.footer__container {
 
 }

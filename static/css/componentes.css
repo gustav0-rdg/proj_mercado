@@ -1,8 +1,11 @@
 
 /* Header --------------------------------------------------------------------- */
 .header__container{
-min-height: 120px;
+height: 80px;
 background: var(--rosa-secundario);
+position: fixed;
+top: 0;
+width: 100%;
 }
 
 .header__icon{
@@ -45,6 +48,7 @@ background: var(--rosa-secundario);
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 
