@@ -51,6 +51,12 @@ background: var(--rosa-secundario);
 .header__icon{
     color: var(--rosa-primario-medio);
 }
+
+.header__text{
+    display: none;
+    color: var(--branco);
+}
+
 .header__item :hover .header__icon{
     color: var(--rosa-primario-escuro);
 }
@@ -65,8 +71,12 @@ background: var(--rosa-secundario);
 }
 
 /* Usuário */
-.header__user a{
+.user__text{
     color: var(--branco);
+}
+
+.header__user :hover .user__text{
+    color: var(--rosa-primario-escuro);
 }
 
 
@@ -74,4 +84,17 @@ background: var(--rosa-secundario);
 .footer__container{
     background: var(--rosa-secundario);
     color: var(--branco);
+}
+
+
+/* Medias -------------------------------------------------------------------------------------------- */
+@media (max-width: 992px){
+    /* Header */
+    .header__icon{
+        display: none;
+    }
+    .header__text{
+        display: inline;
+
+    }
 }

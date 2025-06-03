@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+
+        <!-- Logo -->
+        <a class="navbar-brand" href="/">
+            <figure>
+                <img src="" alt="logo-disco-magico">
+            </figure>
+        </a>
+
+        <!-- toggle para midias baixas (telas pequena) -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- elementos do header -->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav d-flex justify-content-between w-100">
+
+                <!-- menu toggle -->
+                <li class="header__menu-toggle header__item   nav-item dropdown me-auto">
+                    <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="header__icon   fa-solid fa-bars fa-2xl"></i>
+                        <span style="color: var(--rosa-secundario);">|</span>
+                        <span class="header__text">Páginas</span>
+                    </a>
+                    <!-- opções do menu -->
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item text-white" href="/">Página Inicial</a></li>
+                        <li><a class="dropdown-item text-white" href="/catalogo">Catálogo</a></li>
+                        <li><a class="dropdown-item text-white " href="/carrinho">Meu Carrinho</a></li>
+                        <li>
+                            <hr class="dropdown-divider text-white">
+                        </li>
+                        <li><a class="dropdown-item text-white" id="" href="#">Configurações</a></li>
+                    </ul>
+                </li>
+
+
+                <!-- itens da direita -->
+
+                <!-- carrinho de compras -->
+                <li class="header__sacola header__item   nav-item">
+                    <a class="nav-link active" aria-current="page" href="/carrinho">
+                        <i class="header__icon   fa-solid fa-bag-shopping fa-2xl"></i>
+                        <span style="color: var(--rosa-secundario);">|</span>
+                        <span class="header__text">Carrinho</span>
+                    </a>
+                </li>
+
+                <!-- usuario -->
+                <li class="header__user header__item   nav-item">
+                    {% if session.nome %}
+                    <a class="nav-link" href="">
+                        <span class="user__text">{{ session.nome }}</span>
+                        <i class="header__icon   fa-solid fa-circle-user fa-2xl"></i>
+                    </a>
+                    {% else %}
+                    <a class="nav-link" href=""></a>
+                        <span class="user__text">Login</span>
+                        <i class="header__icon   fa-solid fa-circle-user fa-2xl"></i>
+                    </a>
+                    {% endif %}
+                    
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
