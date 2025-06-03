@@ -1,12 +1,15 @@
 from data.conexao import Connection
 
 class Comentarios:
+
     def exibir(id_filme):
+      
         conexao = Connection.create()
         cursor = conexao.cursor()
+
         try:
-            sql_select = """
-                SELECT 
+          sql_select = """
+                    SELECT 
                     u.nome_usuario,
                     c.id_filme,
                     c.id_usuario,
@@ -19,17 +22,43 @@ class Comentarios:
                 INNER JOIN tb_filmes f ON c.id_filme = f.id_filme
                 WHERE c.id_filme = %s;
             """
-            cursor.execute(sql_select, (id_filme,))
-            linhas = cursor.fetchall()
+          
+          cursor.execute(sql_select, (id_filme,))
+          
+          linhas = cursor.fetchall() 
+          
+          colunas = [desc[0] for desc in cursor.description]  # pega nomes das colunas
+          comentarios = [dict(zip(colunas, linha)) for linha in linhas]  # monta lista de dicts
             
-            colunas = [desc[0] for desc in cursor.description]  # pega nomes das colunas
-            comentarios = [dict(zip(colunas, linha)) for linha in linhas]  # monta lista de dicts
-            
-            return comentarios
+          return comentarios
         
         except Exception as e:
             print(e)
             return []
+          
+        finally:
+            cursor.close()
+            conexao.close()
+    
+    def add(id_filme, id_usuario, avaliacao, comentario):
+
+        conexao = Connection.create()
+        cursor = conexao.cursor()
+
+        try:
+            print(id_filme)
+            print(id_usuario)
+            print(avaliacao)
+            print(comentario)
+            sql = "INSERT INTO tb_comentarios(id_filme, id_usuario, avaliacao, comentario) VAlUES(%s, %s, %s, %s)"
+            cursor.execute(sql, (id_filme, id_usuario, avaliacao, comentario))
+            conexao.commit()
+            return True
+
+        except Exception as e:
+            print(e)
+            return
+        
         finally:
             cursor.close()
             conexao.close()

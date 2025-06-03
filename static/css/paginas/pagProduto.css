@@ -95,7 +95,7 @@ body{
 }
 
 .filme__ratings-rank{
-    color: var(--rosa-secundario);
+    color: var(--branco);
     font-weight: bold;
     font-size: 32px;
 }
@@ -190,4 +190,42 @@ body{
         padding: 1px 2px;
         font-size:1rem;
     }
+}
+
+/* Estilização do sweet alert */
+
+#form__comentario{
+    background: var(--gradient-catalogoLight);
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: var(--branco);
+}
+
+.form__comentario-input{
+    width: 80%;
+    height: 10%;
+    border-radius: 10px;
+    border: 0;
+    background-color: var(--rosa-secundario-escuro);
+    color: var(--branco);
+    padding: 10px;
+}
+.form__comentario-btn{
+    width: 80%;
+    height: 10%;
+    border-radius: 10px;
+    border: 0;
+    background-color: var(--rosa-secundario-escuro);
+    color: var(--branco);
+}
+/* Estilizando o sweet alert */
+.swal2-popup.full-width-popup {
+    background: var(--gradient-catalogoLight)
+
 }
