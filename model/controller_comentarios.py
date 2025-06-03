@@ -46,11 +46,14 @@ class Comentarios:
         cursor = conexao.cursor()
 
         try:
-       
+            print(id_filme)
+            print(id_usuario)
+            print(avaliacao)
+            print(comentario)
             sql = "INSERT INTO tb_comentarios(id_filme, id_usuario, avaliacao, comentario) VAlUES(%s, %s, %s, %s)"
-            if (cursor.execute(sql, (id_filme, id_usuario, avaliacao, comentario))):
-                conexao.commit()
-                return True
+            cursor.execute(sql, (id_filme, id_usuario, avaliacao, comentario))
+            conexao.commit()
+            return True
 
         except Exception as e:
             print(e)
