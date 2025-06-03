@@ -21,15 +21,16 @@
         <section class="main__destaque">
             <div class="main__destaque-container">
                 <figure class="main__destaque-banner">
-                    <img class="main__destaque-bannerImg" src="" alt="banner">
+                    <img class="main__destaque-bannerImg" src="{{destaque.img_1}}" alt="banner">
                 </figure>
 
                 <ul class="main__destaque-ul">
-                    <li class="main__destaque-li"></li>
-                    <li class="main__destaque-li"></li>
-                    <li class="main__destaque-li"></li>
+                    <li class="main__destaque-li">{{destaque.nome_filme}}</li>
+                    <li class="main__destaque-li">{{destaque.sinopse}}</li>
+                    <li class="main__destaque-li">{{destaque.preco}}</li>
                     <li class="main__destaque-avaliacao ">
-                        <img class="main__destaque-avaliacao-star" src="" alt="estrela">
+                        {% for x in range(5)%}
+                        <i class="fa-solid fa-star" style="color: var(--branco);"></i>{% endfor %}
                     </li>
                 </ul>
             </div>
@@ -42,84 +43,32 @@
                     <h1 class="main__ranking-titulo">Top 5 filmes da semana:</h1>
                     <li class="main__ranking-a"><a class="main__ranking-a" href="/catalogo">Ver mais>></a></li>
                 </div>
-
                 <div class="main__ranking-filmes-divConteiner">
-                    <div class="main__ranking-filmes-div">
-                        <figure class="main__ranking-filmes">
-                            <img class="main__ranking-filme01" src="" alt="Filme-ranking">
-                        </figure>
 
-                        <ul class="main__ranking-filmes-avaliacao">
-                            <li class="main__ranking-filmes-titulo"></li>
-                            <li class="main__ranking-filmes-categoria"></li>
-                            <li class="main__ranking-filmes-avaliacaoStar">
-                                <img class="main__ranking-filmes-avaliacao-ico" src="" alt="estrela">
-                            </li>
-                        </ul>
-                    </div>
+                {% for filme in filmes %}
+                        <div class="main__ranking-filmes-div">
+                            <figure class="main__ranking-filmes">
+                                <img class="main__ranking-filme" src="{{filme.img_1}}" alt="Filme-ranking">
+                            </figure>
 
-                    <div class="main__ranking-filmes-div">
-                        <figure class="main__ranking-filmes">
-                            <img class="main__ranking-filme02" src="" alt="Filme-ranking">
-                        </figure>
-
-                        <ul class="main__ranking-filmes-avaliacao">
-                            <li class="main__ranking-filmes-titulo"></li>
-                            <li class="main__ranking-filmes-categoria"></li>
-                            <li class="main__ranking-filmes-avaliacaoStar">
-                                <img class="main__ranking-filmes-avaliacao-ico" src="" alt="estrela">
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="main__ranking-filmes-div">
-                        <figure class="main__ranking-filmes">
-                            <img class="main__ranking-filme03" src="" alt="Filme-ranking">
-                        </figure>
-
-                        <ul class="main__ranking-filmes-avaliacao">
-                            <li class="main__ranking-filmes-titulo"></li>
-                            <li class="main__ranking-filmes-categoria"></li>
-                            <li class="main__ranking-filmes-avaliacaoStar">
-                                <img class="main__ranking-filmes-avaliacao-ico" src="" alt="estrela">
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="main__ranking-filmes-div">
-                        <figure class="main__ranking-filmes">
-                            <img class="main__ranking-filme04" src="" alt="Filme-ranking">
-                        </figure>
-
-                        <ul class="main__ranking-filmes-avaliacao">
-                            <li class="main__ranking-filmes-titulo"></li>
-                            <li class="main__ranking-filmes-categoria"></li>
-                            <li class="main__ranking-filmes-avaliacaoStar">
-                                <img class="main__ranking-filmes-avaliacao-ico" src="" alt="estrela">
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="main__ranking-filmes-div">
-                        <figure class="main__ranking-filmes">
-                            <img class="main__ranking-filme05" src="" alt="Filme-ranking">
-                        </figure>
-
-                        <ul class="main__ranking-filmes-avaliacao">
-                            <li class="main__ranking-filmes-titulo"></li>
-                            <li class="main__ranking-filmes-categoria"></li>
-                            <li class="main__ranking-filmes-avaliacaoStar">
-                                <img class="main__ranking-filmes-avaliacao-ico" src="" alt="estrela">
-                            </li>
-                        </ul>
-                    </div>
+                            <ul class="main__ranking-filmes-avaliacao">
+                                <li class="main__ranking-filmes-titulo">{{filme.nome_filme}}</li>
+                                <li class="main__ranking-filmes-categoria">{{filme.categoria}}</li>
+                                <li class="main__ranking-filmes-avaliacaoStar">
+                                    {% for x in range(4)%}
+                                    <i class="fa-solid fa-star" style="color: var(--branco);"></i>{% endfor %}                                
+                                </li>
+                            </ul>
+                        </div>
+                    {% endfor %}
                 </div>
-        
             </div>
         </section>
 
     </main>
 
     <footer class="footer__container"></footer>
+    <script src="https://kit.fontawesome.com/2fcc2a2373.js" crossorigin="anonymous"></script>
+
 </body>
 </html>

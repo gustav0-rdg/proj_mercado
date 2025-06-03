@@ -5,13 +5,16 @@ from model.controller_usuario import Usuario
 from model.controller_filmes import Filme
 from model.controller_carrinho import Carrinho
 from model.controller_comentarios import Comentarios
-#endregion
+from model.controller_destaques import Destaques
+
 
 app = Flask(__name__)
-
+app.secret_key = "godofredomeuheroi"
 @app.route("/")
 def pag_inicial():
-    return render_template('index.html')
+    destaque = Destaques.exibir_destaque()
+    bem_avaliados = Destaques.exibir_melhores()
+    return render_template('index.html', destaque = destaque, filmes=bem_avaliados)
 
 #region Página de cadastro e funcionalidades
 @app.route("/cadastro")

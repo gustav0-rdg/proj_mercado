@@ -11,7 +11,7 @@ body {
     width: 100vw;
     height: 100vh;
     background: var(--gradient-inicialLight);
-
+    color: var(--branco);
     min-height: 100vh;
 }
 
@@ -46,11 +46,14 @@ body {
     width: 195px;
     height: 260px;
     border-radius: 8px;
-    background-color: var(--branco);
 }
 
 .main__destaque-bannerImg {
-
+    width: 195px;
+    height: 260px;
+    border-radius: 10px;
+    border: 5px solid var(--rosa-secundario-escuro);
+    object-fit:cover;
 }
 
 .main__destaque-ul {
@@ -61,7 +64,6 @@ body {
     width: 1000px;
     height: 30px;
     border-radius: 8px;
-    background-color: var(--branco);
     list-style: none;
 
     margin-bottom: 23px;
@@ -74,7 +76,6 @@ body {
 .main__destaque-avaliacao {
     width: 250px;
     height: 30px;
-    background-color: var(--branco);
     list-style: none;
     border-radius: 8px;
 }
@@ -117,40 +118,22 @@ body {
 .main__ranking-filmes {
     width: 195px;
     height: 260px;
-    border-radius: 8px;
-    border: 10px solid var(--rosa-primario);
-
-}
-
-.main__ranking-filme01 {
-
-}
-
-.main__ranking-filme02 {
-
-}
-
-.main__ranking-filme03 {
-
-}
-
-.main__ranking-filme04 {
-
-}
-
-.main__ranking-filme05 {
-
-}
-
-.main__ranking-filmes-avaliacao {
     
+
+}
+
+.main__ranking-filme{
+    width: 195px;
+    height: 260px;
+    object-fit: cover ;
+    border-radius: 8px;
+    border: 10px solid var(--rosa-primario-medio);
 }
 
 .main__ranking-filmes-titulo {
     list-style: none;
     width: 170px;
     height: 13px;
-    background-color: var(--branco);
     margin-bottom: 12px;
     margin-top: 12px;
     border-radius: 8px;
@@ -160,7 +143,6 @@ body {
     list-style: none;
     width: 140px;
     height: 13px;
-    background-color: var(--branco);
     margin-bottom: 12px;
     border-radius: 8px;
 }
@@ -169,7 +151,6 @@ body {
     list-style: none;
     width: 195px;
     height: 13px;
-    background-color: var(--branco);
     border-radius: 8px;
 }
 
