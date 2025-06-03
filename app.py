@@ -48,6 +48,19 @@ def pag_filme(id):
     filme = Filme.exibir(id)        
     return render_template('produto.html', filme = filme, comentarios = comentarios)
 
+@app.route("/carrinho/<id>")
+def pag_carrinho(id):
+    itens = Carrinho.exibirItens(id)
+
+    if not itens:
+        referer = request.headers.get("Referer")
+        if referer:
+            return redirect(referer)
+        else:
+            return redirect('/')
+    
+    return render_template('carrinho.html', itens = itens)
+
 @app.route("/add/comentario/<id>", methods=["POST"])
 def add_comentario(id):
     avaliacao = request.form.get('avaliacao')
@@ -58,10 +71,10 @@ def add_comentario(id):
     else:
         print(f"Erro ao adicionar o comentário no filme de ID: {id}")
         return redirect(f"/filme/{id}")
-    
+
 @app.route("/add/carrinho/<id>")
 def add_carrinho(id):
-    Carrinho.add(id, session['id_usuario'])
+    Carrinho.add(id, session['id_usuario']) 
     return redirect("/catalogo")
 
 @app.route("/remove/carrinho/<id>")
