@@ -45,17 +45,24 @@ class Filme():
             filme = ''
 
             comando_sql = """SELECT
-                        f.id_filme,
-                        f.nome_filme,
-                        c.categoria,
-                        img.img_1,
-                        subc.categoria as sub_categoria,
-                        f.preco
+                    f.preco,
+                    f.id_filme,
+                    f.nome_filme,
+                    f.sinopse,
+                    c.categoria,
+                    img.img_1,
+                    subc.categoria AS sub_categoria,
+                    (
+                        SELECT ROUND(AVG(avaliacao), 1)
+                        FROM tb_comentarios
+                        WHERE id_filme = f.id_filme
+                    ) AS media_avaliacao
                     FROM tb_filmes f
                     INNER JOIN tb_categorias c ON f.id_categoria = c.id_categoria
                     INNER JOIN tb_categorias subc ON f.id_subgenero = subc.id_categoria
                     INNER JOIN tb_fotos img ON f.id_filme = img.id_filme
-                    WHERE f.id_filme = %s; """
+                    WHERE f.id_filme = %s; 
+            """
             cursor.execute(comando_sql, (id,))
             filme = cursor.fetchone()
         except Exception as e:

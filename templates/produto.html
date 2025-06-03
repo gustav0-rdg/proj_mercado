@@ -1,19 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{filme.nome_filme}} - Disco mágico</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/global.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/paginas/pagProduto.css')}}">
 </head>
 <body>
-    {% for comentario in comentarios %}
-    <div class="comentario">
-        <strong>{{ comentario.nome_usuario }}</strong> - Avaliação: {{ comentario.avaliacao }}<br>
-        <p>{{ comentario.comentario }}</p>
-        <small>{{ comentario.data.strftime('%d/%m/%Y %H:%M') }}</small>
-    </div>
-    {% else %}
-        <p>Não há comentários para este filme.</p>
-    {% endfor %}
+    <header class="header__container">
+
+    </header>
+    <main class="filme">
+        <section class="filme__info">
+            <div class="filme__imagens">
+                <figure>
+                    <img src="{{filme.img_1}}" alt="" class="filme__imagens-img">
+                </figure>
+            </div>
+            <div class="filme__infos">
+                <h1>{{filme.nome_filme}}</h1>
+                <div class="filme__infos-sinopse">
+                    <p>{{filme.sinopse}}</p>
+                    <p>{{filme.categoria}}</p>
+                    <small>{{filme.sub_categoria}}</small>
+                    <p><strong>Preço: R${{filme.preco}}</strong></p>
+                </div>
+                <button class="filme__infos-btn"><a href="/add/carrinho/{{filme.id_filme}}">Adicionar ao carrinho</a></button>
+            </div>
+        </section>
+        <section class="filme__ratings">
+            <div class="filme__ratings-rank">
+                <p><i class="fa-solid fa-star" style="color: var(--rosa-secundario);"></i>{{filme.media_avaliacao}}<small class="filme__rank-small">/5</small></p>
+            </div>
+            <div class="filme__rate">
+                <button class="filme__rate-btn">Adicionar comentário</button>
+            </div>
+        </section>
+        <section class="filme__comentarios">
+            {% for comentario in comentarios %}
+            <div class="filme__comentarios-item">
+                <div class="filme__comentario-avaliacao">
+                    <p><strong>{{ comentario.nome_usuario }}</strong></p>
+                    <p>
+                    {% for x in range(comentario.avaliacao)%}
+                    <i class="fa-solid fa-star" style="color: var(--branco);"></i>{% endfor %}
+                    </p>
+                </div>
+                
+                <p>{{ comentario.comentario }}</p>
+                <small>{{ comentario.data.strftime('%d/%m/%Y %H:%M') }}</small>
+            </div>
+            {% else %}
+                <p>Não há comentários para este filme.</p>
+            {% endfor %}
+        </section>
+    </main>
+    <script src="https://kit.fontawesome.com/2fcc2a2373.js" crossorigin="anonymous"></script>
 </body>
 </html>
