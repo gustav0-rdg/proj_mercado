@@ -1,3 +1,4 @@
+#region Importações
 from flask import Flask, request, render_template, redirect, session
 from hashlib import sha256
 from model.controller_usuario import Usuario
@@ -5,6 +6,7 @@ from model.controller_filmes import Filme
 from model.controller_carrinho import Carrinho
 from model.controller_comentarios import Comentarios
 from model.controller_destaques import Destaques
+
 
 app = Flask(__name__)
 app.secret_key = "godofredomeuheroi"
@@ -14,6 +16,7 @@ def pag_inicial():
     bem_avaliados = Destaques.exibir_melhores()
     return render_template('index.html', destaque = destaque, filmes=bem_avaliados)
 
+#region Página de cadastro e funcionalidades
 @app.route("/cadastro")
 def pag_cadastro():
     return render_template('cadastro.html')
@@ -30,7 +33,8 @@ def cadastrar_usuario():
         return redirect("/")
     else:
         return redirect("/cadastro")
-    
+#endregion  
+  
 @app.route("/login")
 def pag_login():
     return render_template('login.html')
@@ -47,6 +51,19 @@ def pag_filme(id):
     filme = Filme.exibir(id)        
     return render_template('produto.html', filme = filme, comentarios = comentarios)
 
+@app.route("/carrinho/<id>")
+def pag_carrinho(id):
+    itens = Carrinho.exibirItens(id)
+
+    if not itens:
+        referer = request.headers.get("Referer")
+        if referer:
+            return redirect(referer)
+        else:
+            return redirect('/')
+    
+    return render_template('carrinho.html', itens = itens)
+
 @app.route("/add/comentario/<id>", methods=["POST"])
 def add_comentario(id):
     avaliacao = request.form.get('avaliacao')
@@ -57,10 +74,10 @@ def add_comentario(id):
     else:
         print(f"Erro ao adicionar o comentário no filme de ID: {id}")
         return redirect(f"/filme/{id}")
-    
+
 @app.route("/add/carrinho/<id>")
 def add_carrinho(id):
-    Carrinho.add(id, session['id_usuario'])
+    Carrinho.add(id, session['id_usuario']) 
     return redirect("/catalogo")
 
 @app.route("/remove/carrinho/<id>")
