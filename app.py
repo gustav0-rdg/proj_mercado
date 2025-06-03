@@ -40,8 +40,8 @@ def pag_catalogo():
 
 @app.route("/filme/<id>", methods=["GET", "POST"])
 def pag_filme(id):
+    comentarios = Comentarios.exibir(id)
     filme = Filme.exibir(id)
-    comentarios = Comentarios.exibir()
 
     if request.method == "POST":
         avaliacao = request.form.get('placeholder')
@@ -55,9 +55,8 @@ def pag_filme(id):
             print(f"Erro ao adicionar o comentário no filme de ID: {id}")
             return redirect(f"/filme/{id}")
 
+    print(filme)
     return render_template('produto.html', filme = filme, comentarios = comentarios)
-    
-
 
 @app.route("/add/carrinho/<id>")
 def add_carrinho(id):
