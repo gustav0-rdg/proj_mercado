@@ -5,10 +5,10 @@ body {
     color: var(--branco);
 }
 
-.catalogo{
-    display: flex;
-    flex-direction: column;
+.nav-bar{
+    grid-template-columns: max-content;
 }
+
 .main__container {
     height: 100%;
 }
