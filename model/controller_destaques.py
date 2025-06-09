@@ -68,6 +68,7 @@ class Destaques:
             """
             cursor.execute(sql_select, )
             linhas = cursor.fetchall() 
+            return linhas
         except Exception as e:
             print(e)
             return []
@@ -75,4 +76,3 @@ class Destaques:
         finally:
             cursor.close()
             conexao.close()
-            return linhas

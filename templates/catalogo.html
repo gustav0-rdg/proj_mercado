@@ -9,15 +9,19 @@
 </head>
 <body>
     <header>
-        <button class="menu-toggle" aria-label="Abrir menu"><i class="fa-solid fa-filter" style="color: #42a18c;"></i></button>
 
+    </header>
+    <div class="nav-bar">
+        <button class="menu-toggle" aria-label="Abrir menu"><i class="fa-solid fa-filter" style="color: #42a18c;"></i></button>
         <nav id="menu" class="menu">
+            {% if categoria_atual != "todas" %}
             <button class="header__search-category-btn"><a href="/catalogo">Todas</a></button>
+            {% endif %}            
             {% for categoria in categorias%}
             <button class="header__search-category-btn"><a href="/filmes/exibir/{{categoria.id_categoria}}">{{categoria.categoria}}</a></button>
             {% endfor %}
         </nav>
-    </header>
+    </div>
     <main class="catalogo">
         
         {% for filme in filmes %}
