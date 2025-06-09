@@ -1,165 +1,199 @@
-/* Header */
-.header__container {
- width: 100%;
- height: 80px;
- background-color: var(--rosa-secundario);
-}
-
-
-/* Corpo */
+/* Body e fontes */
 body {
-    width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background: var(--gradient-inicialLight);
     color: var(--branco);
-    min-height: 100vh;
 }
 
-/* Main */
-.main__container {
+.catalogo{
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
 }
+.main__container {
+    height: 100%;
+}
 
+/* Header (reserva) */
+.header__container {
+    background-color: var(--rosa-secundario);
+}
 
-/* Main Destaque */
+/* Seção Destaque */
 .main__destaque {
-    margin-bottom: 30px;
+    width: 100%;
+    padding: 30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .main__destaque-container {
-    width: 1340px;
-    height: 300px;
-    border-radius: 8px;
-    background-color: var(--rosa-secundario-medio);
-
+    padding: 30px;
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 15px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-content: space-around;
-    
+    gap: 40px;
+    background-color: var(--rosa-primario-escuro);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .main__destaque-banner {
-    width: 195px;
-    height: 260px;
-    border-radius: 8px;
+    width: 180px;
+    flex-shrink: 0;
 }
 
 .main__destaque-bannerImg {
-    width: 195px;
-    height: 260px;
-    border-radius: 10px;
+    width: 100%;
+    object-fit: cover;
     border: 5px solid var(--rosa-secundario-escuro);
-    object-fit:cover;
+    border-radius: 10px;
 }
 
 .main__destaque-ul {
-
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
 }
 
 .main__destaque-li {
-    width: 1000px;
-    height: 30px;
+    /* height: 24px; ❌ tira isso! */
+    min-height: 24px; /* ✅ usa esse se quiser altura mínima */
     border-radius: 8px;
+    padding: 5px 10px;
     list-style: none;
-
-    margin-bottom: 23px;
-}
-
-.main__destaque-avaliacao-star {
-
+    background-color: var(--alguma-cor-opcional);
+    word-break: break-word; /* 👈 quebra palavras longas se precisar */
 }
 
 .main__destaque-avaliacao {
-    width: 250px;
-    height: 30px;
     list-style: none;
-    border-radius: 8px;
-}
-
-
-/* Main Ranking */
-.main__ranking {
-    
-}
-
-.main__destaque-containerRanking {
     display: flex;
+    gap: 5px;
+}
+
+.main__destaque-avaliacao i {
+    color: var(--rosa-primario-claro) !important;
+}
+
+/* Ranking */
+.main__ranking {
+    padding: 30px 20px;
+}
+
+.main__ranking-containerRanking {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .main__ranking-titulos {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 12px;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .main__ranking-titulo {
-    color: var(--branco);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--rosa-primario-escuro);
 }
 
 .main__ranking-a {
     list-style: none;
-    color: var(--branco);
 }
 
+.main__ranking-a a {
+    color: var(--rosa-primario);
+    font-size: 1.1rem;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Grid de filmes */
 .main__ranking-filmes-divConteiner {
-    display: flex;
-    gap: 91px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 25px;
+    width: 100%;
 }
 
 .main__ranking-filmes-div {
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .main__ranking-filmes {
-    width: 195px;
-    height: 260px;
-    
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
-.main__ranking-filme{
-    width: 195px;
-    height: 260px;
-    object-fit: cover ;
+.main__ranking-filme {
+    width: 175px;
+    height: 230px;
     border-radius: 8px;
-    border: 10px solid var(--rosa-primario-medio);
+    border: 4px solid var(--rosa-primario);
+    object-fit: cover;
 }
 
-.main__ranking-filmes-titulo {
-    list-style: none;
-    width: 170px;
-    height: 13px;
-    margin-bottom: 12px;
-    margin-top: 12px;
-    border-radius: 8px;
+.main__ranking-filmes-avaliacao {
+    list-style-type: none;
+    margin-top: 10px;
 }
-
+.main__ranking-filmes-titulo{
+    margin-bottom: 20px;
+}
+.main__ranking-filmes-titulo,
 .main__ranking-filmes-categoria {
-    list-style: none;
-    width: 140px;
-    height: 13px;
-    margin-bottom: 12px;
-    border-radius: 8px;
+    color: var(--rosa-primario-medio);
+    font-size: 0.9rem;
+    margin-bottom: 4px;
 }
 
-.main__ranking-filmes-avaliacaoStar {
-    list-style: none;
-    width: 195px;
-    height: 13px;
-    border-radius: 8px;
+.main__ranking-filmes-avaliacaoStar i {
+    color: var(--rosa-primario-claro);
 }
 
-.main__ranking-filmes-avaliacao-ico {
-
-}
-
-
-/* Footer */
+/* Rodapé */
 .footer__container {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.8rem;
+    color: var(--branco);
+}
 
+@media (max-width: 600px) {
+    .main__destaque-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .main__destaque-banner {
+        width: 90%; /* Aumentado para ocupar mais espaço na vertical */
+    }
+
+    .main__destaque-ul {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .main__destaque-li {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .main__destaque-avaliacao {
+        justify-content: center;
+    }
 }

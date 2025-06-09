@@ -43,7 +43,7 @@ def pag_login():
 def pag_catalogo():
     categorias = Filme.categorias()
     filmes = Filme.exibirTodos()
-    return render_template('catalogo.html', filmes = filmes, categorias = categorias)
+    return render_template('catalogo.html', filmes = filmes, categorias = categorias, categoria_atual="todas")
 
 @app.route("/filme/<id>", methods=["GET"])
 def pag_filme(id):
@@ -88,8 +88,9 @@ def remove_carrinho(id):
 @app.route("/filmes/exibir/<id>")
 def exibir_filmesCat(id):
     filmes = Filme.exibirCategoria(id)
+    categorias = Filme.categorias()
     if filmes == []:
         return redirect("/catalogo")
-    return render_template('catalogo.html', filmes = filmes)
+    return render_template('catalogo.html', filmes = filmes, categorias = categorias)
 
 app.run(debug=True)
