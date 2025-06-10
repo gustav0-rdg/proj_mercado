@@ -98,4 +98,16 @@ def exibir_filmesCat(id):
         return redirect("/catalogo")
     return render_template('catalogo.html', filmes = filmes, categorias = categorias)
 
+@app.route("/aside")
+def componente_aside():
+    return render_template('/pages/aside.html')
+
+@app.route("/header")
+def componente_header():
+    return render_template('/pages/header.html')
+
+@app.route("/footer")
+def componente_footer():
+    return render_template('/pages/footer.html')
+
 app.run(host="0.0.0.0", port=8080)
