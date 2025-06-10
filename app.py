@@ -39,6 +39,13 @@ def cadastrar_usuario():
 def pag_login():
     return render_template('login.html')
 
+@app.route("/login/usuario", methods=["POST"])
+def logar_user():
+    usuario = request.form.get('usuario')
+    senha = request.form.get('senha')
+    Usuario.login(usuario, senha)
+    return redirect("/")
+
 @app.route("/catalogo")
 def pag_catalogo():
     categorias = Filme.categorias()
@@ -55,7 +62,7 @@ def pag_filme(id):
 def pag_carrinho():
     if 'id_usuario' not in session:
         return redirect("/login")
-    itens = Carrinho.exibirItens(1)
+    itens = Carrinho.exibirItens(session['id_usuario'])
     return jsonify(itens)
 
 @app.route("/add/comentario/<id>", methods=["POST"])
