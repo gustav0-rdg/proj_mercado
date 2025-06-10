@@ -1,5 +1,5 @@
 #region Importações
-from flask import Flask, request, render_template, redirect, session
+from flask import Flask, request, render_template, redirect, session, jsonify
 from hashlib import sha256
 from model.controller_usuario import Usuario
 from model.controller_filmes import Filme
@@ -80,6 +80,11 @@ def add_carrinho(id):
     Carrinho.add(id, session['id_usuario']) 
     return redirect("/catalogo")
 
+@app.route("/exibir/carrinho")
+def exibe_carrinho():
+    itens = Carrinho.exibirItens(3)
+    return jsonify(itens)
+
 @app.route("/remove/carrinho/<id>")
 def remove_carrinho(id):
     Carrinho.remove(id, session['id_usuario'])
@@ -93,4 +98,4 @@ def exibir_filmesCat(id):
         return redirect("/catalogo")
     return render_template('catalogo.html', filmes = filmes, categorias = categorias)
 
-app.run(debug=True)
+app.run(host="0.0.0.0", port=8080)
