@@ -14,7 +14,7 @@ app.secret_key = "godofredomeuheroi"
 def pag_inicial():
     destaque = Destaques.exibir_destaque()
     bem_avaliados = Destaques.exibir_melhores()
-    return render_template('index.html', destaque = destaque, filmes=bem_avaliados)
+    return render_template('inicial.html', destaque = destaque, filmes=bem_avaliados)
 
 #region Página de cadastro e funcionalidades
 @app.route("/cadastro")

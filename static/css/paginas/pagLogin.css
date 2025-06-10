@@ -86,14 +86,14 @@ body.dark .btn__login:hover{
     background-color: var(--rosa-primario-claro);
 }
 .text__login {
-    color: var(--branco);
+    color: var(--rosa-primario-escuro);
 }
 
 body.dark .text__login{
     color: var(--rosa-primario-claro);
 }
 .link__login {
-    color: var(--rosa-primario-escuro);
+    color: var(--branco);
 }
 
 body.dark .link__login{

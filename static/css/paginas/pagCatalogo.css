@@ -24,7 +24,7 @@ body.dark{
 body.dark .header__search-category-btn{
     background-color: var(--rosa-secundario);
 }
-.main__catalogo-container {
+.catalogo {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1rem; /* Optional: adds spacing between items */
@@ -67,15 +67,15 @@ body.dark .header__search-category-btn{
     gap: 4px;
 }
 
-body.dark .filme-ver-mais{
-    color: var(--branco);
-}
 .filme-titulo {
     font-weight: bold;
     color: var(--rosa-primaro-medio);
     height: 50px;
 }
 
+body.dark .filme-ver-mais{
+    color: var(--branco);
+}
 body.dark .filme-titulo{
     color: var(--rosa-secundario-claro);
 }
@@ -123,11 +123,9 @@ body.dark .catalogo__filmes-btn:hover{
     width: 200px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
-
-body.dark .menu.show{
-    background-color: var(--rosa-primario);
+body.dark .menu{
+    background-color: var(--rosa-primario-claro);
 }
-
 .menu.show {
     display: flex;
 }
@@ -146,25 +144,25 @@ body.dark .menu.show{
 }
 
 @media(max-width:1400px){
-    .main__catalogo-container{
+    .catalogo{
         grid-template-columns: repeat(4, 1fr);
     }
 }
 
 @media(max-width:1000px){
-    .main__catalogo-container{
+    .catalogo{
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media(max-width:600px){
-    .main__catalogo-container{
+    .catalogo{
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media(max-width:400px){
-    .main__catalogo-container{
+    .catalogo{
         grid-template-columns: repeat(1, 1fr);
     }
 }
