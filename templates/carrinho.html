@@ -27,7 +27,7 @@
                     
                     <div class="carrinho__resumo-item carrinho__resumo-total">
                         <span>Total a pagar:</span>
-                        <span>R$ {{ "%.2f"|format(itens|sum(attribute='preco_total')) }}</span>
+                        <span>R$ </span>
                     </div>
                     
                     <button class="carrinho__botao-finalizar" onclick="finalizarCompra()">
@@ -39,5 +39,6 @@
     </main>
 
     <script src="/static/js/pag_carrinho/get-itens.js"></script>
+    <script src="/static/js/themeToggle/theme-toggle.js"></script>
 </body>
 </html>

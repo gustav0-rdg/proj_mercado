@@ -5,6 +5,9 @@ body {
     color: var(--branco);
 }
 
+body.dark{
+    background: var(--gradient-inicialDark);
+}
 .nav-bar{
     grid-template-columns: max-content;
 }
@@ -38,6 +41,9 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+body.dark .main__destaque-container{
+    background-color: var(--rosa-secundario-medio);
+}
 .main__destaque-banner {
     width: 180px;
     flex-shrink: 0;
@@ -58,13 +64,12 @@ body {
 }
 
 .main__destaque-li {
-    /* height: 24px; ❌ tira isso! */
-    min-height: 24px; /* ✅ usa esse se quiser altura mínima */
+    min-height: 24px;
     border-radius: 8px;
     padding: 5px 10px;
     list-style: none;
     background-color: var(--alguma-cor-opcional);
-    word-break: break-word; /* 👈 quebra palavras longas se precisar */
+    word-break: break-word; 
 }
 
 .main__destaque-avaliacao {
@@ -75,6 +80,10 @@ body {
 
 .main__destaque-avaliacao i {
     color: var(--rosa-primario-claro) !important;
+}
+
+body.dark .main__destaque-avaliacao i{
+    color: var(--rosa-primario-medio) !important;
 }
 
 /* Ranking */
@@ -100,6 +109,10 @@ body {
     color: var(--rosa-primario-escuro);
 }
 
+body.dark .main__ranking-titulo{
+    color: var(--rosa-primario-medio);
+}
+
 .main__ranking-a {
     list-style: none;
 }
@@ -111,6 +124,9 @@ body {
     font-weight: 500;
 }
 
+body.dark .main__ranking-a a{
+    color: var(--rosa-primario-medio);
+}
 /* Grid de filmes */
 .main__ranking-filmes-divConteiner {
     display: grid;
@@ -144,6 +160,9 @@ body {
     object-fit: cover;
 }
 
+.main__ranking-filme{
+    border: 4px solid var(--rosa-primario-medio);
+}
 .main__ranking-filmes-avaliacao {
     list-style-type: none;
     margin-top: 10px;
@@ -158,8 +177,13 @@ body {
     margin-bottom: 4px;
 }
 
-.main__ranking-filmes-avaliacaoStar i {
+body.dark .main__ranking-filmes-titulo,
+.main__ranking-filmes-categoria{
     color: var(--rosa-primario-claro);
+}
+
+.main__ranking-filmes-avaliacaoStar i {
+    color: var(--rosa-primario-claro) !important; 
 }
 
 /* Rodapé */

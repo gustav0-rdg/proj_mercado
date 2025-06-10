@@ -24,8 +24,11 @@ document.addEventListener('DOMContentLoaded', async function(){
         if (data && Array.isArray(data) && data.length > 0) {
             // Limpar conteúdo anterior
             itensList.innerHTML = '';
-            // 6. Iterar corretamente pelos itens
+            let qtdItens = 0;
+            let precoTotal = 0;
             data.forEach(element => {
+                precoTotal = precoTotal + element.preco;
+                qtdItens = qtdItens + element.quantidade;
                 // Criar um elemento para cada item (não sobrescrever)
                 let item = document.createElement('article') 
                 item.classList.add('carrinho__item');
@@ -54,6 +57,12 @@ document.addEventListener('DOMContentLoaded', async function(){
                         </button>
                 `;
                 itensList.appendChild(item);
+                let totalItensCarrinho = document.querySelector(".carrinho__resumo-item");
+                totalItensCarrinho.innerHTML = `<span>Número total de produtos: ${qtdItens}</span>`;
+                let valorTotal = document.querySelector(".carrinho__resumo-total");
+                valorTotal.innerHTML = `<span>Total a pagar:</span>
+                                        <span>R$ ${precoTotal.toFixed(2)}</span>
+                                    `;
             });
         } else {
             // Carrinho vazio

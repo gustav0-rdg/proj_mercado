@@ -34,7 +34,7 @@ body.dark .titulo_cadastro{
 }
 
 body.dark .form__cadastro{
-    background-color: var(--rosa-primario);
+    background-color: var(--rosa-primario-escuro);
 }
 
 .form__cadastro-name {
