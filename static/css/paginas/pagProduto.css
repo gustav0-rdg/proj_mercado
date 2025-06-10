@@ -6,7 +6,7 @@ body{
     color: var(--branco);
 }
 
-.filme__info {
+.produto__filme-container {
     background-color: var(--rosa-secundario-medio);
     display: flex;
     width: 50%;
@@ -18,14 +18,14 @@ body{
     align-items: center;
 }
 
-.filme__imagens-img {
+.produto__imagens-img {
     width: 300px; /* Tamanho fixo da imagem */
     object-fit: cover;
     border: 5px solid var(--rosa-secundario-escuro);
     border-radius: 10px;
 }
 
-.filme__infos {
+.produto__filme-infos {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -61,7 +61,7 @@ body{
     text-decoration: none;
 }
 
-.filme__ratings{
+.produto__filme-ratings{
     background-color: transparent;
     display: flex;
     width: 50%;
@@ -73,7 +73,7 @@ body{
     border-radius: 10px;
 }
 
-.filme__rate {
+.filme__rate{
     width: 80%;
     display: flex;
     justify-content: flex-end;
@@ -104,7 +104,7 @@ body{
     font-weight: 400;
 }
 
-.filme__comentarios {
+.produto__filme-comentarios {
     display: flex;
     flex-direction: column;
     width: 50%;
