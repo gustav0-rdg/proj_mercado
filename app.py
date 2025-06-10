@@ -83,8 +83,7 @@ def add_carrinho(id):
 
 @app.route("/exibir/carrinho")
 def exibe_carrinho():
-    itens = Carrinho.exibirItens(3)
-    return jsonify(itens)
+    return render_template("carrinho.html")
 
 @app.route("/remove/carrinho/<id>")
 def remove_carrinho(id):
