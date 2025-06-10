@@ -4,6 +4,10 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
+body.dark{
+    background: var(--gradient-catalogoDark);
+}
+
 .carrinho {
     padding: 2rem 0;
 }
@@ -23,7 +27,7 @@ body {
 
 /* Seção dos itens do carrinho */
 .carrinho__itens {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--rosa-primario-medio);
     border-radius: 20px;
     padding: 1.5rem;
     backdrop-filter: blur(10px);
@@ -31,6 +35,7 @@ body {
     max-height: 70vh;
     overflow-y: auto;
 }
+
 
 .carrinho__itens::-webkit-scrollbar {
     width: 8px;
@@ -46,9 +51,13 @@ body {
     border-radius: 10px;
 }
 
+body.dark .carrinho__itens::-webkit-scrollbar-thumb{
+    background: var(--rosa-secundario-medio);
+}
+
 .carrinho__item {
-    background: rgba(254, 86, 148, 0.7);
-    border-radius: 15px;
+    background: var(--rosa-primario);
+    border-radius: 15px;    
     padding: 1rem;
     margin-bottom: 1rem;
     display: grid;
@@ -57,6 +66,10 @@ body {
     align-items: center;
     border: 2px solid rgba(255, 255, 255, 0.3);
     position: relative;
+}
+
+body.dark .carrinho__item{
+    background: var(--rosa-secundario-medio);
 }
 
 .carrinho__item:last-child {
@@ -130,7 +143,7 @@ body {
 
 /* Seção do resumo */
 .carrinho__resumo {
-    background: rgba(169, 43, 89, 0.8);
+    background: var(--rosa-secundario-escuro);
     border-radius: 20px;
     padding: 2rem;
     color: var(--branco);
@@ -139,6 +152,10 @@ body {
     height: fit-content;
     position: sticky;
     top: 2rem;
+}
+
+body.dark .carrinho__resumo{
+    background: var(--rosa-primario-medio);
 }
 
 .carrinho__resumo-item {
@@ -171,10 +188,18 @@ body {
     margin-top: 1.5rem;
 }
 
+body.dark .carrinho__botao-finalizar{
+    background: var(--rosa-secundario-medio);
+}
+
 .carrinho__botao-finalizar:hover {
     background: var(--rosa-primario-escuro);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .carrinho__botao-finalizar:hover{
+    background: var(--rosa-secundario-escuro);
 }
 
 /* Responsividade */

@@ -6,7 +6,10 @@ body{
     color: var(--branco);
 }
 
-.produto__filme-container {
+body.dark{
+    background: var(--gradient-inicialDark);
+}
+.filme__info {
     background-color: var(--rosa-secundario-medio);
     display: flex;
     width: 50%;
@@ -18,14 +21,22 @@ body{
     align-items: center;
 }
 
-.produto__imagens-img {
+body.dark .filme__info{
+    background-color: var(--rosa-secundario-medio);
+}
+
+.filme__imagens-img {
     width: 300px; /* Tamanho fixo da imagem */
     object-fit: cover;
     border: 5px solid var(--rosa-secundario-escuro);
     border-radius: 10px;
 }
 
-.produto__filme-infos {
+body.dark .filme__imagens-img{
+    border: 5px solid var(--rosa-secundario-escuro);
+}
+
+.filme__infos {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -61,7 +72,7 @@ body{
     text-decoration: none;
 }
 
-.produto__filme-ratings{
+.filme__ratings{
     background-color: transparent;
     display: flex;
     width: 50%;
@@ -73,7 +84,7 @@ body{
     border-radius: 10px;
 }
 
-.filme__rate{
+.filme__rate {
     width: 80%;
     display: flex;
     justify-content: flex-end;
@@ -90,8 +101,15 @@ body{
     transition: background-color 0.3s ease;
 }
 
+body.dark .filme__rate-btn{
+    background-color: var(--rosa-secundario-medio);
+}
 .filme__rate-btn:hover {
     background-color: var(--rosa-secundario-medio);
+}
+
+body.dark .filme__rate-btn:hover{
+    background-color: var(--rosa-secundario-escuro);
 }
 
 .filme__ratings-rank{
@@ -104,7 +122,7 @@ body{
     font-weight: 400;
 }
 
-.produto__filme-comentarios {
+.filme__comentarios {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -120,6 +138,10 @@ body{
     padding: 15px 20px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     word-wrap: break-word;
+}
+
+body.dark .filme__comentarios-item{
+    background-color: var(--rosa-secundario-medio);
 }
 
 .filme__comentario-avaliacao{

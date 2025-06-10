@@ -6,8 +6,11 @@ body {
     font-family: Arial, sans-serif;
 }
 
+body.dark{
+    background: var(--gradient-catalogoDark);
+}
 
-.btn__filtro-categoria{
+.header__search-category-btn{
     padding: 8px 12px;
     background-color: var(--rosa-secundario-escuro);
     color: white;
@@ -17,7 +20,11 @@ body {
     transition: background 0.3s;
     margin-top: 5px;
 }
-.main__catalogo-container {
+
+body.dark .header__search-category-btn{
+    background-color: var(--rosa-secundario);
+}
+.catalogo {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1rem; /* Optional: adds spacing between items */
@@ -26,14 +33,14 @@ body {
 
 }
 
-.main__catalogo-filmes {
+.catalogo__filmes {
     
     border-radius: 10px;
     padding: 10px;
     width: 240px;
 }
 
-.main__catalogo-filmesImg {
+.catalogo__filmes-img {
     width: 220px;
     height: 300px;
     border: 5px solid var(--rosa-secundario-escuro);
@@ -41,7 +48,11 @@ body {
     display: block;
 }
 
-.main__catalogo-filmesAcoes {
+.catalogo__filmes-img{
+    border: 5px solid var(--rosa-secundario);
+}
+
+.catalogo__filmes-acoes {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
@@ -49,17 +60,24 @@ body {
     gap: 2px;
 }
 
-.main__catalogo-filmesInfos {
+.filme-infos {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
 
-.catalogo__filme-tittle {
+.filme-titulo {
     font-weight: bold;
-    color: var(--rosa-principal);
+    color: var(--rosa-primaro-medio);
     height: 50px;
+}
+
+body.dark .filme-ver-mais{
+    color: var(--branco);
+}
+body.dark .filme-titulo{
+    color: var(--rosa-secundario-claro);
 }
 
 a{
@@ -79,11 +97,19 @@ a{
     width: 100%;
 }
 
+body.dark .catalogo__filmes-btn{
+    background-color: var(--rosa-secundario);
+}
+
 .catalogo__filmes-btn:hover{
     background-color: var(--rosa-primario-escuro);
 }
 
-.nav__filtro-categorias {
+body.dark .catalogo__filmes-btn:hover{
+    background-color: var(--rosa-secundario-medio);
+}
+
+.menu {
     display: none;
     flex-direction: column;
     background-color: var(--rosa-primario-escuro);
@@ -97,8 +123,10 @@ a{
     width: 200px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
-    
-.nav__filtro-categorias.show {
+body.dark .menu{
+    background-color: var(--rosa-primario-claro);
+}
+.menu.show {
     display: flex;
 }
     
@@ -116,25 +144,25 @@ a{
 }
 
 @media(max-width:1400px){
-    .main__catalogo-container{
+    .catalogo{
         grid-template-columns: repeat(4, 1fr);
     }
 }
 
 @media(max-width:1000px){
-    .main__catalogo-container{
+    .catalogo{
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media(max-width:600px){
-    .main__catalogo-container{
+    .catalogo{
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media(max-width:400px){
-    .main__catalogo-container{
+    .catalogo{
         grid-template-columns: repeat(1, 1fr);
     }
 }
