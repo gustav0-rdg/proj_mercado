@@ -83,10 +83,12 @@ class Carrinho:
         try:
 
             sql = """SELECT
-                c.id_usuario, ci.id_filme, ci.quantidade, ci.preco, f.nome_filme, f.preco
+                c.id_usuario, ci.id_filme, ci.quantidade, ci.preco, f.nome_filme, f.preco,
+                i.img_1
                 FROM tb_carrinho c
                 INNER JOIN tb_carrinho_itens ci ON ci.id_carrinho = c.id_carrinho 
                 INNER JOIN tb_filmes f ON ci.id_filme = f.id_filme
+                INNER JOIN tb_fotos i on f.id_filme = i.id_filme
                 where c.id_usuario = %s;
             """
 
@@ -95,7 +97,6 @@ class Carrinho:
 
             if not filmes:
                 return []
-            print(filmes)
             return filmes
         
         except Exception as e:
@@ -122,7 +123,6 @@ class Carrinho:
 
             cursor.execute(sql, (id_carrinho,))
             filmes = cursor.fetchall()  
-            print(filmes)
         
         finally:
             cursor.close()
