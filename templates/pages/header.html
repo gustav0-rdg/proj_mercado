@@ -1,0 +1,34 @@
+
+<div class="container-fluid">
+    <div class="row align-items-center">
+        <section class="col-6 col-md-4">
+            <div class="d-flex align-items-center gap-3">
+                <a href="/" class="header__logo">DM</a>
+                <button class="header__menu-toggle" id="menuToggle" aria-label="Abrir menu">
+                    <i class="header__icon   fa-solid fa-bars fa-lg"></i>
+                </button>
+            </div>
+        </section>
+        <nav class="col-6 col-md-8" aria-label="Menu de usuário">
+            <div class="d-flex align-items-center justify-content-end gap-3">
+                <a class="header__cart" href="/carrinho" aria-label="Carrinho">
+                    <i class="header__icon   fa-solid fa-bag-shopping fa-lg"></i>
+                </a>
+                {% if session.nome %}
+                <a class="header__profile" href="/logoff">
+                    <span class="profile__text">{{ session.nome }}</span>
+                    <i class="header__icon   fa-solid fa-circle-user fa-lg"></i>
+                </a>
+                {% else %}
+                <a class="header__profile" href="/login">
+                    <span class="profile__text">Login</span>
+                    <i class="header__icon   fa-solid fa-circle-user fa-lg"></i>
+                </a>
+                {% endif %}
+                <!-- <a class="header__profile" href="" aria-label="Perfil">
+                <i class="bi bi-person"></i>
+            </a> -->
+            </div>
+        </nav>
+    </div>
+</div>

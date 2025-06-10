@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function () {
     try {
-        const codigoHeader = await fetch('/pages/header.html');
+        const codigoHeader = await fetch('/header');
         console.log(codigoHeader);
 
         if (!codigoHeader.ok) {
