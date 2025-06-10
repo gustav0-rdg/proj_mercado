@@ -102,6 +102,10 @@ def exibir_filmesCat(id):
 def componente_aside():
     return render_template('/pages/aside.html')
 
+@app.route("/asideFuncionalidades")
+def componente_aside_func():
+    return render_template('/pages/aside-funcionalidades.html')
+
 @app.route("/header")
 def componente_header():
     return render_template('/pages/header.html')
