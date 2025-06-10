@@ -1,3 +1,10 @@
+body{
+    background:  var( --gradient-loginLight);
+}
+
+body.dark{
+    background: var(--gradient-loginDark);
+}
 /* Corpo */
 .main__login-container {
     width: 100vw;
@@ -5,13 +12,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background:  var( --gradient-loginLight);
 }
 
 /* Form */
 .titulo_login {
     color: var(--rosa-primario-escuro);
 }
+
+body.dark .titulo_login{
+    color: var(--rosa-primario-claro);
+}
+
 
 .form__login {
     width: 400px;
@@ -27,6 +38,10 @@
     gap: 34px;
 }
 
+body.dark .form__login{
+    background-color: var(--rosa-primario-escuro);
+}
+
 .input__login {
     height: 35px;
     background-color: var(--rosa-secundario-claro);
@@ -39,6 +54,9 @@
     padding: 20px;
 }
 
+.input__login{
+    background-color: var(--rosa-primario-claro);
+}
 input::placeholder {
     color: var(--rosa-secundario-medio);
     font-size: 11px;
@@ -57,18 +75,30 @@ input::placeholder {
     transition: 1s;
 }
 
+body.dark .btn__login{
+    background-color: var(--rosa-secundario-medio);
+}
 .btn__login:hover{
     background-color: var(--rosa-primario-escuro);
 }
 
+body.dark .btn__login:hover{
+    background-color: var(--rosa-primario-claro);
+}
 .text__login {
     color: var(--branco);
 }
 
+body.dark .text__login{
+    color: var(--rosa-primario-claro);
+}
 .link__login {
     color: var(--rosa-primario-escuro);
 }
 
+body.dark .link__login{
+    color: var(--branco);
+}
 
 /* Responsivo */
 @media (max-width: 600px) {

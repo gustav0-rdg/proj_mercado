@@ -98,4 +98,4 @@ def exibir_filmesCat(id):
         return redirect("/catalogo")
     return render_template('catalogo.html', filmes = filmes, categorias = categorias)
 
-app.run(host="0.0.0.0", port=8080)
+app.run(host="0.0.0.0", port=8080, debug=True)
