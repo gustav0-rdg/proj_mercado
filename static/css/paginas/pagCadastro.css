@@ -12,7 +12,7 @@ body.dark .main__cadastro-container{
     background: var(--gradient-loginDark);
 }
 /* Form */
-.titulo_cadastro {
+.titulo__cadastro {
     color: var(--rosa-primario-escuro);
 }
 
