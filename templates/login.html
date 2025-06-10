@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página login</title>
+
+    <!-- Links CSS -->
+     <link rel="stylesheet" href="/static/css/global.css">
+     <link rel="stylesheet" href="/static/css/paginas/pagLogin.css">
+</head>
+
+<body>
+    <main class="main__login-container">
+        
+        <form class="form__login" action="/login/usuario" method="post">
+            <h1 class="titulo_login">ACESSE SEU PERFIL</h1>
+          
+            <input type="text" name="email" class="input__login-email input__login" placeholder="Email(Ex: aliciapavao@gmail.com)">
+
+            <input type="text" name="senha" class="input__login-senha input__login" placeholder="Senha(Ex: 12345678)">
+
+            <button class="btn__login">LOGAR</button>
+
+            <p class="text__login">Não possui um cadastro? <a class="link__login" href="/cadastro">Clique aqui</a>!</p>
+        </form>
+    </main>
+</body>
+
+</html>
