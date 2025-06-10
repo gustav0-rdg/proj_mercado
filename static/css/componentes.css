@@ -39,6 +39,11 @@ background: var(--rosa-secundario);
     color: var(--rosa-primario-escuro);
 }
 
+/* Main ----------------------------------------------------------------------- */
+
+.main__container{
+    margin-top: 100px;
+}
 
 /* Footer --------------------------------------------------------------------- */
 .footer__container{
