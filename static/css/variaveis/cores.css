@@ -31,7 +31,7 @@
     --gradient-catalogoDark: linear-gradient(var( --rosa-primario-medio) 15%, var(--preto) 85%);
 
     /* Gradient pag produto */
-    --gradient-catalogoLight: linear-gradient(var( --rosa-primario) 10%, var(--rosa-secundario-claro) 100%);
+    --gradient-catalogoLight: linear-gradient(var( --rosa-secundario) 10%, var(--rosa-secundario-claro) 100%);
     --gradient-catalogoDark: linear-gradient(var( --rosa-primario-escuro) 20%, var(--preto) 100%);
 
 

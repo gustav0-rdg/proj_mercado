@@ -21,7 +21,7 @@ body.dark .titulo_cadastro{
 }
 .form__cadastro {
     width: 400px;
-    height: 550px;
+    height: 600px;
     background-color: var(--rosa-secundario);
     border-radius: 8px;
 
@@ -126,7 +126,7 @@ body.dark .link__cadastro{
 @media (max-width: 600px) {
 .form__cadastro {
     width: 300px;
-    height: 450px;
+    height: 550px;
     gap: 16px;
 }
 
