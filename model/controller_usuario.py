@@ -39,7 +39,7 @@ class Usuario:
 
         try:
 
-            sql = "SELECT * FROM tb_usuario WHERE BINARY usuario = %s and BINARY senha = %s"
+            sql = "SELECT * FROM tb_usuarios WHERE BINARY usuario = %s and BINARY senha = %s"
             cursor.execute(sql, (usuario, senha))
             newUser = cursor.fetchone()
 

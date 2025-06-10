@@ -55,7 +55,7 @@ def pag_filme(id):
 def pag_carrinho():
     if 'id_usuario' not in session:
         return redirect("/login")
-    itens = Carrinho.exibirItens(1)
+    itens = Carrinho.exibirItens(session['id_usuario'])
     return jsonify(itens)
 
 @app.route("/add/comentario/<id>", methods=["POST"])
