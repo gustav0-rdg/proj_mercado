@@ -7,33 +7,38 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/global.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/paginas/pagCatalogo.css')}}">
 </head>
+
 <body>
     <header>
 
     </header>
-    <div class="nav-bar">
+
+    <div class="nav__catalogo-container">
         <button class="menu-toggle" aria-label="Abrir menu"><i class="fa-solid fa-filter" style="color: #42a18c;"></i></button>
-        <nav id="menu" class="menu">
+        <nav id="menu" class="nav__filtro-categorias">
             {% if categoria_atual != "todas" %}
-            <button class="header__search-category-btn"><a href="/catalogo">Todas</a></button>
+            <button class="btn__filtro-categoria"><a href="/catalogo">Todas</a></button>
             {% endif %}            
             {% for categoria in categorias%}
-            <button class="header__search-category-btn"><a href="/filmes/exibir/{{categoria.id_categoria}}">{{categoria.categoria}}</a></button>
+            <button class="btn__filtro-categoria"><a href="/filmes/exibir/{{categoria.id_categoria}}">{{categoria.categoria}}</a></button>
             {% endfor %}
         </nav>
     </div>
-    <main class="catalogo">
+
+    <main class="main__catalogo-container">
         
         {% for filme in filmes %}
-        <div class="catalogo__filmes">
+        <div class="main__catalogo-filmes">
             <figure>
-                <img src="{{filme.img_1}}" alt="" class="catalogo__filmes-img">
+                <img src="{{filme.img_1}}" alt="" class="main__catalogo-filmesImg">
                 <caption>
-                    <div class="catalogo__filmes-acoes">
-                        <div class="filme-infos">
-                            <p class="filme-titulo">{{filme.nome_filme}}</p>
+
+                    <div class="main__catalogo-filmesAcoes">
+                        <div class="main__catalogo-filmesInfos">
+                            <p class="catalogo__filme-tittle">{{filme.nome_filme}}</p>
                         </div>
-                        <div class="filme-ver-mais">
+
+                        <div class="catalogo__btn-verMais">
                             <p>Preço: R${{filme.preco}}</p>
                             <button class="catalogo__filmes-btn"><a href="/filme/{{filme.id_filme}}">Ver mais</a></button>
                         </div>
@@ -45,12 +50,15 @@
         </div>
         {% endfor %}
     </main>
+
     <footer>
 
     </footer>
+
     <script src="/static/js/themeToggle/theme-toggle.js"></script>
     <script src="https://kit.fontawesome.com/2fcc2a2373.js" crossorigin="anonymous"></script>
 </body>
+
 <script>
     const menuToggle = document.querySelector('.menu-toggle');
     const menu = document.querySelector('#menu');

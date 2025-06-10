@@ -24,7 +24,7 @@ body.dark{
 body.dark .header__search-category-btn{
     background-color: var(--rosa-secundario);
 }
-.catalogo {
+.main__catalogo-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1rem; /* Optional: adds spacing between items */
@@ -146,25 +146,25 @@ body.dark .menu.show{
 }
 
 @media(max-width:1400px){
-    .catalogo{
+    .main__catalogo-container{
         grid-template-columns: repeat(4, 1fr);
     }
 }
 
 @media(max-width:1000px){
-    .catalogo{
+    .main__catalogo-container{
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media(max-width:600px){
-    .catalogo{
+    .main__catalogo-container{
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media(max-width:400px){
-    .catalogo{
+    .main__catalogo-container{
         grid-template-columns: repeat(1, 1fr);
     }
 }
