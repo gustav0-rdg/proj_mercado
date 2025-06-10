@@ -1,5 +1,5 @@
 #region Importações
-from flask import Flask, request, render_template, redirect, session
+from flask import Flask, request, render_template, redirect, session, jsonify
 from hashlib import sha256
 from model.controller_usuario import Usuario
 from model.controller_filmes import Filme
@@ -51,18 +51,12 @@ def pag_filme(id):
     filme = Filme.exibir(id)        
     return render_template('produto.html', filme = filme, comentarios = comentarios)
 
-@app.route("/carrinho/<id>")
-def pag_carrinho(id):
-    itens = Carrinho.exibirItens(id)
-
-    if not itens:
-        referer = request.headers.get("Referer")
-        if referer:
-            return redirect(referer)
-        else:
-            return redirect('/')
-    
-    return render_template('carrinho.html', itens = itens)
+@app.route("/carrinho")
+def pag_carrinho():
+    if 'id_usuario' not in session:
+        return redirect("/login")
+    itens = Carrinho.exibirItens(1)
+    return jsonify(itens)
 
 @app.route("/add/comentario/<id>", methods=["POST"])
 def add_comentario(id):
