@@ -62,11 +62,11 @@ input::placeholder {
 }
 
 .text__login {
-    color: var(--branco);
+    color: var(--rosa-primario-escuro);
 }
 
 .link__login {
-    color: var(--rosa-primario-escuro);
+    color: var(--branco);
 }
 
 

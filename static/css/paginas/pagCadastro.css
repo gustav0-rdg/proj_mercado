@@ -31,15 +31,11 @@ body.dark .titulo_cadastro{
     flex-direction: column;
 
     gap: 24px;
+    border: 8px ssolid var(--rosa-primario-medio);
 }
 
 body.dark .form__cadastro{
     background-color: var(--rosa-primario);
-}
-
-.form__cadastro-name {
-    display: flex;
-    justify-content: space-evenly; 
 }
 
 .input__cadastro {
@@ -58,23 +54,7 @@ body.dark .input__cadastro{
     background-color: var(--rosa-primario-claro);
     outline-color: var(--rosa-secundario);
 }
-.input__cadastro-names {
-    height: 35px;
-    background-color: var(--rosa-secundario-claro);
-    outline-color: var(--rosa-primario);
-    border: none;
-    border-radius: 4px;
-    width: 45%;
-    color: var(--rosa-primario-escuro);
-    font-weight: 600;
-    padding: 20px;
-}
 
-body.dark .input__cadastro-names{
-    background-color: var(--rosa-primario-claro);
-    outline-color: var(--rosa-secundario);
-    color: var(--rosa-secundario-escuro);
-}
 
 input::placeholder {
     color: var(--rosa-secundario-medio);
@@ -110,11 +90,11 @@ body.dark .btn__cadastrar:hover{
 }
 
 .text__cadastro {
-    color: var(--branco);
+    color: var(--rosa-primario-escuro);
 }
 
 .link__cadastro {
-    color: var(--rosa-primario-escuro);
+    color: var(--branco);
 }
 
 body.dark .link__cadastro{
