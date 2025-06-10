@@ -56,6 +56,10 @@
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    /* esse é pro botao de tema */
+    background: transparent;
+    border: 0;
+    width: 100%;
 }
 
 .aside__a:hover {
