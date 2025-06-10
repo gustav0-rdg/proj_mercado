@@ -39,6 +39,13 @@ def cadastrar_usuario():
 def pag_login():
     return render_template('login.html')
 
+@app.route("/login/usuario", methods=["POST"])
+def logar_user():
+    usuario = request.form.get('usuario')
+    senha = request.form.get('senha')
+    Usuario.login(usuario, senha)
+    return redirect("/")
+
 @app.route("/catalogo")
 def pag_catalogo():
     categorias = Filme.categorias()
