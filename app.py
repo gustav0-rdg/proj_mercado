@@ -1,5 +1,5 @@
 #region Importações
-from flask import Flask, request, render_template, redirect, session
+from flask import Flask, request, render_template, redirect, session, jsonify
 from hashlib import sha256
 from model.controller_usuario import Usuario
 from model.controller_filmes import Filme
@@ -39,6 +39,13 @@ def cadastrar_usuario():
 def pag_login():
     return render_template('login.html')
 
+@app.route("/login/usuario", methods=["POST"])
+def logar_user():
+    usuario = request.form.get('usuario')
+    senha = request.form.get('senha')
+    Usuario.login(usuario, senha)
+    return redirect("/")
+
 @app.route("/catalogo")
 def pag_catalogo():
     categorias = Filme.categorias()
@@ -51,18 +58,12 @@ def pag_filme(id):
     filme = Filme.exibir(id)        
     return render_template('produto.html', filme = filme, comentarios = comentarios)
 
-@app.route("/carrinho/<id>")
-def pag_carrinho(id):
-    itens = Carrinho.exibirItens(id)
-
-    if not itens:
-        referer = request.headers.get("Referer")
-        if referer:
-            return redirect(referer)
-        else:
-            return redirect('/')
-    
-    return render_template('carrinho.html', itens = itens)
+@app.route("/carrinho")
+def pag_carrinho():
+    if 'id_usuario' not in session:
+        return redirect("/login")
+    itens = Carrinho.exibirItens(session['id_usuario'])
+    return jsonify(itens)
 
 @app.route("/add/comentario/<id>", methods=["POST"])
 def add_comentario(id):
@@ -80,6 +81,10 @@ def add_carrinho(id):
     Carrinho.add(id, session['id_usuario']) 
     return redirect("/catalogo")
 
+@app.route("/exibir/carrinho")
+def exibe_carrinho():
+    return render_template("carrinho.html")
+
 @app.route("/remove/carrinho/<id>")
 def remove_carrinho(id):
     Carrinho.remove(id, session['id_usuario'])
@@ -93,4 +98,4 @@ def exibir_filmesCat(id):
         return redirect("/catalogo")
     return render_template('catalogo.html', filmes = filmes, categorias = categorias)
 
-app.run(debug=True)
+app.run(host="0.0.0.0", port=8080)
