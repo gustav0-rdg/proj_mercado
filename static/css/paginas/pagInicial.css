@@ -54,6 +54,11 @@ body.dark .main__destaque-container{
     object-fit: cover;
     border: 5px solid var(--rosa-secundario-escuro);
     border-radius: 10px;
+    display: none;
+}
+
+.main__destaque-bannerImg.active {
+    display: flex;
 }
 
 .main__destaque-ul {
@@ -158,6 +163,11 @@ body.dark .main__ranking-a a{
     border-radius: 8px;
     border: 4px solid var(--rosa-primario);
     object-fit: cover;
+    display: none;
+}
+
+.main__ranking-filme.active{
+    display: block;
 }
 
 .main__ranking-filme{
