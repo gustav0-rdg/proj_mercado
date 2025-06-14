@@ -15,6 +15,7 @@ class Destaques:
                     f.sinopse,
                     c.categoria,
                     img.img_1,
+                    img.img_2,
                     subc.categoria AS sub_categoria,
                     (
                         SELECT ROUND(AVG(avaliacao), 1)
@@ -53,6 +54,7 @@ class Destaques:
                     f.sinopse,
                     c.categoria,
                     img.img_1,
+                    img.img_2,
                     subc.categoria AS sub_categoria,
                     (
                         SELECT ROUND(AVG(avaliacao), 1)

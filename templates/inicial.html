@@ -21,7 +21,8 @@
         <section class="main__destaque">
             <div class="main__destaque-container">
                 <figure class="main__destaque-banner">
-                    <img class="main__destaque-bannerImg" src="{{destaque.img_1}}" alt="banner">
+                    <img class="main__destaque-bannerImg" src="{{destaque.img_1}}" alt="banner" data-index="1">
+                    <img class="main__destaque-bannerImg active" src="{{destaque.img_2}}" alt="banner" data-index="2">
                 </figure>
 
                 <ul class="main__destaque-ul">
@@ -49,7 +50,9 @@
                 {% for filme in filmes %}
                         <div class="main__ranking-filmes-div">
                             <figure class="main__ranking-filmes">
-                                <img class="main__ranking-filme" src="{{filme.img_1}}" alt="Filme-ranking">
+                                <img class="main__ranking-filme" src="{{filme.img_1}}" alt="Filme-ranking" data-index="1">
+                                <img class="main__ranking-filme active" src="{{filme.img_2}}" alt="Filme-ranking" data-index="2">
+
                             </figure>
 
                             <ul class="main__ranking-filmes-avaliacao">
@@ -73,6 +76,6 @@
 
     <script src="/static/js/themeToggle/theme-toggle.js"></script>
     <script src="https://kit.fontawesome.com/2fcc2a2373.js" crossorigin="anonymous"></script>
-
+    <script src="/static/js/pag_inicial/img-carousel.js"></script>
 </body>
 </html>

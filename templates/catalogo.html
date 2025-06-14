@@ -23,11 +23,11 @@
         </nav>
     </div>
     <main class="catalogo">
-        
         {% for filme in filmes %}
         <div class="catalogo__filmes">
             <figure>
-                <img src="{{filme.img_1}}" alt="" class="catalogo__filmes-img">
+                <img src="{{filme.img_1}}" alt="" class="catalogo__filmes-img " data-index="1">
+                <img src="{{filme.img_2}}" alt="" class="catalogo__filmes-img active" data-index="2">
                 <caption>
                     <div class="catalogo__filmes-acoes">
                         <div class="filme-infos">
@@ -50,6 +50,7 @@
     </footer>
     <script src="/static/js/themeToggle/theme-toggle.js"></script>
     <script src="https://kit.fontawesome.com/2fcc2a2373.js" crossorigin="anonymous"></script>
+    <script src="/static/js/pag_catalogo/img-carousel.js"></script>
 </body>
 <script>
     const menuToggle = document.querySelector('.menu-toggle');

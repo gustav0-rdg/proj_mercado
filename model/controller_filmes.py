@@ -14,6 +14,7 @@ class Filme():
                 f.nome_filme,
                 c.categoria,
                 img.img_1,
+                img.img_2,
                 subc.categoria as sub_categoria,
                 f.preco
             FROM tb_filmes f

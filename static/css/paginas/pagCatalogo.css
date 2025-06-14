@@ -45,11 +45,15 @@ body.dark .header__search-category-btn{
     height: 300px;
     border: 5px solid var(--rosa-secundario-escuro);
     border-radius: 10px;
-    display: block;
+    display: none;
 }
 
 .catalogo__filmes-img{
     border: 5px solid var(--rosa-secundario);
+}
+
+.catalogo__filmes-img.active{
+    display: block;
 }
 
 .catalogo__filmes-acoes {
