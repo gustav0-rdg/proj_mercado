@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <form action="/add/comentario/${filmeID}" method="post" id="form__comentario">
             <h3>Avalie o filme</h3>
             <label for="avaliacao">Avaliação:</label>
-            <input type="text" name="comentario" id="avaliacao" class="form__comentario-input">
+            <textarea type="text" name="comentario" id="avaliacao" class="form__comentario-input"></textarea>
             <label for="nota">Nota:</label>
             <input type="number" name="avaliacao" id="nota" class="form__comentario-input" min="1" max="5" step="1.0">
             <button class="form__comentario-btn">Enviar comentário</button>
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Swal.fire({
             html: comentarioHTML,
             showConfirmButton: false,
-            width: '400px', // Faz o SweetAlert ocupar toda a largura disponível
+            width: '300px', // Faz o SweetAlert ocupar toda a largura disponível
             padding: '0',  // Remove o padding extra
             customClass: {
                 popup: 'full-width-popup'  // Classe personalizada para customização
