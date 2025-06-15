@@ -6,7 +6,7 @@ from model.controller_filmes import Filme
 from model.controller_carrinho import Carrinho
 from model.controller_comentarios import Comentarios
 from model.controller_destaques import Destaques
-
+from model.controller_enderecos import Enderecos
 
 app = Flask(__name__)
 app.secret_key = "godofredomeuheroi"
@@ -98,5 +98,15 @@ def exibir_filmesCat(id):
     if filmes == []:
         return redirect("/catalogo")
     return render_template('catalogo.html', filmes = filmes, categorias = categorias)
+
+@app.route("/add/endereco", methods=["POST"] )
+def add_endereco():
+    cep = request.form.get("cep")
+    cidade = request.form.get("cidade")
+    logradouro = request.form.get("logradouro")
+    bairro = request.form.get("bairro")
+    estado = request.form.get("estado")
+    Enderecos.add(session['id_usuario'], cep, cidade, logradouro, bairro, estado)
+    return redirect("/exibir/carrinho")
 
 app.run(host="0.0.0.0", port=8080, debug=True)

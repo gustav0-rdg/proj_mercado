@@ -173,6 +173,10 @@ body.dark .carrinho__resumo{
     padding-top: 1rem;
 }
 
+.cep__actions{
+    display: flex;
+    gap: 20px;
+}
 .carrinho__botao-finalizar {
     width: 100%;
     background: var(--rosa-primario);
@@ -187,7 +191,9 @@ body.dark .carrinho__resumo{
     text-transform: uppercase;
     margin-top: 1.5rem;
 }
-
+.carrinho__botao-finalizar::placeholder {
+    color: var(--branco);
+}
 body.dark .carrinho__botao-finalizar{
     background: var(--rosa-secundario-medio);
 }
