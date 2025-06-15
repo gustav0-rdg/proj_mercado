@@ -16,7 +16,7 @@ class Enderecos:
         conexao = Connection.create()
         cursor = conexao.cursor(dictionary=True)
         try:
-            cursor.execute("select * from tb_enderecos where id_usuario = %s", (id_user))
+            cursor.execute("select * from tb_enderecos where id_usuario = %s", (id_user,))
             resultado = cursor.fetchone()
             if resultado:
                 return resultado

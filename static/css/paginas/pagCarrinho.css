@@ -36,6 +36,10 @@ body.dark{
     overflow-y: auto;
 }
 
+a{
+    text-decoration: none;
+    color: var(--branco);
+}
 
 .carrinho__itens::-webkit-scrollbar {
     width: 8px;

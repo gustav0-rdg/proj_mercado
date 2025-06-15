@@ -86,6 +86,17 @@ def add_carrinho(id):
 def exibe_carrinho():
     return render_template("carrinho.html")
 
+@app.route("/endereco")
+def endereco_api():
+    endereco = Enderecos.exibir(session['id_usuario'])
+    if endereco:
+        return jsonify(endereco)
+    else:
+        erro = {
+            'erro':'nenhum endereco cadastrado'
+        }
+        return jsonify(erro)
+    
 @app.route("/remove/carrinho/<id>")
 def remove_carrinho(id):
     Carrinho.remove(id, session['id_usuario'])

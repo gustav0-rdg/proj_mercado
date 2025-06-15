@@ -1,5 +1,23 @@
 const inputCep = document.querySelector("#cep");
 const buscaCep = document.querySelector('#buscarCep');
+
+const inputCidade = document.querySelector('#cidade');
+const inputLogradouro = document.querySelector('#logradouro');
+const inputBairro = document.querySelector('#bairro');
+const inputEstado = document.querySelector('#estado');
+
+const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+    }
+});
+
 inputCep.addEventListener('input', () => {
     let valor = inputCep.value.replace(/[^0-9]/g, '');
 
@@ -20,8 +38,23 @@ inputCep.addEventListener('input', () => {
 
 buscaCep.addEventListener('click', async ()=>{
     const response = await fetch(`https://viacep.com.br/ws/${inputCep.value}/json/`);
-    const data = await response.json()
-    if (data){
+    if (response.status == 200){
+        const data = await response.json();
+        if (data.erro){
+            Toast.fire({
+                title:'Erro na busca.',
+                icon: 'error'
+            })
+            return;
+        }
+        Toast.fire({
+            title:'Busca concluída com sucesso.',
+            icon: 'success'
+        })
         console.log(data);
+        inputCidade.value = data.localidade;
+        inputBairro.value = data.bairro;
+        inputLogradouro.value = data.logradouro;
+        inputEstado.value = data.estado;
     }
 })

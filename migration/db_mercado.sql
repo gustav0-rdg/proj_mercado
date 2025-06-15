@@ -1,4 +1,4 @@
-		CREATE DATABASE IF NOT EXISTS db_mercado;
+CREATE DATABASE IF NOT EXISTS db_mercado;
 		USE db_mercado;
 
 		CREATE TABLE tb_usuarios(
@@ -81,12 +81,23 @@
 			id_usuario int not null,
 			id_carrinho int not null,
 			data_pedido datetime,
-			estado ENUM("PAGO", "PENDENTE", "CANCELADO", "ENTREGUE") not null,
+			estado ENUM('PAGO', 'PENDENTE', 'CANCELADO', 'ENTREGUE') not null,
 			total DECIMAL(10,2) not null,
 			FOREIGN KEY (id_carrinho) REFERENCES tb_carrinho(id_carrinho),
 			FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id_usuario)
 		);
 
+		CREATE TABLE IF NOT EXISTS tb_enderecos(
+			id_endereco int auto_increment primary key,
+            id_usuario int not null,
+            cep varchar(14) not null,
+            cidade varchar(40) not null,
+            logradouro varchar(100) not null,
+            bairro varchar(50) not null,
+            estado varchar(30) not null,
+			FOREIGN KEY(id_usuario) REFERENCES tb_usuarios(id_usuario)
+        );
+        
 		INSERT INTO tb_categorias(categoria)VALUES('Ação'),('Drama'),('Comédia'),('Terror'),('Suspense'),('Romance'),('Ficção Cíentifica'),('Fantasia'),('Infantil'),('Aventura'),
 		('Documentário'),('Musical'),('Mistério');
 		-- Filme
@@ -180,12 +191,12 @@ INSERT INTO tb_fotos (id_filme, img_1, img_2, img_banner) VALUES
 (28, 'https://br.web.img2.acsta.net/img/61/b3/61b35aa40057cba4f7df23c689d6979e.PNG', 'https://m.media-amazon.com/images/I/91r5G8RxqfL.jpg', 'https://br.web.img2.acsta.net/img/61/b3/61b35aa40057cba4f7df23c689d6979e.PNG');
 		INSERT INTO tb_usuarios(nome_usuario, usuario, senha)
 		VALUES
-		("gustavo rodrigues","gustav0rdg","ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f"),
-		("ivo neto","icneto","ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f"),
+		('gustavo rodrigues','gustav0rdg','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
+		('ivo neto','icneto','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
 		('carla dias', 'carlad', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
 		('lucas silva', 'lucass', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
 		('mariana almeida', 'marial', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
-		("alicia pavao","alicia123","ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f"),
+		('alicia pavao','alicia123','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
 		('beatriz souza', 'beatrizs', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
 		('daniel alves', 'daniela', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
 		('fernanda lima', 'fernandal', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f');
