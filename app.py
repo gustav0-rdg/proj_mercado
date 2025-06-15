@@ -1,6 +1,7 @@
 #region Importações
 from flask import Flask, request, render_template, redirect, session, jsonify
 from hashlib import sha256
+import re
 from model.controller_usuario import Usuario
 from model.controller_filmes import Filme
 from model.controller_carrinho import Carrinho
@@ -28,12 +29,14 @@ def cadastrar_usuario():
     email = request.form.get('email')
     telefone = request.form.get('telefone')
     senha = request.form.get('senha')
-    check = Usuario.cadastrar(nome,usuario,email,telefone,senha)
+    telefone_limpo = re.sub(r'\D', '', telefone)
+    if not re.fullmatch(r'\d{11}', telefone_limpo):
+        return redirect("/cadastro")
+    check = Usuario.cadastrar(nome, usuario, email, telefone_limpo, senha)
     if check:
         return redirect("/")
     else:
         return redirect("/cadastro")
-#endregion  
   
 @app.route("/login")
 def pag_login():
@@ -117,7 +120,17 @@ def add_endereco():
     logradouro = request.form.get("logradouro")
     bairro = request.form.get("bairro")
     estado = request.form.get("estado")
-    Enderecos.add(session['id_usuario'], cep, cidade, logradouro, bairro, estado)
-    return redirect("/exibir/carrinho")
+    # Limpar o CEP: remove tudo que não for número
+    cep_limpo = re.sub(r'\D', '', cep)
 
+    # Validação: CEP deve ter exatamente 8 dígitos
+    if not re.fullmatch(r'\d{8}', cep_limpo):
+        # Você pode adicionar uma mensagem flash aqui para avisar o usuário
+        return redirect("/exibir/carrinho")
+
+    # Chamar o método passando o CEP limpo
+    Enderecos.add(session['id_usuario'], cep_limpo, cidade, logradouro, bairro, estado)
+
+    return redirect("/exibir/carrinho")
+    
 app.run(host="0.0.0.0", port=8080, debug=True)
