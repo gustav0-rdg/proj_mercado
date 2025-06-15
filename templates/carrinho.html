@@ -22,22 +22,37 @@
                 <aside class="carrinho__resumo">
                     <div class="carrinho__resumo-item">
                         <span>Número total de produtos:</span>
-                        <span>{{ itens|sum(attribute='quantidade') }}</span>
+                        <span class="product__count"></span>
                     </div>
                     
                     <div class="carrinho__resumo-item carrinho__resumo-total">
                         <span>Total a pagar:</span>
-                        <span>R$ {{ "%.2f"|format(itens|sum(attribute='preco_total')) }}</span>
+                        <span class="product__price"></span>
                     </div>
                     
-                    <button class="carrinho__botao-finalizar" onclick="finalizarCompra()">
+                    <button class="carrinho__botao-finalizar">
                         Confirmar compra
                     </button>
+                    <form action="/add/endereco" method="post">
+                        <input type="text" name="cep" id="cep" class="carrinho__botao-finalizar" placeholder="cep">
+                        <input type="text" name="cidade" id="cidade" class="carrinho__botao-finalizar" readonly placeholder="cidade">
+                        <input type="text" placeholder="logradouro" name="logradouro" id="logradouro" class="carrinho__botao-finalizar" readonly>
+                        <input type="text" name="bairro" id="bairro" placeholder="bairro" class="carrinho__botao-finalizar" readonly>
+                        <input type="text" placeholder="estado" name="estado" id="estado" class="carrinho__botao-finalizar" readonly>
+                        <div class="cep__actions">
+                            <button type="button" id="buscarCep" class="carrinho__botao-finalizar" disabled>Buscar</button>
+                            <button type="submit" id="salvarCep" class="carrinho__botao-finalizar" disabled>Salvar</button>
+                        </div>
+                    </form>
                 </aside>
             </div>
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/static/js/pag_carrinho/get-cep.js"></script>
     <script src="/static/js/themeToggle/theme-toggle.js"></script>
     <script src="/static/js/pag_carrinho/get-itens.js"></script>
+    <script src="/static/js/pag_carrinho/get-user-cep.js"></script>
+    
 </body>
 </html>

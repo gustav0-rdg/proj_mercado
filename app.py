@@ -1,12 +1,13 @@
 #region Importações
 from flask import Flask, request, render_template, redirect, session, jsonify
 from hashlib import sha256
+import re
 from model.controller_usuario import Usuario
 from model.controller_filmes import Filme
 from model.controller_carrinho import Carrinho
 from model.controller_comentarios import Comentarios
 from model.controller_destaques import Destaques
-
+from model.controller_enderecos import Enderecos
 
 app = Flask(__name__)
 app.secret_key = "godofredomeuheroi"
@@ -28,12 +29,11 @@ def cadastrar_usuario():
     email = request.form.get('email')
     telefone = request.form.get('telefone')
     senha = request.form.get('senha')
-    check = Usuario.cadastrar(nome,usuario,email,telefone,senha)
-    if check:
-        return redirect("/")
-    else:
-        return redirect("/cadastro")
-#endregion  
+    
+    telefone_limpo = re.sub(r'\D', '', telefone)
+    Usuario.cadastrar(nome, usuario, email, telefone_limpo, senha)
+    return redirect("/login")
+
   
 @app.route("/login")
 def pag_login():
@@ -86,6 +86,17 @@ def add_carrinho(id):
 def exibe_carrinho():
     return render_template("carrinho.html")
 
+@app.route("/endereco")
+def endereco_api():
+    endereco = Enderecos.exibir(session['id_usuario'])
+    if endereco:
+        return jsonify(endereco)
+    else:
+        erro = {
+            'erro':'nenhum endereco cadastrado'
+        }
+        return jsonify(erro)
+    
 @app.route("/remove/carrinho/<id>")
 def remove_carrinho(id):
     Carrinho.remove(id, session['id_usuario'])
@@ -99,4 +110,24 @@ def exibir_filmesCat(id):
         return redirect("/catalogo")
     return render_template('catalogo.html', filmes = filmes, categorias = categorias)
 
+@app.route("/add/endereco", methods=["POST"] )
+def add_endereco():
+    cep = request.form.get("cep")
+    cidade = request.form.get("cidade")
+    logradouro = request.form.get("logradouro")
+    bairro = request.form.get("bairro")
+    estado = request.form.get("estado")
+    # Limpar o CEP: remove tudo que não for número
+    cep_limpo = re.sub(r'\D', '', cep)
+
+    # Validação: CEP deve ter exatamente 8 dígitos
+    if not re.fullmatch(r'\d{8}', cep_limpo):
+        # Você pode adicionar uma mensagem flash aqui para avisar o usuário
+        return redirect("/exibir/carrinho")
+
+    # Chamar o método passando o CEP limpo
+    Enderecos.add(session['id_usuario'], cep_limpo, cidade, logradouro, bairro, estado)
+
+    return redirect("/exibir/carrinho")
+    
 app.run(host="0.0.0.0", port=8080, debug=True)
