@@ -26,7 +26,9 @@
                     <small>{{filme.sub_categoria}}</small>
                     <p><strong>Preço: R${{filme.preco}}</strong></p>
                 </div>
+                {% if session['usuario'] %}
                 <button class="filme__infos-btn"><a href="/add/carrinho/{{filme.id_filme}}">Adicionar ao carrinho</a></button>
+                {% endif %}
             </div>
         </section>
         <section class="filme__ratings">

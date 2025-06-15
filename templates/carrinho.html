@@ -22,12 +22,12 @@
                 <aside class="carrinho__resumo">
                     <div class="carrinho__resumo-item">
                         <span>Número total de produtos:</span>
-                        <span>{{ itens|sum(attribute='quantidade') }}</span>
+                        <span class="product__count"></span>
                     </div>
                     
                     <div class="carrinho__resumo-item carrinho__resumo-total">
                         <span>Total a pagar:</span>
-                        <span>R$ {{ "%.2f"|format(itens|sum(attribute='preco_total')) }}</span>
+                        <span class="product__price"></span>
                     </div>
                     
                     <button class="carrinho__botao-finalizar" onclick="finalizarCompra()">
