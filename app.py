@@ -29,14 +29,11 @@ def cadastrar_usuario():
     email = request.form.get('email')
     telefone = request.form.get('telefone')
     senha = request.form.get('senha')
+    
     telefone_limpo = re.sub(r'\D', '', telefone)
-    if not re.fullmatch(r'\d{11}', telefone_limpo):
-        return redirect("/cadastro")
-    check = Usuario.cadastrar(nome, usuario, email, telefone_limpo, senha)
-    if check:
-        return redirect("/")
-    else:
-        return redirect("/cadastro")
+    Usuario.cadastrar(nome, usuario, email, telefone_limpo, senha)
+    return redirect("/login")
+
   
 @app.route("/login")
 def pag_login():
