@@ -9,7 +9,7 @@ from model.controller_comentarios import Comentarios
 from model.controller_destaques import Destaques
 from model.controller_enderecos import Enderecos
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.secret_key = "godofredomeuheroi"
 @app.route("/")
 def pag_inicial():
@@ -117,6 +117,23 @@ def exibir_filmesCat(id):
     if filmes == []:
         return redirect("/catalogo")
     return render_template('catalogo.html', filmes = filmes, categorias = categorias)
+
+@app.route("/aside")
+def componente_aside():
+    return render_template('/pages/aside.html')
+
+@app.route("/asideFuncionalidades")
+def componente_aside_func():
+    return render_template('/pages/aside-funcionalidades.html')
+
+@app.route("/header")
+def componente_header():
+    return render_template('/pages/header.html')
+
+@app.route("/footer")
+def componente_footer():
+    return render_template('/pages/footer.html')
+
 
 @app.route("/add/endereco", methods=["POST"] )
 def add_endereco():
