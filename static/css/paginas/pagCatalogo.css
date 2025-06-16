@@ -35,7 +35,6 @@ body.dark .header__search-category-btn{
 
 .nav-bar{
     width: 100%;
-    background-color: var(--rosa-primario);
 }
 body.dark .nav-bar{
     background-color: var(--rosa-primario-medio);
