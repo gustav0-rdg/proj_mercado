@@ -1,0 +1,39 @@
+
+<div class="container-fluid">
+    <!-- itens da esquerda -->
+    <div class="row align-items-center">
+        <section class="col-6 col-md-4">
+            <div class="d-flex align-items-center gap-3">
+                <!-- Logo -->
+                <a href="/" class="header__logo">
+                    <img src="../../static/img/logo-disco-magico-vetor.svg" alt="Logo Disco Mágico">
+                </a>
+                <!-- Menu -->
+                <button class="header__menu-toggle" id="menuToggle" aria-label="Abrir menu">
+                    <i class="header__icon   fa-solid fa-bars fa-lg"></i>
+                </button>
+            </div>
+        </section>
+        <!-- Itens da direita -->
+        <nav class="col-6 col-md-8" aria-label="Menu de usuário">
+            <div class="d-flex align-items-center justify-content-end gap-3">
+                <!-- Carrinho -->
+                <a class="header__cart" href="/exibir/carrinho" aria-label="Carrinho">
+                    <i class="header__icon   fa-solid fa-bag-shopping fa-lg"></i>
+                </a>
+                <!-- Perfil  -->
+                {% if session.nome %}
+                <!-- Logado -->
+                <a class="header__profile" href="/logoff">
+                    <i class="header__icon   fa-solid fa-circle-user fa-lg"></i>
+                </a>
+                {% else %}
+                <!-- Deslogado -->
+                <a class="header__profile" href="/login">
+                    <i class="header__icon   fa-solid fa-circle-user fa-lg"></i>
+                </a>
+                {% endif %}
+            </div>
+        </nav>
+    </div>
+</div>

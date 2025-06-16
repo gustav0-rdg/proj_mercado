@@ -8,6 +8,7 @@ body{
 
 body.dark{
     background: var(--gradient-inicialDark);
+
 }
 .filme__info {
     background-color: var(--rosa-secundario-medio);
@@ -45,6 +46,12 @@ body.dark .filme__imagens-img{
     flex: 1; /* Ocupa o restante do espaço */
 }
 
+a{
+    color: var(--branco);
+}
+.filme__infos h1{
+    color: var(--branco);
+}
 .filme__infos-sinopse {
     display: flex;
     flex-direction: column;
@@ -133,6 +140,7 @@ body.dark .filme__rate-btn:hover{
 
 .filme__comentarios-item {
     background-color: var(--rosa-secundario);
+    color: var(--branco);
     width: 100%;
     border-radius: 10px;
     padding: 15px 20px;

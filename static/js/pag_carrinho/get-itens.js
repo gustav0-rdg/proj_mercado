@@ -1,14 +1,12 @@
 document.addEventListener('DOMContentLoaded', async function(){
     try {
         const response = await fetch("/carrinho"); 
-        console.log('Response status:', response.status);
         
         if (!response.ok) {
             throw new Error(`Erro HTTP: ${response.status}`);
         }
         
         const data = await response.json();
-        console.log('Dados recebidos:', data);
         
         const itensList = document.querySelector(".carrinho__itens");
         if (!itensList) {
@@ -28,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async function(){
                 valorTotal = valorTotal + element.preco * element.quantidade;
                 contagemProduto += element.quantidade;
                 productCount.textContent = `${contagemProduto}`;
-                value.textContent = `R$ ${valorTotal}`
+                value.textContent = `R$ ${valorTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
                 item.innerHTML = `
                         <img src="${element.img_1}" alt="${element.nome_filme}" class="carrinho__item-imagem">
                         
@@ -49,18 +47,18 @@ document.addEventListener('DOMContentLoaded', async function(){
                             ${element.quantidade}x
                         </div>
                         
-                        <button class="carrinho__item-remover">
+                        <a class="carrinho__item-remover" href="/excluir/item/${element.id_carrinhoItens}">
                             <i class="fas fa-trash"></i>
-                        </button>
+                        </a>
                 `;
                 itensList.appendChild(item);
             });
         } else {
             itensList.innerHTML = `
                 <div class="">
-                    <h4>Carrinho Vazio</h4>
+                    <h4 style="color:var(--branco)">Carrinho Vazio</h4>
                     <p class="">Adicione alguns filmes ao seu carrinho!</p>
-                    <a href="/catalogo" class="">Ver Catálogo</a>
+                    <a href="/catalogo" class="catalogo">Ver Catálogo</a>
                 </div>
             `;
         }

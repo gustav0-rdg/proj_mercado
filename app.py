@@ -9,7 +9,7 @@ from model.controller_comentarios import Comentarios
 from model.controller_destaques import Destaques
 from model.controller_enderecos import Enderecos
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.secret_key = "godofredomeuheroi"
 @app.route("/")
 def pag_inicial():
@@ -77,14 +77,28 @@ def add_comentario(id):
         print(f"Erro ao adicionar o comentário no filme de ID: {id}")
         return redirect(f"/filme/{id}")
 
+@app.route("/remover/comentario/<id>")
+def remove_comentario(id):
+    Comentarios.remover_comentario(id)
+    return redirect("/catalogo")
+
 @app.route("/add/carrinho/<id>")
 def add_carrinho(id):
     Carrinho.add(id, session['id_usuario']) 
     return redirect("/catalogo")
 
+@app.route("/excluir/item/<id>")
+def remove_carrinho(id):
+    Carrinho.remove(id)
+    return redirect("/exibir/carrinho")
+
 @app.route("/exibir/carrinho")
 def exibe_carrinho():
-    return render_template("carrinho.html")
+    if not 'usuario' in session:
+        return redirect("/login")
+    itensCarrinho = Carrinho.exibirItens(session['id_usuario'])
+    
+    return render_template("carrinho.html", itens = itensCarrinho)
 
 @app.route("/endereco")
 def endereco_api():
@@ -96,11 +110,6 @@ def endereco_api():
             'erro':'nenhum endereco cadastrado'
         }
         return jsonify(erro)
-    
-@app.route("/remove/carrinho/<id>")
-def remove_carrinho(id):
-    Carrinho.remove(id, session['id_usuario'])
-    return redirect("/catalogo")
 
 @app.route("/filmes/exibir/<id>")
 def exibir_filmesCat(id):
@@ -109,6 +118,23 @@ def exibir_filmesCat(id):
     if filmes == []:
         return redirect("/catalogo")
     return render_template('catalogo.html', filmes = filmes, categorias = categorias)
+
+@app.route("/aside")
+def componente_aside():
+    return render_template('/pages/aside.html')
+
+@app.route("/asideFuncionalidades")
+def componente_aside_func():
+    return render_template('/pages/aside-funcionalidades.html')
+
+@app.route("/header")
+def componente_header():
+    return render_template('/pages/header.html')
+
+@app.route("/footer")
+def componente_footer():
+    return render_template('/pages/footer.html')
+
 
 @app.route("/add/endereco", methods=["POST"] )
 def add_endereco():
@@ -129,7 +155,12 @@ def add_endereco():
     Enderecos.add(session['id_usuario'], cep_limpo, cidade, logradouro, bairro, estado)
 
     return redirect("/exibir/carrinho")
-    
+
+@app.route("/logoff")
+def logoff():
+    Usuario.logoff()
+    return redirect("/")
+
 @app.route("/gerenciamento")
 def pag_gerenciamento():
     # if (Usuario.isAdm(session['id_usuario'])):

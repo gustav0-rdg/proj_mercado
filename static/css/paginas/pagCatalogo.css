@@ -33,6 +33,11 @@ body.dark .header__search-category-btn{
 
 }
 
+.nav-bar{
+    width: 100%;
+    margin-top: 80px;
+}
+
 .catalogo__filmes {
     
     border-radius: 10px;
@@ -48,7 +53,7 @@ body.dark .header__search-category-btn{
     display: none;
 }
 
-.catalogo__filmes-img{
+body.dark .catalogo__filmes-img{
     border: 5px solid var(--rosa-secundario);
 }
 
@@ -84,11 +89,15 @@ body.dark .filme-titulo{
     color: var(--rosa-secundario-claro);
 }
 
-a{
+body a{
     text-decoration: none;
     color: var(--branco);
 }
 
+body.dark a{
+    text-decoration: none;
+    color: var(--branco);
+}
 .catalogo__filmes-btn {
     padding: 8px 12px;
     background-color: var(--rosa-secundario-escuro);
@@ -121,7 +130,7 @@ body.dark .catalogo__filmes-btn:hover{
     padding: 10px;
     
     position: absolute; /* ou 'fixed' se quiser que ele fique preso na tela */
-    top: 60px; /* ajusta conforme o tamanho do seu header */
+    top: 120px; /* ajusta conforme o tamanho do seu header */
     left: 10px;
     z-index: 1000; /* garante que fique acima dos filmes */
     width: 200px;
@@ -162,6 +171,9 @@ body.dark .menu{
 @media(max-width:600px){
     .catalogo{
         grid-template-columns: repeat(2, 1fr);
+    }
+    .nav-bar{
+        margin-top: 0;
     }
 }
 

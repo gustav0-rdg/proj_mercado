@@ -10,6 +10,7 @@ class Comentarios:
         try:
           sql_select = """
                     SELECT 
+                    c.id_comentario,
                     u.nome_usuario,
                     c.id_filme,
                     c.id_usuario,
@@ -59,6 +60,25 @@ class Comentarios:
             print(e)
             return
         
+        finally:
+            cursor.close()
+            conexao.close()
+
+    def remover_comentario(id_comentario):
+        conexao = Connection.create()
+        cursor = conexao.cursor(dictionary=True)
+
+        try:
+            sql_insert = "DELETE FROM tb_comentarios WHERE id_comentario = %s"
+            cursor.execute(sql_insert, (id_comentario,))
+            conexao.commit()
+
+            return True
+            
+        except Exception as e:
+            print(e)
+            return False
+
         finally:
             cursor.close()
             conexao.close()
