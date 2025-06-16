@@ -94,9 +94,10 @@ def remove_carrinho(id):
 
 @app.route("/exibir/carrinho")
 def exibe_carrinho():
-    itensCarrinho = Carrinho.exibirItens(session['id_usuario'])
     if not 'usuario' in session:
         return redirect("/login")
+    itensCarrinho = Carrinho.exibirItens(session['id_usuario'])
+    
     return render_template("carrinho.html", itens = itensCarrinho)
 
 @app.route("/endereco")
