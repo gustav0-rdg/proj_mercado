@@ -50,19 +50,14 @@ class Carrinho:
         finally:
             conexao.close()
     
-    def remove(id_filme, id_usuario):
+    def remove(id_carrinho_itens):
 
         conexao = Connection.create()
         cursor = conexao.cursor(dictionary=True)
 
         try:
-
-            cursor.execute("SELECT * from tb_carrinho where binary id_usuario = %s", (id_usuario, ))
-            carrinho = cursor.fetchone()
-            id_carrinho = carrinho['id_carrinho']       
-    
-            sql_insert = "DELETE FROM tb_carrinho_itens WHERE id_carrinho = %s and id_filme = %s"
-            cursor.execute(sql_insert, (id_carrinho, id_filme))
+            sql_insert = "DELETE FROM tb_carrinho_itens WHERE id_carrinhoItens = %s"
+            cursor.execute(sql_insert, (id_carrinho_itens,))
             conexao.commit()
 
             return True
@@ -83,7 +78,7 @@ class Carrinho:
         try:
 
             sql = """SELECT
-                c.id_usuario, ci.id_filme, ci.quantidade, ci.preco, f.nome_filme, f.preco,
+                ci.id_carrinhoItens, c.id_usuario, ci.id_filme, ci.quantidade, ci.preco, f.nome_filme, f.preco,
                 i.img_1
                 FROM tb_carrinho c
                 INNER JOIN tb_carrinho_itens ci ON ci.id_carrinho = c.id_carrinho 

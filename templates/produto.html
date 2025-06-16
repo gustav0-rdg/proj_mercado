@@ -68,6 +68,9 @@
                 
                 <p>{{ comentario.comentario }}</p>
                 <small>{{ comentario.data.strftime('%d/%m/%Y %H:%M') }}</small>
+                {% if session['nome'] == comentario.nome_usuario %}
+                <a href="/remover/comentario/{{comentario.id_comentario}}"><i class="fas fa-trash"></i></a>
+                {% endif %}
             </div>
             {% else %}
                 <p>Não há comentários para este filme.</p>
