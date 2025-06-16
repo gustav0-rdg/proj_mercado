@@ -73,7 +73,7 @@ body.dark .main__destaque-container{
     border-radius: 8px;
     padding: 5px 10px;
     list-style: none;
-    background-color: var(--alguma-cor-opcional);
+    color: var(--branco);
     word-break: break-word; 
 }
 
@@ -180,19 +180,23 @@ body.dark .main__ranking-a a{
 .main__ranking-filmes-titulo{
     margin-bottom: 20px;
 }
-.main__ranking-filmes-titulo,
-.main__ranking-filmes-categoria {
+
+.main__ranking-filmes-titulo, .main__ranking-filmes-categoria {
     color: var(--rosa-primario-medio);
     font-size: 0.9rem;
     margin-bottom: 4px;
 }
 
 body.dark .main__ranking-filmes-titulo,
-.main__ranking-filmes-categoria{
+body.dark .main__ranking-filmes-categoria{
     color: var(--rosa-primario-claro);
 }
 
 .main__ranking-filmes-avaliacaoStar i {
+    color: var(--rosa-primario-medio) !important; 
+}
+
+body.dark .main__ranking-filmes-avaliacaoStar i {
     color: var(--rosa-primario-claro) !important; 
 }
 

@@ -56,9 +56,9 @@ document.addEventListener('DOMContentLoaded', async function(){
         } else {
             itensList.innerHTML = `
                 <div class="">
-                    <h4>Carrinho Vazio</h4>
+                    <h4 style="color:var(--branco)">Carrinho Vazio</h4>
                     <p class="">Adicione alguns filmes ao seu carrinho!</p>
-                    <a href="/catalogo" class="">Ver Catálogo</a>
+                    <a href="/catalogo" class="catalogo">Ver Catálogo</a>
                 </div>
             `;
         }

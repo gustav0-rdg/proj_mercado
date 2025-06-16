@@ -47,19 +47,19 @@
                         <span class="product__price"></span>
                     </div>
                     
-                    <button class="carrinho__botao-finalizar">
+                    <button class="carrinho__botao-finalizar-compra">
                         Confirmar compra
                     </button>
                     <!-- Formulário para resgatar endereço do cliente -->
                     <form action="/add/endereco" method="post">
-                        <input type="text" name="cep" id="cep" class="carrinho__botao-finalizar" placeholder="cep">
+                        <input type="text" name="cep" id="cep" class="carrinho__botao-finalizar-cep" placeholder="cep">
                         <input type="text" name="cidade" id="cidade" class="carrinho__botao-finalizar" readonly placeholder="cidade">
                         <input type="text" placeholder="logradouro" name="logradouro" id="logradouro" class="carrinho__botao-finalizar" readonly>
                         <input type="text" name="bairro" id="bairro" placeholder="bairro" class="carrinho__botao-finalizar" readonly>
                         <input type="text" placeholder="estado" name="estado" id="estado" class="carrinho__botao-finalizar" readonly>
                         <div class="cep__actions">
-                            <button type="button" id="buscarCep" class="carrinho__botao-finalizar" disabled>Buscar</button>
-                            <button type="submit" id="salvarCep" class="carrinho__botao-finalizar" disabled>Salvar</button>
+                            <button type="button" id="buscarCep" class="carrinho__botao-finalizar-compra" disabled>Buscar</button>
+                            <button type="submit" id="salvarCep" class="carrinho__botao-finalizar-compra" disabled>Salvar</button>
                         </div>
                     </form>
                 </aside>
