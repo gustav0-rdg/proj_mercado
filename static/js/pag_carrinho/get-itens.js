@@ -1,14 +1,12 @@
 document.addEventListener('DOMContentLoaded', async function(){
     try {
         const response = await fetch("/carrinho"); 
-        console.log('Response status:', response.status);
         
         if (!response.ok) {
             throw new Error(`Erro HTTP: ${response.status}`);
         }
         
         const data = await response.json();
-        console.log('Dados recebidos:', data);
         
         const itensList = document.querySelector(".carrinho__itens");
         if (!itensList) {
