@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async function(){
                 valorTotal = valorTotal + element.preco * element.quantidade;
                 contagemProduto += element.quantidade;
                 productCount.textContent = `${contagemProduto}`;
-                value.textContent = `R$ ${valorTotal}`
+                value.textContent = `R$ ${valorTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
                 item.innerHTML = `
                         <img src="${element.img_1}" alt="${element.nome_filme}" class="carrinho__item-imagem">
                         
