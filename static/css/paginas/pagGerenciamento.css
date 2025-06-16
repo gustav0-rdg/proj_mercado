@@ -248,6 +248,10 @@ body {
     opacity: 0.8;
 }
 
+.disabled{
+    background-color: #d7d7d7be;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .gerenciamento__title {

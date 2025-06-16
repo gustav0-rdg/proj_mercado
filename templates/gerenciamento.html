@@ -6,6 +6,7 @@
     <title>Gerenciamento - Disco Mágico</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/paginas/pagGerenciamento.css">
     <link rel="stylesheet" href="/static/css/global.css">
 </head>
 <body>
@@ -21,37 +22,42 @@
                 <!-- Card para Adicionar Filme -->
                 <div class="col-lg-6 col-md-12">
                     <div class="gerenciamento__card">
-                        <form class="gerenciamento__form" method="POST" action="{{ url_for('adicionar_filme') }}" enctype="multipart/form-data">
+                        <form class="gerenciamento__form" method="POST" action="/">
                             
                             <!-- Título do Filme -->
                             <div class="gerenciamento__form-group">
                                 <input 
                                     type="text" 
                                     name="titulo" 
+                                    id="titulo"
                                     class="gerenciamento__input" 
                                     placeholder="Título do filme"
-                                    value="{{ filme.titulo if filme else '' }}"
                                     required
                                 >
                             </div>
 
                             <!-- Categorias -->
                             <div class="gerenciamento__categories">
-                                <input 
-                                    type="text" 
-                                    name="titulo" 
-                                    class="gerenciamento__input" 
-                                    placeholder="Categoria Principal"
+
+                                <select 
+                                    name="categoria_principal" 
+                                    class="gerenciamento__select" 
+                                    onchange="loadFilmeData(this.value)"
                                     required
+                                    id="selectCategoria1"
                                 >
+                                    <option value="">-- Selecione uma categoria --</option>
+                                </select>
                                     
-                                <input 
-                                    type="text" 
-                                    name="titulo" 
-                                    class="gerenciamento__input" 
-                                    placeholder="Categoria Secundária"
+                                <select 
+                                    name="categoria_secundaria" 
+                                    class="gerenciamento__select" 
+                                    onchange="loadFilmeData(this.value)"
                                     required
+                                    id="selectCategoria2"
                                 >
+                                    <option value="">-- Selecione uma categoria --</option>
+                                </select>
                             </div>
 
                             <!-- Sinopse -->
@@ -61,7 +67,8 @@
                                     class="gerenciamento__textarea" 
                                     placeholder="Sinopse"
                                     required
-                                >{{ filme.sinopse if filme else '' }}</textarea>
+                                    id="sinopse"
+                                >texto aqui jinja</textarea>
                             </div>
 
                             <!-- Preço -->
@@ -74,7 +81,8 @@
                                     placeholder="0,00"
                                     step="0.01"
                                     min="0"
-                                    value="{{ filme.preco if filme else '' }}"
+                                    value=""
+                                    id="preco"
                                     required
                                 >
                             </div>
@@ -87,6 +95,7 @@
                                     name="imagem1" 
                                     class="gerenciamento__file-input" 
                                     accept="image/*"
+                                    id="img1"
                                     required
                                 >
                             </div>
@@ -98,19 +107,17 @@
                                     name="imagem2" 
                                     class="gerenciamento__file-input" 
                                     accept="image/*"
+                                    id="img2"
+                                    required
                                 >
                             </div>
 
-                            <!-- Campos ocultos para categorias -->
-                            <input type="hidden" name="categoria_principal" id="categoria_principal" value="1">
-                            <input type="hidden" name="categoria_secundaria" id="categoria_secundaria" value="0">
-
                             <!-- Botões de Ação -->
                             <div class="gerenciamento__actions">
-                                <button type="submit" class="gerenciamento__btn gerenciamento__btn--primary">
+                                <button type="submit" class="gerenciamento__btn gerenciamento__btn--primary" id="btnSubmit">
                                     Adicionar
                                 </button>
-                                <button type="reset" class="gerenciamento__btn gerenciamento__btn--secondary">
+                                <button type="reset" class="gerenciamento__btn gerenciamento__btn--secondary" id="btnClear">
                                     Limpar
                                 </button>
                             </div>
@@ -121,7 +128,7 @@
                 <!-- Card para Editar/Excluir Filme -->
                 <div class="col-lg-6 col-md-12">
                     <div class="gerenciamento__card">
-                        <form class="gerenciamento__form" method="POST" action="{{ url_for('editar_filme') }}" enctype="multipart/form-data">
+                        <form class="gerenciamento__form" method="POST" action="">
                             
                             <!-- Seleção de Filme -->
                             <div class="gerenciamento__form-group">
@@ -129,14 +136,10 @@
                                     name="filme_id" 
                                     class="gerenciamento__select" 
                                     onchange="loadFilmeData(this.value)"
+                                    id="selectFilme"
                                     required
                                 >
-                                    <option value="">-- Selecione um filme --</option>
-                                    {% for filme in filmes %}
-                                    <option value="{{ filme.id }}" {% if filme_selecionado and filme_selecionado.id == filme.id %}selected{% endif %}>
-                                        {{ filme.titulo }}
-                                    </option>
-                                    {% endfor %}
+                                    <option value="placeholder">-- Selecione um filme --</option>
                                 </select>
                             </div>
 
@@ -145,40 +148,47 @@
                                 <input 
                                     type="text" 
                                     name="titulo" 
-                                    class="gerenciamento__input" 
+                                    class="gerenciamento__input disabled" 
                                     placeholder="Título do filme"
-                                    value="{{ filme_selecionado.titulo if filme_selecionado else '' }}"
+                                    value=""
                                     id="edit_titulo"
+                                    disabled
                                 >
                             </div>
 
                             <!-- Categorias -->
                             <div class="gerenciamento__categories">
-                                <input 
-                                    type="text" 
-                                    name="titulo" 
-                                    class="gerenciamento__input" 
-                                    placeholder="Categoria Principal"
+                                <select 
+                                    name="categoria_principal" 
+                                    class="gerenciamento__select disabled" 
+                                    onchange="loadFilmeData(this.value)"
                                     required
+                                    disabled
                                 >
+                                    <option value="">-- Selecione uma categoria --</option>
+                                </select>
                                     
-                                <input 
-                                    type="text" 
-                                    name="titulo" 
-                                    class="gerenciamento__input" 
-                                    placeholder="Categoria Secundária"
+                                <select 
+                                    name="categoria_secundaria" 
+                                    class="gerenciamento__select disabled" 
+                                    onchange="loadFilmeData(this.value)"
                                     required
+                                    disabled
                                 >
+                                    <option value="">-- Selecione uma categoria --</option>
+                                </select>
                             </div>
 
                             <!-- Sinopse -->
                             <div class="gerenciamento__form-group">
                                 <textarea 
                                     name="sinopse" 
-                                    class="gerenciamento__textarea" 
+                                    class="gerenciamento__textarea disabled" 
                                     placeholder="Sinopse"
                                     id="edit_sinopse"
-                                >{{ filme_selecionado.sinopse if filme_selecionado else '' }}</textarea>
+                                    required
+                                    disabled
+                                >sinopse aq</textarea>
                             </div>
 
                             <!-- Preço -->
@@ -187,12 +197,14 @@
                                 <input 
                                     type="number" 
                                     name="preco" 
-                                    class="gerenciamento__input gerenciamento__price-input" 
+                                    class="gerenciamento__input gerenciamento__price-input disabled" 
                                     placeholder="0,00"
                                     step="0.01"
                                     min="0"
-                                    value="{{ filme_selecionado.preco if filme_selecionado else '' }}"
+                                    value=""
                                     id="edit_preco"
+                                    required
+                                    disabled
                                 >
                             </div>
 
@@ -200,26 +212,24 @@
                             <div class="gerenciamento__file-group">
                                 <label class="gerenciamento__file-label">Imagem 1</label>
                                 <input 
-                                    type="file" 
+                                    type="url" 
                                     name="imagem1" 
                                     class="gerenciamento__file-input" 
-                                    accept="image/*"
+                                    placeholder="https://exemplo.com/imagem1.jpg"
+                                    required
                                 >
                             </div>
 
                             <div class="gerenciamento__file-group">
                                 <label class="gerenciamento__file-label">Imagem 2</label>
                                 <input 
-                                    type="file" 
+                                    type="url" 
                                     name="imagem2" 
                                     class="gerenciamento__file-input" 
-                                    accept="image/*"
+                                    placeholder="https://exemplo.com/imagem2.jpg"
+                                    required
                                 >
                             </div>
-
-                            <!-- Campos ocultos para categorias -->
-                            <input type="hidden" name="categoria_principal" id="edit_categoria_principal" value="{{ '1' if filme_selecionado and filme_selecionado.categoria_principal else '0' }}">
-                            <input type="hidden" name="categoria_secundaria" id="edit_categoria_secundaria" value="{{ '1' if filme_selecionado and filme_selecionado.categoria_secundaria else '0' }}">
 
                             <!-- Botões de Ação -->
                             <div class="gerenciamento__actions">
@@ -242,5 +252,6 @@
         
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/pag_gerenciamento/get_filmes.js"></script>
 </body>
 </html>

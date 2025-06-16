@@ -132,6 +132,57 @@ def add_endereco():
     
 @app.route("/gerenciamento")
 def pag_gerenciamento():
-    if session['id_usuario']
+    # if (Usuario.isAdm(session['id_usuario'])):
+    return render_template('gerenciamento.html')
+    # else:
+    #     return redirect("/")
+
+@app.route("/add/filme", methods = ["POST"])
+def add_filme():
+    titulo = request.form.get('titulo')
+    categoria_principal = request.form.get("categoria_principal")
+    categoria_secundaria = request.form.get("categoria_secundaria")
+    sinopse = request.form.get("sinopse")
+    preco = request.form.get("preco")
+    img1 = request.form.get("imagem1")
+    img2 = request.form.get("imagem2")
+
+@app.route("/view/categorias")
+def api_categorias():
+    categorias = Filme.categorias()
+
+    if categorias:
+        return jsonify(categorias)
+    else:
+        erro = {
+            'erro': 'Erro ao requisitar as categorias!'
+        }
+        return jsonify(erro)
+
+@app.route("/view/filme/<id>")
+def api_filme(id):
+    filme = Filme.exibir(id)
+
+    if filme:
+        return jsonify(filme)
+    else:
+        erro = {
+            'erro': 'Não foi encontrado nenhum filme!'
+        }
+        print(f'Erro ao achar filme com id {id}')
+        return jsonify(erro)
+
+@app.route("/view/filmes")
+def api_filmes():
+    filmes = Filme.exibirTodos()
+
+    if filmes:
+        return jsonify(filmes)
+    else:
+        erro = {
+            'erro': 'Não foi encontrado nenhum filme!'
+        }
+        print(f'Erro ao achar filme com id {id}')
+        return jsonify(erro)
 
 app.run(host="0.0.0.0", port=8080, debug=True)
