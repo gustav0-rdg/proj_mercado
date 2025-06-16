@@ -31,9 +31,11 @@ def cadastrar_usuario():
     senha = request.form.get('senha')
     
     telefone_limpo = re.sub(r'\D', '', telefone)
-    Usuario.cadastrar(nome, usuario, email, telefone_limpo, senha)
-    return redirect("/login")
-
+    check = Usuario.cadastrar(nome, usuario, email, telefone_limpo, senha)
+    if check:
+        return redirect("/login")
+    else:
+        return redirect("/cadastro")
   
 @app.route("/login")
 def pag_login():
@@ -43,17 +45,18 @@ def pag_login():
 def logar_user():
     usuario = request.form.get('usuario')
     senha = request.form.get('senha')
-    check = Usuario.login(usuario, senha)
+    email = request.form.get('email')
+    check = Usuario.login(usuario,email, senha)
     if check:
         return redirect("/")
     else:
         return redirect("/login")
 
+
 @app.route("/catalogo")
 def pag_catalogo():
     categorias = Filme.categorias()
     filmes = Filme.exibirTodos()
-    print(filmes)
     return render_template('catalogo.html', filmes = filmes, categorias = categorias, categoria_atual="todas")
 
 @app.route("/filme/<id>", methods=["GET"])

@@ -30,7 +30,7 @@ class Usuario:
         finally:
             conexao.close()
 
-    def login(usuario, senha):
+    def login(usuario, email ,senha):
 
         senha = sha256(str(senha).encode()).hexdigest()
 
@@ -39,8 +39,12 @@ class Usuario:
 
         try:
 
-            sql = "SELECT * FROM tb_usuarios WHERE BINARY usuario = %s and BINARY senha = %s"
-            cursor.execute(sql, (usuario, senha))
+            sql = """
+            SELECT * FROM tb_usuarios 
+            WHERE (BINARY usuario = %s AND BINARY senha = %s) 
+            OR (BINARY email = %s AND BINARY senha = %s)
+            """
+            cursor.execute(sql, (usuario, senha, email, senha))
             newUser = cursor.fetchone()
 
             if newUser:
