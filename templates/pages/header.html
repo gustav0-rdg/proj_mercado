@@ -3,7 +3,9 @@
     <div class="row align-items-center">
         <section class="col-6 col-md-4">
             <div class="d-flex align-items-center gap-3">
-                <a href="/" class="header__logo">DM</a>
+                <a href="/" class="header__logo">
+                    <img src="../../static/img/logo-disco-magico-vetor.svg" alt="Logo Disco Mágico">
+                </a>
                 <button class="header__menu-toggle" id="menuToggle" aria-label="Abrir menu">
                     <i class="header__icon   fa-solid fa-bars fa-lg"></i>
                 </button>
@@ -16,12 +18,12 @@
                 </a>
                 {% if session.nome %}
                 <a class="header__profile" href="/logoff">
-                    <span class="profile__text">{{ session.nome }}</span>
+                    <!-- <span class="profile__text">{{ session.nome }}</span> -->
                     <i class="header__icon   fa-solid fa-circle-user fa-lg"></i>
                 </a>
                 {% else %}
                 <a class="header__profile" href="/login">
-                    <span class="profile__text">Login</span>
+                    <!-- <span class="profile__text">Login</span> -->
                     <i class="header__icon   fa-solid fa-circle-user fa-lg"></i>
                 </a>
                 {% endif %}

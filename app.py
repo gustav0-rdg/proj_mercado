@@ -110,7 +110,6 @@ def exibir_filmesCat(id):
         return redirect("/catalogo")
     return render_template('catalogo.html', filmes = filmes, categorias = categorias)
 
-<<<<<<< HEAD
 @app.route("/aside")
 def componente_aside():
     return render_template('/pages/aside.html')
@@ -127,8 +126,7 @@ def componente_header():
 def componente_footer():
     return render_template('/pages/footer.html')
 
-app.run(host="0.0.0.0", port=8080)
-=======
+
 @app.route("/add/endereco", methods=["POST"] )
 def add_endereco():
     cep = request.form.get("cep")
@@ -150,4 +148,3 @@ def add_endereco():
     return redirect("/exibir/carrinho")
     
 app.run(host="0.0.0.0", port=8080, debug=True)
->>>>>>> 39d7214fe292aeb7cdffc322c482af539ad550c5
