@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disco Mágico - Carrinho</title>
-    <link rel="stylesheet" href="/static/css/global.css">
+    <title>Carrinho - Unicorn DVDs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/paginas/pagCarrinho.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="../static/css/componentes-novo.css">
 
     <!-- Links do Bootstrap -->
@@ -19,33 +21,61 @@
     <!-- Links do Font Awesome -->
     <script src="https://kit.fontawesome.com/121b8fc5c0.js" crossorigin="anonymous" defer></script>
 
+=======
+    <link rel="stylesheet" href="/static/css/global.css">
+>>>>>>> 39d7214fe292aeb7cdffc322c482af539ad550c5
 </head>
 <body>
-    <header class="header__container">
-        
-    </header>
     <main class="carrinho">
-        <section class="carrinho__itens">
-            <div class="carrinho__item">
-                <div class="carrinho__item-info">
+        <div class="carrinho__container">
+            <div class="carrinho__content">
+                <!-- Seção dos itens do carrinho -->
+                <section class="carrinho__itens">
                     
-                </div>
-                <div class="carrinho__item-actions">
+                </section>
 
-                </div>
+                <!-- Seção do resumo -->
+                <aside class="carrinho__resumo">
+                    <div class="carrinho__resumo-item">
+                        <span>Número total de produtos:</span>
+                        <span class="product__count"></span>
+                    </div>
+                    
+                    <div class="carrinho__resumo-item carrinho__resumo-total">
+                        <span>Total a pagar:</span>
+                        <span class="product__price"></span>
+                    </div>
+                    
+                    <button class="carrinho__botao-finalizar">
+                        Confirmar compra
+                    </button>
+                    <form action="/add/endereco" method="post">
+                        <input type="text" name="cep" id="cep" class="carrinho__botao-finalizar" placeholder="cep">
+                        <input type="text" name="cidade" id="cidade" class="carrinho__botao-finalizar" readonly placeholder="cidade">
+                        <input type="text" placeholder="logradouro" name="logradouro" id="logradouro" class="carrinho__botao-finalizar" readonly>
+                        <input type="text" name="bairro" id="bairro" placeholder="bairro" class="carrinho__botao-finalizar" readonly>
+                        <input type="text" placeholder="estado" name="estado" id="estado" class="carrinho__botao-finalizar" readonly>
+                        <div class="cep__actions">
+                            <button type="button" id="buscarCep" class="carrinho__botao-finalizar" disabled>Buscar</button>
+                            <button type="submit" id="salvarCep" class="carrinho__botao-finalizar" disabled>Salvar</button>
+                        </div>
+                    </form>
+                </aside>
             </div>
-        </section>
-        <section class="carrinho__pedido">
-
-        </section>
+        </div>
     </main>
-    <footer class="footer__container">
-
-    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/static/js/pag_carrinho/get-cep.js"></script>
+    <script src="/static/js/themeToggle/theme-toggle.js"></script>
     <script src="/static/js/pag_carrinho/get-itens.js"></script>
+<<<<<<< HEAD
     <script src="../static/js/loaders/aside-loader.js"></script>
     <script src="../static/js/loaders/header-loader.js"></script>
     <script src="../static/js/loaders/footer-loader.js"></script>
+=======
+    <script src="/static/js/pag_carrinho/get-user-cep.js"></script>
+    
+>>>>>>> 39d7214fe292aeb7cdffc322c482af539ad550c5
 </body>
 <script id="aside__funcionalidades"></script>
 </html>

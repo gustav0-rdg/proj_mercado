@@ -39,7 +39,8 @@
         <section class="main__destaque">
             <div class="main__destaque-container">
                 <figure class="main__destaque-banner">
-                    <img class="main__destaque-bannerImg" src="{{destaque.img_1}}" alt="banner">
+                    <img class="main__destaque-bannerImg" src="{{destaque.img_1}}" alt="banner" data-index="1">
+                    <img class="main__destaque-bannerImg active" src="{{destaque.img_2}}" alt="banner" data-index="2">
                 </figure>
 
                 <ul class="main__destaque-ul">
@@ -55,18 +56,21 @@
         </section>
 
         <section class="main__ranking">
-            <div class="main__ranking-containerRanking">
+            <div class="main__ranking-container">
 
                 <div class="main__ranking-titulos">
                     <h1 class="main__ranking-titulo">Top 5 filmes da semana:</h1>
                     <li class="main__ranking-a"><a class="main__ranking-a" href="/catalogo">Ver mais>></a></li>
                 </div>
+                
                 <div class="main__ranking-filmes-divConteiner">
 
                 {% for filme in filmes %}
                         <div class="main__ranking-filmes-div">
                             <figure class="main__ranking-filmes">
-                                <img class="main__ranking-filme" src="{{filme.img_1}}" alt="Filme-ranking">
+                                <img class="main__ranking-filme" src="{{filme.img_1}}" alt="Filme-ranking" data-index="1">
+                                <img class="main__ranking-filme active" src="{{filme.img_2}}" alt="Filme-ranking" data-index="2">
+
                             </figure>
 
                             <ul class="main__ranking-filmes-avaliacao">
@@ -74,7 +78,7 @@
                                 <li class="main__ranking-filmes-categoria">{{filme.categoria}}</li>
                                 <li class="main__ranking-filmes-avaliacaoStar">
                                     {% for x in range(4)%}
-                                    <i class="fa-solid fa-star" style="color: var(--branco);"></i>{% endfor %}                                
+                                    <i class="fa-solid fa-star main__ranking-filmes-avaliacaoStar" style="color: var(--branco);"></i>{% endfor %}                                
                                 </li>
                             </ul>
                         </div>
@@ -85,6 +89,7 @@
 
     </main>
 
+<<<<<<< HEAD:templates/index.html
     <footer class="footer__container">
         
     </footer>
@@ -98,6 +103,14 @@
     <script src="../static/js/loaders/aside-loader.js"></script>
     <script src="../static/js/loaders/header-loader.js"></script>
     <script src="../static/js/loaders/footer-loader.js"></script>
+=======
+    <footer class="footer__container"></footer>
+
+
+    <script src="/static/js/themeToggle/theme-toggle.js"></script>
+    <script src="https://kit.fontawesome.com/2fcc2a2373.js" crossorigin="anonymous"></script>
+    <script src="/static/js/pag_inicial/img-carousel.js"></script>
+>>>>>>> 39d7214fe292aeb7cdffc322c482af539ad550c5:templates/inicial.html
 </body>
 
 <script id="aside__funcionalidades"></script>

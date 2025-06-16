@@ -15,23 +15,24 @@
     <main class="main__cadastro-container">
         
         <form class="form__cadastro" action="/cadastrar/usuario" method="post">
-            <h1 class="titulo_cadastro">CADASTRE-SE</h1>
-            <div class="form__cadastro-name">
-                <input type="text" name="nome" class="input__cadastro-name input__cadastro-names " placeholder="Nome(Ex: Alicia)">
-                <input type="text" name="usuario" class="input__cadastro-lastName input__cadastro-names " placeholder="Sobrenome(Ex: Pavão)">
-            </div>
+            <h1 class="titulo__cadastro">CADASTRE-SE</h1>
+        
+            <input type="text" name="nome" class="input__cadastro-name input__cadastro " placeholder="Nome Completo(Ex: Alicia Pavão)">
 
+            <input type="text" name="usuario" class="input__cadastro-usuario input__cadastro " placeholder="Nome de usuario(Ex: alicia_123)">
             <input type="text" name="email" class="input__cadastro-email input__cadastro" placeholder="Email(Ex: aliciapavao@gmil.com)">
-            <input type="text" name="telefone" class="input__cadastro-tel input__cadastro" placeholder="Telefone(Ex: 00.12345-6789)">
+            <input type="text" name="telefone" class="input__cadastro-tel input__cadastro" id="telefone" placeholder="Telefone(Ex: 00.12345-6789)">
 
-            <input type="text" name="senha" class="input__cadastro-senha input__cadastro" placeholder="Senha(Ex: 12345678)">
-            <input type="text" name="rep_senha" class="input__cadastro-senhaConfirm input__cadastro" placeholder="Confirmar senha(Ex: 12345678)">
+            <input type="password" name="senha" id="senha" class="input__cadastro-senha input__cadastro" placeholder="Senha(Ex: 12345678)">
+            <input type="password" name="rep_senha" id="repSenha" class="input__cadastro-senhaConfirm input__cadastro" placeholder="Confirmar senha(Ex: 12345678)">
 
-            <button class="btn__cadastrar">CADASTRAR</button>
+            <button class="btn__cadastrar" disabled>CADASTRAR</button>
 
             <p class="text__cadastro">Já possui um cadastro? <a class="link__cadastro" href="/login">Clique aqui</a>!</p>
         </form>
     </main>
     <script src="/static/js/themeToggle/theme-toggle.js"></script>
+    <script src="/static/js/forms/valida-telefone.js"></script>
+    <script src="/static/js/forms/valida-senha.js"></script>
 </body>
 </html>

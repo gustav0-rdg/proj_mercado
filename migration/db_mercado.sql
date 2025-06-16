@@ -1,4 +1,4 @@
-		CREATE DATABASE IF NOT EXISTS db_mercado;
+CREATE DATABASE IF NOT EXISTS db_mercado;
 		USE db_mercado;
 
 		CREATE TABLE tb_usuarios(
@@ -81,12 +81,23 @@
 			id_usuario int not null,
 			id_carrinho int not null,
 			data_pedido datetime,
-			estado ENUM("PAGO", "PENDENTE", "CANCELADO", "ENTREGUE") not null,
+			estado ENUM('PAGO', 'PENDENTE', 'CANCELADO', 'ENTREGUE') not null,
 			total DECIMAL(10,2) not null,
 			FOREIGN KEY (id_carrinho) REFERENCES tb_carrinho(id_carrinho),
 			FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id_usuario)
 		);
 
+		CREATE TABLE IF NOT EXISTS tb_enderecos(
+			id_endereco int auto_increment primary key,
+            id_usuario int not null,
+            cep varchar(14) not null,
+            cidade varchar(40) not null,
+            logradouro varchar(100) not null,
+            bairro varchar(50) not null,
+            estado varchar(30) not null,
+			FOREIGN KEY(id_usuario) REFERENCES tb_usuarios(id_usuario)
+        );
+        
 		INSERT INTO tb_categorias(categoria)VALUES('Ação'),('Drama'),('Comédia'),('Terror'),('Suspense'),('Romance'),('Ficção Cíentifica'),('Fantasia'),('Infantil'),('Aventura'),
 		('Documentário'),('Musical'),('Mistério');
 		-- Filme
@@ -149,44 +160,43 @@
 		('É Assim que Acaba', 21.99, 6, 2, 'Lily Bloom enfrenta desafios em um relacionamento abusivo e precisa tomar decisões difíceis para encontrar a felicidade.');
 
 		-- Inserindo os links das imagens
-		INSERT INTO tb_fotos (id_filme, img_1, img_2, img_banner) VALUES
-		(1, 'https://br.web.img2.acsta.net/medias/nmedia/18/91/54/04/20150812.jpg', 'https://br.web.img2.acsta.net/medias/nmedia/18/91/54/04/20150812.jpg', 'https://br.web.img2.acsta.net/medias/nmedia/18/91/54/04/20150812.jpg'),
-		(2, 'https://a-static.mlcdn.com.br/1500x1500/dvd-barbie-escola-de-princesas-universal-pictures-2017/nocnoceua/aub00511gsls/6e159f830c8a0674d03791e1ff755e47.jpeg', 'https://a-static.mlcdn.com.br/1500x1500/dvd-barbie-escola-de-princesas-universal-pictures-2017/nocnoceua/aub00511gsls/6e159f830c8a0674d03791e1ff755e47.jpeg', 'https://a-static.mlcdn.com.br/1500x1500/dvd-barbie-escola-de-princesas-universal-pictures-2017/nocnoceua/aub00511gsls/6e159f830c8a0674d03791e1ff755e47.jpeg'),
-		(3, 'https://br.web.img3.acsta.net/medias/nmedia/18/92/72/77/20214259.jpg', 'https://br.web.img3.acsta.net/medias/nmedia/18/92/72/77/20214259.jpg', 'https://br.web.img3.acsta.net/medias/nmedia/18/92/72/77/20214259.jpg'),
-		(4, 'https://m.media-amazon.com/images/S/pv-target-images/c344ff9ae2a6e50c63f7e329e4fb689a79d67a456662bf5074b194532542b288.jpg', 'https://m.media-amazon.com/images/S/pv-target-images/c344ff9ae2a6e50c63f7e329e4fb689a79d67a456662bf5074b194532542b288.jpg', 'https://m.media-amazon.com/images/S/pv-target-images/c344ff9ae2a6e50c63f7e329e4fb689a79d67a456662bf5074b194532542b288.jpg'),
-		(5, 'https://m.media-amazon.com/images/I/71w45HNSCwL._AC_UF894,1000_QL80_.jpg', 'https://m.media-amazon.com/images/I/71w45HNSCwL._AC_UF894,1000_QL80_.jpg', 'https://m.media-amazon.com/images/I/71w45HNSCwL._AC_UF894,1000_QL80_.jpg'),
-		(6, 'https://upload.wikimedia.org/wikipedia/pt/4/46/Moana_movie_poster_p_2016.jpg', 'https://upload.wikimedia.org/wikipedia/pt/4/46/Moana_movie_poster_p_2016.jpg', 'https://upload.wikimedia.org/wikipedia/pt/4/46/Moana_movie_poster_p_2016.jpg'),
-		(7, 'https://br.web.img2.acsta.net/medias/nmedia/18/94/25/09/20455744.jpg', 'https://br.web.img2.acsta.net/medias/nmedia/18/94/25/09/20455744.jpg', 'https://br.web.img2.acsta.net/medias/nmedia/18/94/25/09/20455744.jpg'),
-		(8, 'https://m.media-amazon.com/images/S/pv-target-images/4e67efbe61a1cd52df285b95332d349a919888bab95c880b550bb22934afaaa7.jpg', 'https://m.media-amazon.com/images/S/pv-target-images/4e67efbe61a1cd52df285b95332d349a919888bab95c880b550bb22934afaaa7.jpg', 'https://m.media-amazon.com/images/S/pv-target-images/4e67efbe61a1cd52df285b95332d349a919888bab95c880b550bb22934afaaa7.jpg'),
-		(9, 'https://imusic.b-cdn.net/images/item/original/279/5050582702279.jpg?coraline-2009-coraline-dvd&class=scaled&v=1256830051', 'https://imusic.b-cdn.net/images/item/original/279/5050582702279.jpg?coraline-2009-coraline-dvd&class=scaled&v=1256830051', 'https://imusic.b-cdn.net/images/item/original/279/5050582702279.jpg?coraline-2009-coraline-dvd&class=scaled&v=1256830051'),
-		(10, 'https://m.media-amazon.com/images/I/91Rh56HCoNL._AC_UF1000,1000_QL80_.jpg', 'https://m.media-amazon.com/images/I/91Rh56HCoNL._AC_UF1000,1000_QL80_.jpg', 'https://m.media-amazon.com/images/I/91Rh56HCoNL._AC_UF1000,1000_QL80_.jpg'),
-		(11, 'https://upload.wikimedia.org/wikipedia/pt/e/e5/Frozen_2013.png', 'https://upload.wikimedia.org/wikipedia/pt/e/e5/Frozen_2013.png', 'https://upload.wikimedia.org/wikipedia/pt/e/e5/Frozen_2013.png'),
-		(12, 'https://br.web.img3.acsta.net/medias/nmedia/18/92/91/56/20224905.jpg', 'https://br.web.img3.acsta.net/medias/nmedia/18/92/91/56/20224905.jpg', 'https://br.web.img3.acsta.net/medias/nmedia/18/92/91/56/20224905.jpg'),
-		(13, 'https://br.web.img3.acsta.net/medias/nmedia/18/90/29/80/20109874.jpg', 'https://br.web.img3.acsta.net/medias/nmedia/18/90/29/80/20109874.jpg', 'https://br.web.img3.acsta.net/medias/nmedia/18/90/29/80/20109874.jpg'),
-		(14, 'https://m.media-amazon.com/images/M/MV5BNDlhMmIzMzktZTExZi00MzFiLWJkNDUtYzc2ZmViMGI5M2E5XkEyXkFqcGc@._V1_.jpg', 'https://m.media-amazon.com/images/M/MV5BNDlhMmIzMzktZTExZi00MzFiLWJkNDUtYzc2ZmViMGI5M2E5XkEyXkFqcGc@._V1_.jpg', 'https://m.media-amazon.com/images/M/MV5BNDlhMmIzMzktZTExZi00MzFiLWJkNDUtYzc2ZmViMGI5M2E5XkEyXkFqcGc@._V1_.jpg'),
-		(15, 'https://upload.wikimedia.org/wikipedia/pt/c/c9/Barbie_Fairy_Secret.png', 'https://upload.wikimedia.org/wikipedia/pt/c/c9/Barbie_Fairy_Secret.png', 'https://upload.wikimedia.org/wikipedia/pt/c/c9/Barbie_Fairy_Secret.png'),
-		(16, 'https://br.web.img2.acsta.net/medias/nmedia/18/91/33/59/20140728.jpg', 'https://br.web.img2.acsta.net/medias/nmedia/18/91/33/59/20140728.jpg', 'https://br.web.img2.acsta.net/medias/nmedia/18/91/33/59/20140728.jpg'),
-		(17, 'https://br.web.img3.acsta.net/pictures/210/299/21029996_20130821205722213.jpg', 'https://br.web.img3.acsta.net/pictures/210/299/21029996_20130821205722213.jpg', 'https://br.web.img3.acsta.net/pictures/210/299/21029996_20130821205722213.jpg'),
-		(18, 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSgq4HgefMkbAAyUwlTjuY9yBSubI08uAW5iIqIH5cY3MdfGORN', 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSgq4HgefMkbAAyUwlTjuY9yBSubI08uAW5iIqIH5cY3MdfGORN', 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSgq4HgefMkbAAyUwlTjuY9yBSubI08uAW5iIqIH5cY3MdfGORN'),
-		(19, 'https://br.web.img2.acsta.net/medias/nmedia/18/89/43/82/20052140.jpg', 'https://br.web.img2.acsta.net/medias/nmedia/18/89/43/82/20052140.jpg', 'https://br.web.img2.acsta.net/medias/nmedia/18/89/43/82/20052140.jpg'),
-		(20, 'https://www.cinebelasartes.com.br/wp-content/uploads/2016/03/ILHA-DO-MEDO.jpg', 'https://www.cinebelasartes.com.br/wp-content/uploads/2016/03/ILHA-DO-MEDO.jpg', 'https://www.cinebelasartes.com.br/wp-content/uploads/2016/03/ILHA-DO-MEDO.jpg'),
-		(21, 'https://www.sonypictures.com.br/sites/brazil/files/2023-06/1400x2100.jpg', 'https://www.sonypictures.com.br/sites/brazil/files/2023-06/1400x2100.jpg', 'https://www.sonypictures.com.br/sites/brazil/files/2023-06/1400x2100.jpg'),
-		(22, 'https://m.media-amazon.com/images/I/91UQCBxB+cL._AC_UF894,1000_QL80_.jpg', 'https://m.media-amazon.com/images/I/91UQCBxB+cL._AC_UF894,1000_QL80_.jpg', 'https://m.media-amazon.com/images/I/91UQCBxB+cL._AC_UF894,1000_QL80_.jpg'),
-		(23, 'https://m.media-amazon.com/images/S/pv-target-images/d40e2853996d20ff038e1a9bb5cad0c2bd75360b123a8daae467cd34c60c4e36.jpg', 'https://m.media-amazon.com/images/S/pv-target-images/d40e2853996d20ff038e1a9bb5cad0c2bd75360b123a8daae467cd34c60c4e36.jpg', 'https://m.media-amazon.com/images/S/pv-target-images/d40e2853996d20ff038e1a9bb5cad0c2bd75360b123a8daae467cd34c60c4e36.jpg'),
-		(24, 'https://m.media-amazon.com/images/S/pv-target-images/7d50a779768ec84cd1479efd04f59c1c3c73c8891576cc3d6ba4e124b19fc8f4.jpg', 'https://m.media-amazon.com/images/S/pv-target-images/7d50a779768ec84cd1479efd04f59c1c3c73c8891576cc3d6ba4e124b19fc8f4.jpg', 'https://m.media-amazon.com/images/S/pv-target-images/7d50a779768ec84cd1479efd04f59c1c3c73c8891576cc3d6ba4e124b19fc8f4.jpg'),
-		(25, 'https://wp.ufpel.edu.br/empauta/files/2016/04/BatmanVsSuperman2.jpg', 'https://wp.ufpel.edu.br/empauta/files/2016/04/BatmanVsSuperman2.jpg', 'https://wp.ufpel.edu.br/empauta/files/2016/04/BatmanVsSuperman2.jpg'),
-		(26, 'https://br.web.img2.acsta.net/pictures/17/10/23/19/55/0260439.jpg', 'https://br.web.img2.acsta.net/pictures/17/10/23/19/55/0260439.jpg', 'https://br.web.img2.acsta.net/pictures/17/10/23/19/55/0260439.jpg'),
-		(27, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5QJrkH4M_LZKMXNTcfb5YgjTOpMkJLsYSHA&s','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5QJrkH4M_LZKMXNTcfb5YgjTOpMkJLsYSHA&s','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5QJrkH4M_LZKMXNTcfb5YgjTOpMkJLsYSHA&s'),
-		(28, 'https://br.web.img2.acsta.net/img/61/b3/61b35aa40057cba4f7df23c689d6979e.PNG', 'https://br.web.img2.acsta.net/img/61/b3/61b35aa40057cba4f7df23c689d6979e.PNG', 'https://br.web.img2.acsta.net/img/61/b3/61b35aa40057cba4f7df23c689d6979e.PNG');
-
+INSERT INTO tb_fotos (id_filme, img_1, img_2, img_banner) VALUES
+(1, 'https://br.web.img2.acsta.net/medias/nmedia/18/91/54/04/20150812.jpg', 'https://cinema10.com.br/upload/featuredImage.php?url=https%3A%2F%2Fcinema10.com.br%2Fupload%2Ffilmes%2Ffilmes_1065_shrekaha.png', 'https://br.web.img2.acsta.net/medias/nmedia/18/91/54/04/20150812.jpg'),
+(2, 'https://a-static.mlcdn.com.br/1500x1500/dvd-barbie-escola-de-princesas-universal-pictures-2017/nocnoceua/aub00511gsls/6e159f830c8a0674d03791e1ff755e47.jpeg', 'https://m.media-amazon.com/images/I/81TCWVWMHpL._AC_UF1000,1000_QL80_.jpg', 'https://a-static.mlcdn.com.br/1500x1500/dvd-barbie-escola-de-princesas-universal-pictures-2017/nocnoceua/aub00511gsls/6e159f830c8a0674d03791e1ff755e47.jpeg'),
+(3, 'https://br.web.img3.acsta.net/medias/nmedia/18/92/72/77/20214259.jpg', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe0NQgjJLhohdPtDOMD50GOh4Sf_1kcprtrA&s', 'https://br.web.img3.acsta.net/medias/nmedia/18/92/72/77/20214259.jpg'),
+(4, 'https://m.media-amazon.com/images/S/pv-target-images/c344ff9ae2a6e50c63f7e329e4fb689a79d67a456662bf5074b194532542b288.jpg', 'https://br.web.img3.acsta.net/pictures/22/09/20/15/51/1507365.jpg', 'https://m.media-amazon.com/images/S/pv-target-images/c344ff9ae2a6e50c63f7e329e4fb689a79d67a456662bf5074b194532542b288.jpg'),
+(5, 'https://m.media-amazon.com/images/I/71w45HNSCwL._AC_UF894,1000_QL80_.jpg', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQqXJxTfBE4KJxSsskA_cCZTUalfdsZn1s4A&s', 'https://m.media-amazon.com/images/I/71w45HNSCwL._AC_UF894,1000_QL80_.jpg'),
+(6, 'https://upload.wikimedia.org/wikipedia/pt/4/46/Moana_movie_poster_p_2016.jpg', 'https://www.papodecinema.com.br/wp-content/uploads/2016/12/20200306-poster.webp', 'https://upload.wikimedia.org/wikipedia/pt/4/46/Moana_movie_poster_p_2016.jpg'),
+(7, 'https://br.web.img2.acsta.net/medias/nmedia/18/94/25/09/20455744.jpg', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAlejzfvHP1tE1BDWrxRjmmtOyzFz9mMX1uw&s', 'https://br.web.img2.acsta.net/medias/nmedia/18/94/25/09/20455744.jpg'),
+(8, 'https://m.media-amazon.com/images/S/pv-target-images/4e67efbe61a1cd52df285b95332d349a919888bab95c880b550bb22934afaaa7.jpg', 'https://static.wikia.nocookie.net/disney/images/7/7d/O_Estranho_Mundo_de_Jack_-_P%C3%B4ster_Nacional.jpg/revision/latest/scale-to-width-down/1200?cb=20241029220150&path-prefix=pt-br', 'https://m.media-amazon.com/images/S/pv-target-images/4e67efbe61a1cd52df285b95332d349a919888bab95c880b550bb22934afaaa7.jpg'),
+(9, 'https://imusic.b-cdn.net/images/item/original/279/5050582702279.jpg?coraline-2009-coraline-dvd&class=scaled&v=1256830051', 'https://m.media-amazon.com/images/M/MV5BYzU1YzEwOTEtY2IzNC00ODBhLWEwZTYtMzNmZDdjODBkMTU3XkEyXkFqcGc@._V1_.jpg', 'https://imusic.b-cdn.net/images/item/original/279/5050582702279.jpg?coraline-2009-coraline-dvd&class=scaled&v=1256830051'),
+(10, 'https://m.media-amazon.com/images/I/91Rh56HCoNL._AC_UF1000,1000_QL80_.jpg', 'https://m.media-amazon.com/images/I/9149VZu7-BL.jpg', 'https://m.media-amazon.com/images/I/91Rh56HCoNL._AC_UF1000,1000_QL80_.jpg'),
+(11, 'https://upload.wikimedia.org/wikipedia/pt/e/e5/Frozen_2013.png', 'https://br.web.img2.acsta.net/pictures/210/461/21046189_20131002174340886.jpg', 'https://upload.wikimedia.org/wikipedia/pt/e/e5/Frozen_2013.png'),
+(12, 'https://br.web.img3.acsta.net/medias/nmedia/18/92/91/56/20224905.jpg', 'https://images.tcdn.com.br/img/img_prod/1128052/a_casa_monstro_dvd_original_lacrado_31359_1_7c5b8aec4da0d2466822a8abb1e0f13d.jpg', 'https://br.web.img3.acsta.net/medias/nmedia/18/92/91/56/20224905.jpg'),
+(13, 'https://br.web.img3.acsta.net/medias/nmedia/18/90/29/80/20109874.jpg', 'https://p2.trrsf.com/image/fget/cf/774/0/images.terra.com/2024/11/08/1417321182-ice-age-collision-course-movie-poster.jpg', 'https://br.web.img3.acsta.net/medias/nmedia/18/90/29/80/20109874.jpg'),
+(14, 'https://m.media-amazon.com/images/M/MV5BNDlhMmIzMzktZTExZi00MzFiLWJkNDUtYzc2ZmViMGI5M2E5XkEyXkFqcGc@._V1_.jpg', 'https://static.wikia.nocookie.net/dublagem/images/9/9e/Chapeuzinho_Puc.jpeg/revision/latest?cb=20240906145136&path-prefix=pt-br', 'https://m.media-amazon.com/images/M/MV5BNDlhMmIzMzktZTExZi00MzFiLWJkNDUtYzc2ZmViMGI5M2E5XkEyXkFqcGc@._V1_.jpg'),
+(15, 'https://upload.wikimedia.org/wikipedia/pt/c/c9/Barbie_Fairy_Secret.png', 'https://m.media-amazon.com/images/I/9107sxFJT+L._AC_UF1000,1000_QL80_.jpg', 'https://upload.wikimedia.org/wikipedia/pt/c/c9/Barbie_Fairy_Secret.png'),
+(16, 'https://br.web.img2.acsta.net/medias/nmedia/18/91/33/59/20140728.jpg', 'https://i.pinimg.com/736x/2d/0f/5d/2d0f5df9f2b246db66816b373a19a20b.jpg', 'https://br.web.img2.acsta.net/medias/nmedia/18/91/33/59/20140728.jpg'),
+(17, 'https://br.web.img3.acsta.net/pictures/210/299/21029996_20130821205722213.jpg', 'https://m.media-amazon.com/images/S/pv-target-images/28ba30adb15abcf10253d4c9e07575a206dfd89e48c37714b5f8603ce1575bf9.jpg', 'https://br.web.img3.acsta.net/pictures/210/299/21029996_20130821205722213.jpg'),
+(18, 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSgq4HgefMkbAAyUwlTjuY9yBSubI08uAW5iIqIH5cY3MdfGORN', 'https://i0.wp.com/feitoporelas.com.br/wp-content/uploads/2024/06/tPx1HEiS5zd9mLvtb52YY66dkEO.jpg?resize=683%2C1024&ssl=1', 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSgq4HgefMkbAAyUwlTjuY9yBSubI08uAW5iIqIH5cY3MdfGORN'),
+(19, 'https://br.web.img2.acsta.net/medias/nmedia/18/89/43/82/20052140.jpg', 'https://upload.wikimedia.org/wikipedia/pt/thumb/9/9b/Avengers_Endgame.jpg/250px-Avengers_Endgame.jpg', 'https://br.web.img2.acsta.net/medias/nmedia/18/89/43/82/20052140.jpg'),
+(20, 'https://www.cinebelasartes.com.br/wp-content/uploads/2016/03/ILHA-DO-MEDO.jpg', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbVLnlUBVs0bkpKWrFTFn8B-Sw-6_jRYSjaw&s', 'https://www.cinebelasartes.com.br/wp-content/uploads/2016/03/ILHA-DO-MEDO.jpg'),
+(21, 'https://www.sonypictures.com.br/sites/brazil/files/2023-06/1400x2100.jpg', 'https://br.web.img3.acsta.net/pictures/18/12/05/16/28/3718855.jpg', 'https://www.sonypictures.com.br/sites/brazil/files/2023-06/1400x2100.jpg'),
+(22, 'https://m.media-amazon.com/images/I/91UQCBxB+cL._AC_UF894,1000_QL80_.jpg', 'https://br.web.img2.acsta.net/pictures/210/166/21016629_2013062820083878.jpg', 'https://m.media-amazon.com/images/I/91UQCBxB+cL._AC_UF894,1000_QL80_.jpg'),
+(23, 'https://m.media-amazon.com/images/S/pv-target-images/d40e2853996d20ff038e1a9bb5cad0c2bd75360b123a8daae467cd34c60c4e36.jpg', 'https://ilovecinema.com.br/wp-content/uploads/2024/11/d3388781a671a838b08294ccdd72e5c4.webp', 'https://m.media-amazon.com/images/S/pv-target-images/d40e2853996d20ff038e1a9bb5cad0c2bd75360b123a8daae467cd34c60c4e36.jpg'),
+(24, 'https://m.media-amazon.com/images/S/pv-target-images/7d50a779768ec84cd1479efd04f59c1c3c73c8891576cc3d6ba4e124b19fc8f4.jpg', 'https://media.fstatic.com/C4oGO26TGCEnZN_KJUTHRkYYNtY=/322x478/smart/filters:format(webp)/media/movies/covers/2025/02/hXAbBGSDqbGzI5DBt6RIwPYORF7.jpg', 'https://m.media-amazon.com/images/S/pv-target-images/7d50a779768ec84cd1479efd04f59c1c3c73c8891576cc3d6ba4e124b19fc8f4.jpg'),
+(25, 'https://wp.ufpel.edu.br/empauta/files/2016/04/BatmanVsSuperman2.jpg', 'https://upload.wikimedia.org/wikipedia/pt/thumb/1/13/Batman_v_Superman_-_Poster_cinema.jpg/250px-Batman_v_Superman_-_Poster_cinema.jpg', 'https://wp.ufpel.edu.br/empauta/files/2016/04/BatmanVsSuperman2.jpg'),
+(26, 'https://br.web.img2.acsta.net/pictures/17/10/23/19/55/0260439.jpg', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbxdbozkLOsO4s21pQgdsP7eJx2dwIW5SUAw&s', 'https://br.web.img2.acsta.net/pictures/17/10/23/19/55/0260439.jpg'),
+(27, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5QJrkH4M_LZKMXNTcfb5YgjTOpMkJLsYSHA&s','https://upload.wikimedia.org/wikipedia/pt/7/74/Wicked_2024_poster.png','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5QJrkH4M_LZKMXNTcfb5YgjTOpMkJLsYSHA&s'),
+(28, 'https://br.web.img2.acsta.net/img/61/b3/61b35aa40057cba4f7df23c689d6979e.PNG', 'https://m.media-amazon.com/images/I/91r5G8RxqfL.jpg', 'https://br.web.img2.acsta.net/img/61/b3/61b35aa40057cba4f7df23c689d6979e.PNG');
 		INSERT INTO tb_usuarios(nome_usuario, usuario, senha)
 		VALUES
-		("gustavo rodrigues","gustav0rdg","ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f"),
-		("ivo neto","icneto","ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f"),
+		('gustavo rodrigues','gustav0rdg','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
+		('ivo neto','icneto','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
 		('carla dias', 'carlad', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
 		('lucas silva', 'lucass', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
 		('mariana almeida', 'marial', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
-		("alicia pavao","alicia123","ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f"),
+		('alicia pavao','alicia123','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
 		('beatriz souza', 'beatrizs', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
 		('daniel alves', 'daniela', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
 		('fernanda lima', 'fernandal', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f');
@@ -307,4 +317,4 @@
 		(27, 8, 4, 'Musical encantador com performances incríveis.'),
 		(27, 9, 3, 'História envolvente e trilha sonora marcante.'),
 		(28, 7, 4, 'Drama emocional com atuações fortes.'),
-		(28, 8, 3, 'Enredo impactante, mas ritmo lento.');
+		(28, 8, 3, 'Enredo impactante, mas ritmo lento.');		
