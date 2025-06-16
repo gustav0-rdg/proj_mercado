@@ -264,6 +264,9 @@ body.dark .carrinho__botao-finalizar:hover{
     background: var(--rosa-secundario-escuro);
 }
 
+input{
+    outline: none;
+}
 /* Responsividade */
 @media (max-width: 992px) {
     .carrinho__content {
