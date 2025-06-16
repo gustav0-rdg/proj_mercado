@@ -43,8 +43,11 @@ def pag_login():
 def logar_user():
     usuario = request.form.get('usuario')
     senha = request.form.get('senha')
-    Usuario.login(usuario, senha)
-    return redirect("/")
+    check = Usuario.login(usuario, senha)
+    if check:
+        return redirect("/")
+    else:
+        return redirect("/login")
 
 @app.route("/catalogo")
 def pag_catalogo():
