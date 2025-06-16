@@ -3,6 +3,7 @@ from flask import Flask, request, render_template, redirect, session, jsonify
 from hashlib import sha256
 import re
 from model.controller_usuario import Usuario
+from model.controller_superuser import SuperUser
 from model.controller_filmes import Filme
 from model.controller_carrinho import Carrinho
 from model.controller_comentarios import Comentarios
@@ -156,11 +157,6 @@ def add_endereco():
 
     return redirect("/exibir/carrinho")
 
-@app.route("/logoff")
-def logoff():
-    Usuario.logoff()
-    return redirect("/")
-
 @app.route("/gerenciamento")
 def pag_gerenciamento():
     # if (Usuario.isAdm(session['id_usuario'])):
@@ -168,15 +164,56 @@ def pag_gerenciamento():
     # else:
     #     return redirect("/")
 
-@app.route("/add/filme", methods = ["POST"])
+@app.route("/add/filme", methods=["POST"])
 def add_filme():
     titulo = request.form.get('titulo')
     categoria_principal = request.form.get("categoria_principal")
     categoria_secundaria = request.form.get("categoria_secundaria")
     sinopse = request.form.get("sinopse")
     preco = request.form.get("preco")
-    img1 = request.form.get("imagem1")
-    img2 = request.form.get("imagem2")
+    img1 = request.form.get("imagem1")  
+    img2 = request.form.get("imagem2")  
+    
+    
+    resultado = SuperUser.add_filme(
+        titulo, categoria_principal, categoria_secundaria, 
+        preco, sinopse, img1, img2
+    )
+    
+    if resultado:
+        return redirect("/gerenciamento")
+    else:
+        return "Erro ao adicionar filme", 400
+
+@app.route("/edit/filme/<id>", methods=["POST"])
+def edit_filme(id):
+
+
+        titulo = request.form.get('titulo')
+        categoria_principal = request.form.get("categoria_principal")
+        categoria_secundaria = request.form.get("categoria_secundaria")
+        sinopse = request.form.get("sinopse")
+        preco = request.form.get("preco")
+        img1 = request.form.get("imagem1")  
+        img2 = request.form.get("imagem2")  
+        
+        resultado = SuperUser.update(
+            id, titulo, categoria_principal, categoria_secundaria, 
+            preco, sinopse, img1, img2
+        )
+        
+        if resultado:
+            return redirect("/gerenciamento")
+        else:
+            return "Erro ao editar filme", 400
+        
+
+@app.route("/delete/filme/<id>")
+def delete_filme(id):
+    if(SuperUser.delete(id)):
+        return redirect('/gerenciamento')
+    else:
+        return redirect('/')
 
 @app.route("/view/categorias")
 def api_categorias():
@@ -215,5 +252,11 @@ def api_filmes():
         }
         print(f'Erro ao achar filme com id {id}')
         return jsonify(erro)
+
+
+@app.route("/logoff")
+def logoff():
+    Usuario.logoff()
+    return redirect("/")
 
 app.run(host="0.0.0.0", port=8080, debug=True)
