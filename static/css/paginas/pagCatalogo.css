@@ -35,12 +35,9 @@ body.dark .header__search-category-btn{
 
 .nav-bar{
     width: 100%;
-    background-color: var(--rosa-primario);
     margin-top: 80px;
 }
-body.dark .nav-bar{
-    background-color: var(--rosa-primario-medio);
-}
+
 .catalogo__filmes {
     
     border-radius: 10px;
