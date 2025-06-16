@@ -2,6 +2,7 @@ body {
     background: var(--gradient-catalogoLight);
     min-height: 100vh;
     font-family: 'Arial', sans-serif;
+    color: var(--branco);
 }
 
 body.dark{
@@ -31,7 +32,7 @@ body.dark{
     border-radius: 20px;
     padding: 1.5rem;
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+   
     max-height: 70vh;
     overflow-y: auto;
 }
@@ -46,7 +47,6 @@ a{
 }
 
 .carrinho__itens::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
 }
 
@@ -68,7 +68,7 @@ body.dark .carrinho__itens::-webkit-scrollbar-thumb{
     grid-template-columns: 100px 1fr auto auto;
     gap: 1rem;
     align-items: center;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    
     position: relative;
 }
 
@@ -116,7 +116,6 @@ body.dark .carrinho__item{
 }
 
 .carrinho__item-quantidade {
-    background: rgba(255, 255, 255, 0.2);
     color: var(--branco);
     border: none;
     padding: 0.3rem 0.8rem;
@@ -128,7 +127,6 @@ body.dark .carrinho__item{
 }
 
 .carrinho__item-remover {
-    background: rgba(255, 255, 255, 0.2);
     border: none;
     color: var(--branco);
     padding: 0.8rem;
@@ -141,7 +139,6 @@ body.dark .carrinho__item{
 }
 
 .carrinho__item-remover:hover {
-    background: rgba(255, 255, 255, 0.3);
     transform: scale(1.05);
 }
 
@@ -152,7 +149,7 @@ body.dark .carrinho__item{
     padding: 2rem;
     color: var(--branco);
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+   
     height: fit-content;
     position: sticky;
     top: 2rem;
@@ -173,7 +170,7 @@ body.dark .carrinho__resumo{
 .carrinho__resumo-total {
     font-size: 1.3rem;
     font-weight: bold;
-    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    
     padding-top: 1rem;
 }
 
@@ -205,7 +202,6 @@ body.dark .carrinho__botao-finalizar{
 .carrinho__botao-finalizar:hover {
     background: var(--rosa-primario-escuro);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 body.dark .carrinho__botao-finalizar:hover{

@@ -49,9 +49,9 @@ document.addEventListener('DOMContentLoaded', async function(){
                             ${element.quantidade}x
                         </div>
                         
-                        <button class="carrinho__item-remover">
+                        <a class="carrinho__item-remover" href="/excluir/item/${element.id_carrinhoItens}">
                             <i class="fas fa-trash"></i>
-                        </button>
+                        </a>
                 `;
                 itensList.appendChild(item);
             });

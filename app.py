@@ -77,14 +77,27 @@ def add_comentario(id):
         print(f"Erro ao adicionar o comentário no filme de ID: {id}")
         return redirect(f"/filme/{id}")
 
+@app.route("/remover/comentario/<id>")
+def remove_comentario(id):
+    Comentarios.remover_comentario(id)
+    return redirect("/catalogo")
+
 @app.route("/add/carrinho/<id>")
 def add_carrinho(id):
     Carrinho.add(id, session['id_usuario']) 
     return redirect("/catalogo")
 
+@app.route("/excluir/item/<id>")
+def remove_carrinho(id):
+    Carrinho.remove(id)
+    return redirect("/exibir/carrinho")
+
 @app.route("/exibir/carrinho")
 def exibe_carrinho():
-    return render_template("carrinho.html")
+    itensCarrinho = Carrinho.exibirItens(session['id_usuario'])
+    if not 'usuario' in session:
+        return redirect("/login")
+    return render_template("carrinho.html", itens = itensCarrinho)
 
 @app.route("/endereco")
 def endereco_api():
@@ -96,11 +109,6 @@ def endereco_api():
             'erro':'nenhum endereco cadastrado'
         }
         return jsonify(erro)
-    
-@app.route("/remove/carrinho/<id>")
-def remove_carrinho(id):
-    Carrinho.remove(id, session['id_usuario'])
-    return redirect("/catalogo")
 
 @app.route("/filmes/exibir/<id>")
 def exibir_filmesCat(id):
@@ -129,5 +137,10 @@ def add_endereco():
     Enderecos.add(session['id_usuario'], cep_limpo, cidade, logradouro, bairro, estado)
 
     return redirect("/exibir/carrinho")
-    
+
+@app.route("/logoff")
+def logoff():
+    Usuario.logoff()
+    return redirect("/")
+
 app.run(host="0.0.0.0", port=8080, debug=True)
