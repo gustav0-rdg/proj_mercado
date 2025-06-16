@@ -77,6 +77,11 @@ def add_comentario(id):
         print(f"Erro ao adicionar o comentário no filme de ID: {id}")
         return redirect(f"/filme/{id}")
 
+@app.route("/remover/comentario/<id>")
+def remove_comentario(id):
+    Comentarios.remover_comentario(id)
+    return redirect("/catalogo")
+
 @app.route("/add/carrinho/<id>")
 def add_carrinho(id):
     Carrinho.add(id, session['id_usuario']) 
@@ -90,6 +95,8 @@ def remove_carrinho(id):
 @app.route("/exibir/carrinho")
 def exibe_carrinho():
     itensCarrinho = Carrinho.exibirItens(session['id_usuario'])
+    if not 'usuario' in session:
+        return redirect("/login")
     return render_template("carrinho.html", itens = itensCarrinho)
 
 @app.route("/endereco")

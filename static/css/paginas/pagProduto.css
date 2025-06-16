@@ -45,6 +45,9 @@ body.dark .filme__imagens-img{
     flex: 1; /* Ocupa o restante do espaço */
 }
 
+a{
+    color: var(--branco);
+}
 .filme__infos-sinopse {
     display: flex;
     flex-direction: column;

@@ -37,7 +37,8 @@ inputCep.addEventListener('input', () => {
 });
 
 buscaCep.addEventListener('click', async ()=>{
-    const response = await fetch(`https://viacep.com.br/ws/${inputCep.value}/json/`);
+    const cepValue = document.querySelector("#cep").value;
+    const response = await fetch(`https://viacep.com.br/ws/${cepValue}/json/`);
     if (response.status == 200){
         const data = await response.json();
         if (data.erro){
