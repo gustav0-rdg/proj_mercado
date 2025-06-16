@@ -1,17 +1,30 @@
 from data.conexao import Connection
 
 class SuperUser:
-    def add_filme(nome, categoria, subcategoria, preco, sinopse):
+    def add_filme(nome, categoria, subcategoria, preco, sinopse, img1, img2, banner):
         conexao = Connection.create()
         cursor = conexao.cursor()
         try:
-            cursor.execute("""INSERT INTO tb_filmes(nome_filme, id_categoria, id_subgenero,preco, sinopse)
-                           VALUES(%s,%s,%s,%s,%s)""",(nome, categoria, subcategoria, preco, sinopse))
-            cursor.execute("""INSERT INTO tb_fotos(id_filme, img_1, img_2, img_banner)
-                           VALUES(%s,%s,%s,%s)""", ())
+            # Inserir o filme
+            cursor.execute("""
+                INSERT INTO tb_filmes (nome_filme, id_categoria, id_subgenero, preco, sinopse)
+                VALUES (%s, %s, %s, %s, %s)
+            """, (nome, categoria, subcategoria, preco, sinopse))
+
+            # Pegar o ID do filme inserido
+            id_filme = cursor.lastrowid
+
+            # Inserir fotos relacionadas
+            cursor.execute("""
+                INSERT INTO tb_fotos (id_filme, img_1, img_2, img_banner)
+                VALUES (%s, %s, %s, %s)
+            """, (id_filme, img1, img2, banner))
+
             conexao.commit()
+            return id_filme  # se quiser usar depois
+
         except Exception as e:
-            print(e)
+            print("Erro ao inserir filme:", e)
         finally:
             conexao.close()
     
