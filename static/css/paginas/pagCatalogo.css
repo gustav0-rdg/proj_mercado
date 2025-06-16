@@ -121,7 +121,7 @@ body.dark .catalogo__filmes-btn:hover{
     padding: 10px;
     
     position: absolute; /* ou 'fixed' se quiser que ele fique preso na tela */
-    top: 60px; /* ajusta conforme o tamanho do seu header */
+    top: 120px; /* ajusta conforme o tamanho do seu header */
     left: 10px;
     z-index: 1000; /* garante que fique acima dos filmes */
     width: 200px;

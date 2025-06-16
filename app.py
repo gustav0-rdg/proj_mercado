@@ -9,7 +9,7 @@ from model.controller_comentarios import Comentarios
 from model.controller_destaques import Destaques
 from model.controller_enderecos import Enderecos
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.secret_key = "godofredomeuheroi"
 @app.route("/")
 def pag_inicial():
