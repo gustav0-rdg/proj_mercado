@@ -35,6 +35,8 @@ body.dark .header__search-category-btn{
 
 .nav-bar{
     width: 100%;
+    background-color: var(--rosa-primario);
+    margin-top: 80px;
 }
 body.dark .nav-bar{
     background-color: var(--rosa-primario-medio);
@@ -172,6 +174,9 @@ body.dark .menu{
 @media(max-width:600px){
     .catalogo{
         grid-template-columns: repeat(2, 1fr);
+    }
+    .nav-bar{
+        margin-top: 0;
     }
 }
 
