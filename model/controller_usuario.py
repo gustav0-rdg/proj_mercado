@@ -63,5 +63,28 @@ class Usuario:
         finally:
             conexao.close()
 
+    def isAdm(userID):
+        conexao = Connection.create()
+        cursor = conexao.cursor(dictionary=True)
+
+        try:
+
+            sql = "SELECT * FROM tb_usuarios WHERE id_usuario = %s AND tipo_usuario = 'admin'"
+            cursor.execute(sql,(userID,))
+            rows_returned = cursor.fetchone()
+
+            if (rows_returned >= 1):
+                return True
+            else:
+                return False
+
+        except Exception as e: 
+            print(e)
+            return False
+        
+        finally:
+            cursor.close()
+            conexao.close()
+
     def logoff():
         session.clear()

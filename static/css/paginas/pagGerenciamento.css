@@ -1,0 +1,303 @@
+body {
+    background: var(--gradient-catalogoLight);
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Main container */
+.gerenciamento {
+    padding: 2rem 0;
+}
+
+.gerenciamento__title {
+    text-align: center;
+    color: var(--branco);
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Card styles */
+.gerenciamento__card {
+    background: rgba(254, 86, 148, 0.9);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gerenciamento__card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+
+/* Form elements */
+.gerenciamento__form-group {
+    margin-bottom: 1.5rem;
+}
+
+.gerenciamento__input {
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 25px;
+    background: var(--rosa-primario-claro);
+    color: var(--branco);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.gerenciamento__input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.gerenciamento__input:focus {
+    outline: none;
+    background: var(--rosa-primario);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.gerenciamento__textarea {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 15px;
+    background: var(--rosa-primario-claro);
+    color: var(--branco);
+    font-size: 1rem;
+    font-weight: 500;
+    resize: vertical;
+    min-height: 120px;
+    transition: all 0.3s ease;
+}
+
+.gerenciamento__textarea::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.gerenciamento__textarea:focus {
+    outline: none;
+    background: var(--rosa-primario);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+/* Category buttons */
+.gerenciamento__categories {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.gerenciamento__category-btn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 20px;
+    background: var(--rosa-secundario);
+    color: var(--branco);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gerenciamento__category-btn:hover {
+    background: var(--rosa-secundario-escuro);
+    transform: translateY(-2px);
+}
+
+.gerenciamento__category-btn--active {
+    background: var(--rosa-primario-escuro);
+}
+
+/* Price input */
+.gerenciamento__price-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.gerenciamento__price-label {
+    color: var(--branco);
+    font-weight: bold;
+    font-size: 1.1rem;
+    min-width: 60px;
+}
+
+.gerenciamento__price-input {
+    flex: 1;
+    max-width: 150px;
+}
+
+/* File upload */
+.gerenciamento__file-group {
+    margin-bottom: 1rem;
+}
+
+.gerenciamento__file-label {
+    color: var(--branco);
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.gerenciamento__file-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 25px;
+    background: var(--rosa-primario-claro);
+    color: var(--branco);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gerenciamento__file-input:hover {
+    background: var(--rosa-primario);
+}
+
+/* Select dropdown */
+.gerenciamento__select {
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 25px;
+    background: var(--rosa-primario-claro);
+    color: var(--branco);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gerenciamento__select:focus {
+    outline: none;
+    background: var(--rosa-primario);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.gerenciamento__select option {
+    background: var(--rosa-primario);
+    color: var(--branco);
+}
+
+/* Action buttons */
+.gerenciamento__actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.gerenciamento__btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.gerenciamento__btn--primary {
+    background: var(--rosa-primario-escuro);
+    color: var(--branco);
+}
+
+.gerenciamento__btn--primary:hover {
+    background: var(--rosa-primario-medio);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.gerenciamento__btn--secondary {
+    background: var(--branco);
+    color: var(--rosa-primario);
+}
+
+.gerenciamento__btn--secondary:hover {
+    background: var(--rosa-secundario-claro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.gerenciamento__btn--danger {
+    background: #dc3545;
+    color: var(--branco);
+}
+
+.gerenciamento__btn--danger:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Copyright */
+.gerenciamento__copyright {
+    text-align: center;
+    color: var(--branco);
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.disabled{
+    background-color: #d7d7d7be;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .gerenciamento__title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .gerenciamento__card {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .gerenciamento__actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .gerenciamento__btn {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .gerenciamento__categories {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .gerenciamento {
+        padding: 1rem 0;
+    }
+    
+    .gerenciamento__title {
+        font-size: 1.8rem;
+    }
+    
+    .gerenciamento__card {
+        padding: 1rem;
+    }
+    
+    .gerenciamento__price-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .gerenciamento__price-input {
+        max-width: 100%;
+    }
+}
