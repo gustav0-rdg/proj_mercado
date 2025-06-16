@@ -33,6 +33,13 @@ body.dark .header__search-category-btn{
 
 }
 
+.nav-bar{
+    width: 100%;
+    background-color: var(--rosa-primario);
+}
+body.dark .nav-bar{
+    background-color: var(--rosa-primario-medio);
+}
 .catalogo__filmes {
     
     border-radius: 10px;
@@ -48,7 +55,7 @@ body.dark .header__search-category-btn{
     display: none;
 }
 
-.catalogo__filmes-img{
+body.dark .catalogo__filmes-img{
     border: 5px solid var(--rosa-secundario);
 }
 
@@ -84,11 +91,15 @@ body.dark .filme-titulo{
     color: var(--rosa-secundario-claro);
 }
 
-a{
+body a{
     text-decoration: none;
     color: var(--branco);
 }
 
+body.dark a{
+    text-decoration: none;
+    color: var(--branco);
+}
 .catalogo__filmes-btn {
     padding: 8px 12px;
     background-color: var(--rosa-secundario-escuro);

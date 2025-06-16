@@ -26,6 +26,15 @@ body.dark{
     align-items: start;
 }
 
+
+
+h5, p{
+    color: var(--branco);
+}
+.catalogo{
+    text-decoration: none;
+    color: var(--branco);
+}
 /* Seção dos itens do carrinho */
 .carrinho__itens {
     background: var(--rosa-primario-medio);
@@ -144,7 +153,7 @@ body.dark .carrinho__item{
 
 /* Seção do resumo */
 .carrinho__resumo {
-    background: var(--rosa-secundario-escuro);
+    background: var(--rosa-primario-medio);
     border-radius: 20px;
     padding: 2rem;
     color: var(--branco);
@@ -180,6 +189,21 @@ body.dark .carrinho__resumo{
 }
 .carrinho__botao-finalizar {
     width: 100%;
+    background: var(--rosa-primario-claro);
+    border: none;
+    padding: 1rem;
+    border-radius: 15px;
+    color: var(--branco);
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    margin-top: 1.5rem;
+}
+
+.carrinho__botao-finalizar-compra{
+    width: 100%;
     background: var(--rosa-primario);
     border: none;
     padding: 1rem;
@@ -192,6 +216,38 @@ body.dark .carrinho__resumo{
     text-transform: uppercase;
     margin-top: 1.5rem;
 }
+
+.carrinho__botao-finalizar-cep{
+    width: 100%;
+    background: var(--rosa-secundario);
+    border: none;
+    padding: 1rem;
+    border-radius: 15px;
+    color: var(--branco);
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    margin-top: 1.5rem;
+}
+
+.carrinho__botao-finalizar-cep::placeholder{
+    width: 100%;
+    color: var(--branco);
+    background: var(--rosa-secundario);
+    border: none;
+    padding: 1rem;
+    border-radius: 15px;
+    color: var(--branco);
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    margin-top: 1.5rem;
+}
+
 .carrinho__botao-finalizar::placeholder {
     color: var(--branco);
 }
