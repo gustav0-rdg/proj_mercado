@@ -1,7 +1,7 @@
 from data.conexao import Connection
 
 class SuperUser:
-    def add_filme(nome, categoria, subcategoria, preco, sinopse, img1, img2, banner):
+    def add_filme(nome, categoria, subcategoria, preco, sinopse, img1, img2):
         conexao = Connection.create()
         cursor = conexao.cursor()
         try:
@@ -18,7 +18,7 @@ class SuperUser:
             cursor.execute("""
                 INSERT INTO tb_fotos (id_filme, img_1, img_2, img_banner)
                 VALUES (%s, %s, %s, %s)
-            """, (id_filme, img1, img2, banner))
+            """, (id_filme, img1, img2, 'img_teste'))
 
             conexao.commit()
             return id_filme  # se quiser usar depois
