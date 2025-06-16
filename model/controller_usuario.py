@@ -59,5 +59,8 @@ class Usuario:
         finally:
             conexao.close()
 
+    def isAdm():
+        
+
     def logoff():
         session.clear()

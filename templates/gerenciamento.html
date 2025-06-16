@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento - Disco Mágico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/global.css">
+</head>
+<body>
+    <header>
+
+    </header>
+
+    <main class="gerenciamento">
+        <div class="container">
+            <h1 class="gerenciamento__title">Gerenciamento</h1>
+            
+            <div class="row">
+                <!-- Card para Adicionar Filme -->
+                <div class="col-lg-6 col-md-12">
+                    <div class="gerenciamento__card">
+                        <form class="gerenciamento__form" method="POST" action="{{ url_for('adicionar_filme') }}" enctype="multipart/form-data">
+                            
+                            <!-- Título do Filme -->
+                            <div class="gerenciamento__form-group">
+                                <input 
+                                    type="text" 
+                                    name="titulo" 
+                                    class="gerenciamento__input" 
+                                    placeholder="Título do filme"
+                                    value="{{ filme.titulo if filme else '' }}"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Categorias -->
+                            <div class="gerenciamento__categories">
+                                <input 
+                                    type="text" 
+                                    name="titulo" 
+                                    class="gerenciamento__input" 
+                                    placeholder="Categoria Principal"
+                                    required
+                                >
+                                    
+                                <input 
+                                    type="text" 
+                                    name="titulo" 
+                                    class="gerenciamento__input" 
+                                    placeholder="Categoria Secundária"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Sinopse -->
+                            <div class="gerenciamento__form-group">
+                                <textarea 
+                                    name="sinopse" 
+                                    class="gerenciamento__textarea" 
+                                    placeholder="Sinopse"
+                                    required
+                                >{{ filme.sinopse if filme else '' }}</textarea>
+                            </div>
+
+                            <!-- Preço -->
+                            <div class="gerenciamento__price-group">
+                                <label class="gerenciamento__price-label">Preço:</label>
+                                <input 
+                                    type="number" 
+                                    name="preco" 
+                                    class="gerenciamento__input gerenciamento__price-input" 
+                                    placeholder="0,00"
+                                    step="0.01"
+                                    min="0"
+                                    value="{{ filme.preco if filme else '' }}"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Upload de Imagens -->
+                            <div class="gerenciamento__file-group">
+                                <label class="gerenciamento__file-label">Imagem 1</label>
+                                <input 
+                                    type="file" 
+                                    name="imagem1" 
+                                    class="gerenciamento__file-input" 
+                                    accept="image/*"
+                                    required
+                                >
+                            </div>
+
+                            <div class="gerenciamento__file-group">
+                                <label class="gerenciamento__file-label">Imagem 2</label>
+                                <input 
+                                    type="file" 
+                                    name="imagem2" 
+                                    class="gerenciamento__file-input" 
+                                    accept="image/*"
+                                >
+                            </div>
+
+                            <!-- Campos ocultos para categorias -->
+                            <input type="hidden" name="categoria_principal" id="categoria_principal" value="1">
+                            <input type="hidden" name="categoria_secundaria" id="categoria_secundaria" value="0">
+
+                            <!-- Botões de Ação -->
+                            <div class="gerenciamento__actions">
+                                <button type="submit" class="gerenciamento__btn gerenciamento__btn--primary">
+                                    Adicionar
+                                </button>
+                                <button type="reset" class="gerenciamento__btn gerenciamento__btn--secondary">
+                                    Limpar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Card para Editar/Excluir Filme -->
+                <div class="col-lg-6 col-md-12">
+                    <div class="gerenciamento__card">
+                        <form class="gerenciamento__form" method="POST" action="{{ url_for('editar_filme') }}" enctype="multipart/form-data">
+                            
+                            <!-- Seleção de Filme -->
+                            <div class="gerenciamento__form-group">
+                                <select 
+                                    name="filme_id" 
+                                    class="gerenciamento__select" 
+                                    onchange="loadFilmeData(this.value)"
+                                    required
+                                >
+                                    <option value="">-- Selecione um filme --</option>
+                                    {% for filme in filmes %}
+                                    <option value="{{ filme.id }}" {% if filme_selecionado and filme_selecionado.id == filme.id %}selected{% endif %}>
+                                        {{ filme.titulo }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <!-- Título do Filme -->
+                            <div class="gerenciamento__form-group">
+                                <input 
+                                    type="text" 
+                                    name="titulo" 
+                                    class="gerenciamento__input" 
+                                    placeholder="Título do filme"
+                                    value="{{ filme_selecionado.titulo if filme_selecionado else '' }}"
+                                    id="edit_titulo"
+                                >
+                            </div>
+
+                            <!-- Categorias -->
+                            <div class="gerenciamento__categories">
+                                <input 
+                                    type="text" 
+                                    name="titulo" 
+                                    class="gerenciamento__input" 
+                                    placeholder="Categoria Principal"
+                                    required
+                                >
+                                    
+                                <input 
+                                    type="text" 
+                                    name="titulo" 
+                                    class="gerenciamento__input" 
+                                    placeholder="Categoria Secundária"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Sinopse -->
+                            <div class="gerenciamento__form-group">
+                                <textarea 
+                                    name="sinopse" 
+                                    class="gerenciamento__textarea" 
+                                    placeholder="Sinopse"
+                                    id="edit_sinopse"
+                                >{{ filme_selecionado.sinopse if filme_selecionado else '' }}</textarea>
+                            </div>
+
+                            <!-- Preço -->
+                            <div class="gerenciamento__price-group">
+                                <label class="gerenciamento__price-label">Preço:</label>
+                                <input 
+                                    type="number" 
+                                    name="preco" 
+                                    class="gerenciamento__input gerenciamento__price-input" 
+                                    placeholder="0,00"
+                                    step="0.01"
+                                    min="0"
+                                    value="{{ filme_selecionado.preco if filme_selecionado else '' }}"
+                                    id="edit_preco"
+                                >
+                            </div>
+
+                            <!-- Upload de Imagens -->
+                            <div class="gerenciamento__file-group">
+                                <label class="gerenciamento__file-label">Imagem 1</label>
+                                <input 
+                                    type="file" 
+                                    name="imagem1" 
+                                    class="gerenciamento__file-input" 
+                                    accept="image/*"
+                                >
+                            </div>
+
+                            <div class="gerenciamento__file-group">
+                                <label class="gerenciamento__file-label">Imagem 2</label>
+                                <input 
+                                    type="file" 
+                                    name="imagem2" 
+                                    class="gerenciamento__file-input" 
+                                    accept="image/*"
+                                >
+                            </div>
+
+                            <!-- Campos ocultos para categorias -->
+                            <input type="hidden" name="categoria_principal" id="edit_categoria_principal" value="{{ '1' if filme_selecionado and filme_selecionado.categoria_principal else '0' }}">
+                            <input type="hidden" name="categoria_secundaria" id="edit_categoria_secundaria" value="{{ '1' if filme_selecionado and filme_selecionado.categoria_secundaria else '0' }}">
+
+                            <!-- Botões de Ação -->
+                            <div class="gerenciamento__actions">
+                                <button type="submit" name="action" value="editar" class="gerenciamento__btn gerenciamento__btn--primary">
+                                    Editar
+                                </button>
+                                <button type="submit" name="action" value="excluir" class="gerenciamento__btn gerenciamento__btn--danger" onclick="return confirm('Tem certeza que deseja excluir este filme?')">
+                                    Excluir
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

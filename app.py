@@ -130,4 +130,8 @@ def add_endereco():
 
     return redirect("/exibir/carrinho")
     
+@app.route("/gerenciamento")
+def pag_gerenciamento():
+    if session['id_usuario']
+
 app.run(host="0.0.0.0", port=8080, debug=True)
