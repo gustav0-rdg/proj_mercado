@@ -50,6 +50,7 @@
                     <button class="carrinho__botao-finalizar">
                         Confirmar compra
                     </button>
+                    <!-- Formulário para resgatar endereço do cliente -->
                     <form action="/add/endereco" method="post">
                         <input type="text" name="cep" id="cep" class="carrinho__botao-finalizar" placeholder="cep">
                         <input type="text" name="cidade" id="cidade" class="carrinho__botao-finalizar" readonly placeholder="cidade">
@@ -67,14 +68,16 @@
     </main>
 
     <footer class="footer__container"></footer>
+    <!-- Carregando header e footer -->
     <script src="/static/js/loaders/aside-loader.js"></script>
     <script src="/static/js/loaders/header-loader.js"></script>
     <script src="/static/js/loaders/footer-loader.js"></script>
+    <!-- Links do SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/static/js/pag_carrinho/get-cep.js"></script>
 
+    <!-- Funcionalidades do carrinho -->
+    <script src="/static/js/pag_carrinho/get-cep.js"></script>
     <script src="/static/js/pag_carrinho/get-itens.js"></script>
-    
     <script src="/static/js/pag_carrinho/get-user-cep.js"></script>
 
 </body>
