@@ -4,7 +4,7 @@ const btnCadastrar = document.querySelector('.btn__cadastrar');
 
 function validarSenha() {
     if (senha.value === repSenha.value && senha.value.length > 4) {
-        console.log('oiiiii')
+
         btnCadastrar.disabled = false;
     } else {
         btnCadastrar.disabled = true;

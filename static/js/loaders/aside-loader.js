@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 function aplicarToggleTema() {
     const botaoTema = document.querySelector('.theme-toggle');
+    const iconTema = document.getElementById('theme__icon');
     if (!botaoTema) return;
 
     const currentTheme = localStorage.getItem('theme') || 'light';
@@ -29,9 +30,17 @@ function aplicarToggleTema() {
     botaoTema.addEventListener('click', () => {
         if (document.body.classList.contains('dark')) {
             document.body.classList.remove('dark');
+            // Muda o icon do tema
+            iconTema.classList.remove('fa-moon');
+            iconTema.classList.add('fa-sun');
+            // Salva o estado no localStorage
             localStorage.setItem('theme', 'light');
         } else {
             document.body.classList.add('dark');
+            // Muda o icon do tema
+            iconTema.classList.remove('fa-sun');
+            iconTema.classList.add('fa-moon');
+            // Salva o estado no localStorage
             localStorage.setItem('theme', 'dark');
         }
     });

@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const btnComentario = document.querySelector('.filme__rate-btn');
     const filmeID = document.querySelector('#filmeId').value;
-    console.log(filmeID)
     const comentarioHTML = `
         <form action="/add/comentario/${filmeID}" method="post" id="form__comentario">
             <h3>Avalie o filme</h3>

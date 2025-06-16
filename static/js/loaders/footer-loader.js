@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function () {
     try {
         const codigoFooter = await fetch('/footer');
-        console.log(codigoFooter);
 
         if (!codigoFooter.ok) {
             throw new Error('Arquivo não encontrado no servidor.');
