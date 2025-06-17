@@ -8,6 +8,9 @@
     background:  var( --gradient-loginLight);
 }
 
+body.dark .main__login-container{
+    background: var(--gradient-loginDark);
+}
 /* Form */
 .titulo_login {
     color: var(--rosa-primario-escuro);
@@ -27,6 +30,9 @@
     gap: 34px;
 }
 
+body.dark .form__login{
+    background-color: var(--rosa-primario-medio);
+}
 .input__login {
     height: 35px;
     background-color: var(--rosa-secundario-claro);
@@ -69,6 +75,9 @@ input::placeholder {
     color: var(--branco);
 }
 
+body.dark .text__login, body.dark h1{
+    color: var(--rosa-primario-claro);
+}
 
 /* Responsivo */
 @media (max-width: 600px) {
