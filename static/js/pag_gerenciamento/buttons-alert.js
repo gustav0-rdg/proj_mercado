@@ -62,12 +62,12 @@ buttonDelete.addEventListener('click', (event) => {
                 }
               });
 
+              
+              window.location.href = buttonDelete.getAttribute('href');
               Toast.fire({
                 icon: "success",
                 title: "O filme foi excluído com sucesso!"
               })
-
-            window.location.href = buttonDelete.getAttribute('href');
-        }
+            }
     });
 });
