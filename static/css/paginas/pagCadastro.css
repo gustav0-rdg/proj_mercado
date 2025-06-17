@@ -1,3 +1,4 @@
+
 /* Corpo */
 .main__cadastro-container {
     width: 100vw;
@@ -35,7 +36,7 @@ body.dark .titulo_cadastro{
 }
 
 body.dark .form__cadastro{
-    background-color: var(--rosa-primario);
+    background-color: var(--rosa-primario-medio);
 }
 
 .input__cadastro {
@@ -111,7 +112,9 @@ body.dark .link__cadastro{
     color: var(--rosa-secundario-claro);
 }
 
-
+body.dark .text__cadastro, body.dark h1{
+    color: var(--rosa-primario-claro);
+}
 /* Responsivo */
 @media (max-width: 600px) {
 .form__cadastro {
