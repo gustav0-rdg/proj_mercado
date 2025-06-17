@@ -1,3 +1,4 @@
+// Pegar elementos no card editar
 const selectFilme = document.querySelector('#selectFilme');
 const tituloFilme = document.querySelector('#edit_titulo');
 const selectCatPrincipal = document.querySelector('#categoria_principal');
@@ -8,6 +9,7 @@ const precoEdit = document.querySelector('#edit_preco');
 const img1Edit = document.querySelector('#edit_img1');
 const img2Edit = document.querySelector('#edit_img2');
 
+// Pegar elementos no card criar
 const titulo = document.querySelector('#addTitulo');
 const selectCat1 = document.querySelector('#addselectCategoria1');
 const selectCat2 = document.querySelector('#addselectCategoria2');
@@ -19,29 +21,37 @@ const img2 = document.querySelector('#addImg2');
 let categoriasCache = []; // Evita refazer fetch em cada change
 
 addEventListener('DOMContentLoaded', async () => {
+
     try {
         // Carrega filmes
         let response = await fetch("/view/filmes");
-        if (response.ok) {
+        if (response.code === 200) {
+
             const filmes = await response.json();
             filmes.forEach(filme => {
+
+                // Popula o select com o nome dos filmes
                 const option = document.createElement('option');
                 option.value = filme.id_filme;
                 option.textContent = filme.nome_filme;
                 selectFilme.appendChild(option);
+
             });
+
         }
 
         // Carrega categorias e salva em cache
         response = await fetch("/view/categorias");
-        if (response.ok) {
+        if (response.code === 200) {
             categoriasCache = await response.json();
 
             categoriasCache.forEach(categoria => {
+
                 const opt1 = document.createElement('option');
                 opt1.value = categoria.id_categoria;
                 opt1.textContent = categoria.categoria;
 
+                // Clone node = clona o elemento que foi invocado; true = se os filhos do elemento também forem clonados
                 const opt2 = opt1.cloneNode(true);
 
                 selectCat1.appendChild(opt1);
@@ -54,9 +64,13 @@ addEventListener('DOMContentLoaded', async () => {
 });
 
 selectFilme.addEventListener('change', async () => {
+
     const filmeID = selectFilme.value;
+
     const deletaFilme = document.querySelector("#link_filme");
     const editFilme = document.querySelector('#editForm');
+
+    // Muda o href dos botões para as funções no arquivo .py
     editFilme.setAttribute('action', `/edit/filme/${filmeID}`)
     deletaFilme.setAttribute("href", `/delete/filme/${filmeID}`);
 
@@ -80,15 +94,18 @@ selectFilme.addEventListener('change', async () => {
         selectCatSecundaria.innerHTML = '<option value="">-- Selecione uma categoria --</option>';
 
         categoriasCache.forEach(categoria => {
+
             const opt1 = document.createElement('option');
             opt1.value = categoria.id_categoria;
             opt1.textContent = categoria.categoria;
+
             if (categoria.categoria === filme.categoria) opt1.selected = true;
             selectCatPrincipal.appendChild(opt1);
 
             const opt2 = document.createElement('option');
             opt2.value = categoria.id_categoria;
             opt2.textContent = categoria.categoria;
+            
             if (categoria.categoria === filme.sub_categoria) opt2.selected = true;
             selectCatSecundaria.appendChild(opt2);
         });

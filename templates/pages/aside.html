@@ -26,6 +26,15 @@
                         Meu Carrinho
                     </a>
                 </li>
+                <!-- Gerenciamento (só para user admin)-->
+                 {% if tipo_usuario == "admin" %}
+                 <li class="aside__li">
+                    <a href="/gerenciamento" class="aside__a">
+                        <i class="fa-solid fa-cogs aside__icon"></i>
+                        Gerenciamento
+                    </a>
+                </li>
+                {% endif %}
                 <!-- Tema -->
                 <li class="aside__li">
                     <button href="" class="aside__a theme-toggle" id="theme-toggle">

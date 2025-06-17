@@ -52,6 +52,7 @@ class Usuario:
                 session['id_usuario'] = newUser['id_usuario']
                 session['usuario'] = newUser['usuario']
                 session['nome'] = newUser['nome_usuario']
+                session['tipo_usuario'] = newUser['tipo_usuario']
                 return True
             
             else:
@@ -69,14 +70,11 @@ class Usuario:
 
         try:
 
-            sql = "SELECT * FROM tb_usuarios WHERE id_usuario = %s AND tipo_usuario = 'admin'"
+            sql = "SELECT 1 FROM tb_usuarios WHERE id_usuario = %s AND tipo_usuario = 'admin'"
             cursor.execute(sql,(userID,))
-            rows_returned = cursor.fetchone()
+            row = cursor.fetchone()
 
-            if (rows_returned >= 1):
-                return True
-            else:
-                return False
+            return row is not None
 
         except Exception as e: 
             print(e)

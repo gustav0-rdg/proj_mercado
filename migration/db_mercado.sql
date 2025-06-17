@@ -8,7 +8,8 @@ CREATE DATABASE IF NOT EXISTS db_mercado;
 			cep varchar(14),
 			telefone varchar(11) unique,
 			email varchar(100) unique,
-			senha varchar(64) not null
+			senha varchar(64) not null,
+			tipo_usuario ENUM('admin', 'cliente') DEFAULT 'cliente',
 			);
 
 		CREATE TABLE IF NOT EXISTS tb_categorias(
@@ -189,17 +190,18 @@ INSERT INTO tb_fotos (id_filme, img_1, img_2, img_banner) VALUES
 (26, 'https://br.web.img2.acsta.net/pictures/17/10/23/19/55/0260439.jpg', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbxdbozkLOsO4s21pQgdsP7eJx2dwIW5SUAw&s', 'https://br.web.img2.acsta.net/pictures/17/10/23/19/55/0260439.jpg'),
 (27, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5QJrkH4M_LZKMXNTcfb5YgjTOpMkJLsYSHA&s','https://upload.wikimedia.org/wikipedia/pt/7/74/Wicked_2024_poster.png','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5QJrkH4M_LZKMXNTcfb5YgjTOpMkJLsYSHA&s'),
 (28, 'https://br.web.img2.acsta.net/img/61/b3/61b35aa40057cba4f7df23c689d6979e.PNG', 'https://m.media-amazon.com/images/I/91r5G8RxqfL.jpg', 'https://br.web.img2.acsta.net/img/61/b3/61b35aa40057cba4f7df23c689d6979e.PNG');
-		INSERT INTO tb_usuarios(nome_usuario, usuario, senha)
+		INSERT INTO tb_usuarios(nome_usuario, usuario, senha, tipo_usuario)
 		VALUES
-		('gustavo rodrigues','gustav0rdg','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
-		('ivo neto','icneto','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
-		('carla dias', 'carlad', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
-		('lucas silva', 'lucass', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
-		('mariana almeida', 'marial', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
-		('alicia pavao','alicia123','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
-		('beatriz souza', 'beatrizs', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
-		('daniel alves', 'daniela', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f'),
-		('fernanda lima', 'fernandal', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f');
+		('Senhor G', 'senhor_g', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'admin123'),
+		('gustavo rodrigues','gustav0rdg','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'cliente'),
+		('ivo neto','icneto','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'cliente'),
+		('carla dias', 'carlad', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'cliente'),
+		('lucas silva', 'lucass', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'cliente'),
+		('mariana almeida', 'marial', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'cliente'),
+		('alicia pavao','alicia123','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'cliente'),
+		('beatriz souza', 'beatrizs', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'cliente'),
+		('daniel alves', 'daniela', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'cliente'),
+		('fernanda lima', 'fernandal', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'cliente');
 
 
 		INSERT INTO tb_comentarios (id_filme, id_usuario, avaliacao, comentario)

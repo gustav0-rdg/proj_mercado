@@ -132,7 +132,8 @@ def componente_aside():
 
 @app.route("/asideFuncionalidades")
 def componente_aside_func():
-    return render_template('/pages/aside-funcionalidades.html')
+    tipo_user = session.get('tipo_usuario')
+    return render_template('/pages/aside-funcionalidades.html', tipo_user = tipo_user)
 
 @app.route("/header")
 def componente_header():
@@ -165,10 +166,10 @@ def add_endereco():
 
 @app.route("/gerenciamento")
 def pag_gerenciamento():
-    # if (Usuario.isAdm(session['id_usuario'])):
-    return render_template('gerenciamento.html')
-    # else:
-    #     return redirect("/")
+    if (Usuario.isAdm(session['id_usuario'])):
+        return render_template('gerenciamento.html')
+    else:
+        return redirect("/")
 
 @app.route("/add/filme", methods=["POST"])
 def add_filme():
