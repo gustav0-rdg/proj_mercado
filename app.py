@@ -47,11 +47,9 @@ def logar_user():
     usuario = request.form.get('usuario')
     senha = request.form.get('senha')
     email = request.form.get('email')
-    check = Usuario.login(usuario,email, senha)
-    if check:
-        return redirect("/")
-    else:
-        return redirect("/login")
+    Usuario.login(usuario,email, senha)
+    return redirect("/")
+
 
 
 @app.route("/catalogo")

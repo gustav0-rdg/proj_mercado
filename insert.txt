@@ -1,0 +1,5 @@
+INSERT INTO tb_filmes (nome_filme, preco, id_categoria, id_subgenero, sinopse)
+VALUES
+('Carros', 23.30, 9, 1, 'Ao viajar para a Califórnia, o famoso carro de corridas Relâmpago McQueen se perde e vai parar em Radiator Springs, uma cidadezinha na Rota 66. Ele conhece novos amigos e aprende lições que mudam sua forma de encarar a vida.');
+INSERT INTO tb_fotos(id_filme, img_1, img_2, img_banner)
+VALUES(29, 'https://m.media-amazon.com/images/S/pv-target-images/f8c1d1c7ae6bf27bd61c1597694a71eb74c0c209bb1d437039c664caef7b8ebf.jpg','https://www.cafecomfilme.com.br/media/k2/items/cache/e13ee4b62d3db96de4569a439ec6257c_XL.jpg','https://m.media-amazon.com/images/S/pv-target-images/f8c1d1c7ae6bf27bd61c1597694a71eb74c0c209bb1d437039c664caef7b8ebf.jpg');
