@@ -4,6 +4,9 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
+body.dark {
+    background: var(--gradient-catalogoDark);
+}
 /* Main container */
 .gerenciamento {
     padding: 5rem 0;
@@ -29,7 +32,9 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
+body.dark .gerenciamento__card{
+    background-color: var(--rosa-secundario-escuro);
+}
 .gerenciamento__card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 40px rgba(0,0,0,0.3);
@@ -52,6 +57,10 @@ body {
     transition: all 0.3s ease;
 }
 
+body.dark .gerenciamento__input{
+    background-color: var(--rosa-primario-medio);
+}
+
 .gerenciamento__input::placeholder {
     color: rgba(255, 255, 255, 0.8);
 }
@@ -60,6 +69,10 @@ body {
     outline: none;
     background: var(--rosa-primario);
     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+body.dark .gerenciamento__input:focus, body.dark .gerenciamento__textarea:focus{
+    background-color: var(--rosa-primario-escuro);
 }
 
 .gerenciamento__textarea {
@@ -74,6 +87,10 @@ body {
     resize: vertical;
     min-height: 120px;
     transition: all 0.3s ease;
+}
+
+body.dark .gerenciamento__textarea{
+    background-color: var(--rosa-primario-medio);
 }
 
 .gerenciamento__textarea::placeholder {
@@ -104,6 +121,10 @@ body {
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
+}
+
+body.dark .gerenciamento__category-btn{
+    background-color: var(--rosa-secundario-medio);
 }
 
 .gerenciamento__category-btn:hover {
@@ -162,6 +183,13 @@ body {
     background: var(--rosa-primario);
 }
 
+body.dark .gerenciamento__file-input{
+    background-color: var(--rosa-secundario-medio);
+}
+
+body.dark .gerenciamento__file-input::placeholder{
+    color: var(--branco);
+}
 /* Select dropdown */
 .gerenciamento__select {
     width: 100%;
@@ -187,6 +215,10 @@ body {
     color: var(--branco);
 }
 
+
+body.dark .gerenciamento__select{
+    background-color: var(--rosa-secundario-medio);
+}
 /* Action buttons */
 .gerenciamento__actions {
     display: flex;

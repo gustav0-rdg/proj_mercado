@@ -114,3 +114,4 @@ selectFilme.addEventListener('change', async () => {
         console.error("Erro ao carregar dados do filme:", error);
     }
 });
+
