@@ -25,7 +25,7 @@ addEventListener('DOMContentLoaded', async () => {
     try {
         // Carrega filmes
         let response = await fetch("/view/filmes");
-        if (response.code === 200) {
+        if (response.status === 200) {
 
             const filmes = await response.json();
             filmes.forEach(filme => {
@@ -42,7 +42,7 @@ addEventListener('DOMContentLoaded', async () => {
 
         // Carrega categorias e salva em cache
         response = await fetch("/view/categorias");
-        if (response.code === 200) {
+        if (response.status === 200) {
             categoriasCache = await response.json();
 
             categoriasCache.forEach(categoria => {

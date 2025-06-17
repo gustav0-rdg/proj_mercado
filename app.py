@@ -126,12 +126,13 @@ def exibir_filmesCat(id):
 
 @app.route("/aside")
 def componente_aside():
-    return render_template('/pages/aside.html')
+    tipo_user = session.get('tipo_usuario')
+    return render_template('/pages/aside.html', tipo_user = tipo_user)
 
 @app.route("/asideFuncionalidades")
 def componente_aside_func():
     tipo_user = session.get('tipo_usuario')
-    return render_template('/pages/aside-funcionalidades.html', tipo_user = tipo_user)
+    return render_template('/pages/aside-funcionalidades.html')
 
 @app.route("/header")
 def componente_header():
