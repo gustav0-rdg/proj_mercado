@@ -79,6 +79,7 @@ body.dark input::placeholder{
 
 .btn__cadastrar:hover{
     background-color: var(--rosa-primario-escuro);
+    transform: scale(1.05);
 }
 
 body.dark .btn__cadastrar{
@@ -88,6 +89,15 @@ body.dark .btn__cadastrar{
 body.dark .btn__cadastrar:hover{
     background-color: var(--rosa-secundario-escuro);
 }
+
+.btn__cadastrar--disabled{
+    filter: opacity(50%);
+}
+.btn__cadastrar--disabled:hover{
+    background-color: var(--rosa-primario);
+    transform: scale(1);
+}
+
 
 .text__cadastro {
     color: var(--rosa-primario-escuro);
