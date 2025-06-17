@@ -18,7 +18,7 @@ Atuou de forma abrangente tanto no **back-end** quanto no **front-end**, sendo o
 
 Responsável pelo **Bootstrap** no site, dos **módulos e organização dos arquivos**. A sua contribuição no **front-end** foi vital para trabalharmos com o prazo estipulado, fazendo com que o nosso tempo fosse direcionado a outras funções enquanto ele fazia a **formatação de elementos que apareceriam com frequência no site, como o header e o footer**.
 
-### [Zenon Parelli Bergamo](https://github.com/ZenonPB)
+### [Zenon Parelli Bergamo](https://github.com/ZenonPB) 🌈
 
 Responsável por grande parte da **modelagem de banco de dados** e das queries SQL, cuidou da **integração entre o sistema Flask e o MySQL**, garantindo a persistência e manipulação dos dados do site. Também atuou no **desenvolvimento das páginas de gerenciamento**, criando as funcionalidades de **CRUD**, **edição**, **exclusão** e **validação de dados** no sistema administrativo da loja.
 
