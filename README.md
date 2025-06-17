@@ -10,7 +10,7 @@ Nós somos uma equipe independente de estudantes reunidos com o mesmo propósito
 
 Responsável pela área de **design**, com foco na escolha de paleta de cores, construção de _wireframes_ e protótipos visuais. Sua contribuição foi essencial para a **identidade visual do projeto**, com forte atuação na **estruturação do HTML** e na **estilização via CSS** em diversas páginas do site.
 
-### [Gustavo Henrique Lourenço](https://github.com/gustav0-rdg) 👨‍💻
+### [Gustavo Rodrigues Lourenço](https://github.com/gustav0-rdg) 👨‍💻
 
 Atuou de forma abrangente tanto no **back-end** quanto no **front-end**, sendo o responsável por desenvolver os **controllers, rotas** e **boa parte da lógica de comunicação entre o banco de dados e o servidor**. Também teve participação ativa no layout e nas **funcionalidades visuais**.
 
