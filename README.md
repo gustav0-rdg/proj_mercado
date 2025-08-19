@@ -1,6 +1,5 @@
 # Disco Mágico: A sua loja virtual para compra de filmes! 
 
-![Logo do Disco Mágico](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/e74420050bb5d63f2e766a8d88a8d2a20dec0d36d1b147f1.png)
 
 ## Quem somos ❓️
 
